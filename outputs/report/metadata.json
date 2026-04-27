@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "run_id": "20260427T104242Z",
-  "run_started_at": "2026-04-27T10:42:42+00:00",
-  "generated_at": "2026-04-27T10:42:58+00:00",
+  "run_id": "20260427T104558Z",
+  "run_started_at": "2026-04-27T10:45:58+00:00",
+  "generated_at": "2026-04-27T10:46:16+00:00",
   "is_official_collection_window": true,
   "collection_type": "official_collection_window",
   "api_key_source": "TOMTOM_API_KEY environment variable",
@@ -53,24 +53,24 @@
   },
   "history_outputs": {
     "traffic_observations": {
-      "csv": "outputs/history/2026-04-27/10-42-42/traffic_observations.csv",
-      "json": "outputs/history/2026-04-27/10-42-42/traffic_observations.json",
-      "parquet": "outputs/history/2026-04-27/10-42-42/traffic_observations.parquet"
+      "csv": "outputs/history/2026-04-27/10-45-58/traffic_observations.csv",
+      "json": "outputs/history/2026-04-27/10-45-58/traffic_observations.json",
+      "parquet": "outputs/history/2026-04-27/10-45-58/traffic_observations.parquet"
     },
     "node_fusion": {
-      "csv": "outputs/history/2026-04-27/10-42-42/node_fusion.csv",
-      "json": "outputs/history/2026-04-27/10-42-42/node_fusion.json",
-      "parquet": "outputs/history/2026-04-27/10-42-42/node_fusion.parquet"
+      "csv": "outputs/history/2026-04-27/10-45-58/node_fusion.csv",
+      "json": "outputs/history/2026-04-27/10-45-58/node_fusion.json",
+      "parquet": "outputs/history/2026-04-27/10-45-58/node_fusion.parquet"
     },
     "non_iid_stats": {
-      "csv": "outputs/history/2026-04-27/10-42-42/non_iid_stats.csv",
-      "json": "outputs/history/2026-04-27/10-42-42/non_iid_stats.json",
-      "parquet": "outputs/history/2026-04-27/10-42-42/non_iid_stats.parquet"
+      "csv": "outputs/history/2026-04-27/10-45-58/non_iid_stats.csv",
+      "json": "outputs/history/2026-04-27/10-45-58/non_iid_stats.json",
+      "parquet": "outputs/history/2026-04-27/10-45-58/non_iid_stats.parquet"
     },
     "non_iid_tests": {
-      "csv": "outputs/history/2026-04-27/10-42-42/non_iid_tests.csv",
-      "json": "outputs/history/2026-04-27/10-42-42/non_iid_tests.json",
-      "parquet": "outputs/history/2026-04-27/10-42-42/non_iid_tests.parquet"
+      "csv": "outputs/history/2026-04-27/10-45-58/non_iid_tests.csv",
+      "json": "outputs/history/2026-04-27/10-45-58/non_iid_tests.json",
+      "parquet": "outputs/history/2026-04-27/10-45-58/non_iid_tests.parquet"
     }
   },
   "append_outputs": {
@@ -98,7 +98,7 @@
       "lon": 106.658107,
       "geocode_source": "manual_config",
       "source_api": "config/nodes.yaml",
-      "extracted_at": "2026-04-27T10:42:42+00:00"
+      "extracted_at": "2026-04-27T10:45:58+00:00"
     },
     {
       "node_id": "N02_CONG_HOA",
@@ -113,7 +113,7 @@
       "lon": 106.661012,
       "geocode_source": "manual_config",
       "source_api": "config/nodes.yaml",
-      "extracted_at": "2026-04-27T10:42:42+00:00"
+      "extracted_at": "2026-04-27T10:45:58+00:00"
     },
     {
       "node_id": "N03_TRUONG_CHINH",
@@ -128,7 +128,7 @@
       "lon": 106.635795,
       "geocode_source": "manual_config",
       "source_api": "config/nodes.yaml",
-      "extracted_at": "2026-04-27T10:42:42+00:00"
+      "extracted_at": "2026-04-27T10:45:58+00:00"
     }
   ],
   "report_docx": "outputs/report/non_iid_etl_report.docx",
