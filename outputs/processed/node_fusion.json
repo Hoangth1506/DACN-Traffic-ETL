@@ -1,0 +1,38 @@
+[
+  {
+    "node_id":"N01_LY_THUONG_KIET",
+    "node_name":"Ly Thuong Kiet",
+    "status":"ok",
+    "fused_velocity":23.4444,
+    "fused_congestion_ratio":0.3111,
+    "los":"C",
+    "congestion_level":"trung_binh",
+    "confidence":1.0,
+    "observation_count":9,
+    "weight_sum":1.0
+  },
+  {
+    "node_id":"N02_CONG_HOA",
+    "node_name":"Cong Hoa",
+    "status":"ok",
+    "fused_velocity":25.0,
+    "fused_congestion_ratio":0.332,
+    "los":"C",
+    "congestion_level":"trung_binh",
+    "confidence":1.0,
+    "observation_count":9,
+    "weight_sum":1.0
+  },
+  {
+    "node_id":"N03_TRUONG_CHINH",
+    "node_name":"Truong Chinh",
+    "status":"ok",
+    "fused_velocity":23.0,
+    "fused_congestion_ratio":0.2708,
+    "los":"C",
+    "congestion_level":"trung_binh",
+    "confidence":1.0,
+    "observation_count":9,
+    "weight_sum":1.0
+  }
+]
