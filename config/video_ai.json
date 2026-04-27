@@ -1,0 +1,20 @@
+{
+  "model": "yolov8n.pt",
+  "confidence_threshold": 0.25,
+  "frame_stride": 10,
+  "meters_per_pixel": 0.08,
+  "line_y_ratio": 0.55,
+  "videos": [
+    {
+      "path": "DACN w1.mp4",
+      "node_id": "N01_LY_THUONG_KIET",
+      "camera_id": "CAM_LTK_01"
+    },
+    {
+      "path": "DACN w2.mp4",
+      "node_id": "N02_CONG_HOA",
+      "camera_id": "CAM_CH_01"
+    }
+  ],
+  "vehicle_classes": ["motorcycle", "car", "bus", "truck"]
+}

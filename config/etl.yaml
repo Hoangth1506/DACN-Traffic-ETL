@@ -1,0 +1,21 @@
+sampling:
+  sample_points_per_node: 9
+  sample_radius_m: 600
+  recency_window_minutes: 30
+collection:
+  initial_history_days: 7
+  auto_collection_months: 3
+  timezone: Asia/Ho_Chi_Minh
+  interval_minutes: 30
+  windows: 06:00-08:00,11:00-13:00,16:00-19:00
+fusion:
+  alpha_confidence: 0.5
+  beta_recency: 0.3
+  gamma_source_quality: 0.2
+sources:
+  tomtom_quality: 0.95
+  osm_quality: 0.75
+  synthetic_quality: 0.45
+  pytorch_yolo_quality: 0.85
+outputs:
+  base_dir: outputs
