@@ -53,6 +53,13 @@ noon_11_30
 afternoon_17_15
 ```
 
+Nhap them ngay/gio do theo gio Viet Nam:
+
+```text
+measurement_date: 2026-04-28
+measurement_time: 06:27
+```
+
 Moi lan chay se tao thu muc rieng:
 
 ```text
@@ -79,7 +86,7 @@ outputs/raw_measurements/index.jsonl
 Chay local:
 
 ```powershell
-python run_raw_measurement.py --measurement-label test_manual
+python run_raw_measurement.py --measurement-label morning_06_27 --measurement-date 2026-04-28 --measurement-time 06:27
 ```
 
 ## Output ETL cu

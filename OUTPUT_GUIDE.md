@@ -41,6 +41,16 @@ outputs/raw_measurements/2026-04-28/07-30-00_morning_07_30/
 
 GitHub Actions hien chi chay khi bam `Run workflow`, khong con schedule tu dong.
 
+Nguoi do nhap tay ngay/gio do theo gio Viet Nam. Vi du:
+
+```text
+measurement_date = 2026-04-28
+measurement_time = 06:27
+measurement_label = morning_06_27
+```
+
+`metadata.json` van luu them `collected_at_actual_utc` de biet luc GitHub runner that su chay.
+
 ## 1. File tong ket chinh
 
 File nen xem dau tien la:

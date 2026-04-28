@@ -28,8 +28,16 @@ def utc_now_iso() -> str:
 def _get_json(url: str, params: dict[str, Any], timeout: int = 20) -> dict[str, Any]:
     full_url = f"{url}?{urllib.parse.urlencode(params)}"
     request = urllib.request.Request(full_url, headers={"User-Agent": "DACN-traffic-etl/1.0"})
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8"))
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except Exception as e:
+            if attempt == max_retries - 1:
+                raise e
+            time.sleep(2 ** attempt)  # Chờ 1s, 2s trước khi thử lại
 
 
 def geocode_nodes(nodes: list[NodeConfig], api_key: str | None) -> list[dict[str, Any]]:
@@ -88,9 +96,12 @@ def node_sample_points(node: dict[str, Any], etl: EtlConfig) -> list[dict[str, A
         return points
     target_names = _target_road_names(node)
     if target_names:
-        osm_points = _osm_corridor_sample_points(node, target_names, etl.sample_points_per_node)
-        if osm_points:
-            return osm_points
+        try:
+            osm_points = _osm_corridor_sample_points(node, target_names, etl.sample_points_per_node)
+            if osm_points:
+                return osm_points
+        except Exception:
+            pass
     return [
         {**point, "sampling_method": "radius_ring"}
         for point in sample_points(
