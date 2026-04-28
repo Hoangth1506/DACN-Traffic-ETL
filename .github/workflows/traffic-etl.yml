@@ -1,16 +1,15 @@
-name: Traffic ETL Scheduled Collection
+name: Traffic ETL Raw Collection
 
 on:
   workflow_dispatch:
-  schedule:
-    # Vietnam time (UTC+7):
-    # 06:00-08:00 -> 23:00-01:00 UTC
-    # 11:00-13:00 -> 04:00-06:00 UTC
-    # 16:00-19:00 -> 09:00-12:00 UTC
-    - cron: "*/10 23,0,1,4,5,6,9,10,11,12 * * *"
+    inputs:
+      measurement_label:
+        description: "Measurement label, e.g. morning_06_27, noon_11_30, afternoon_17_15"
+        required: true
+        type: string
 
 concurrency:
-  group: traffic-etl-collection
+  group: traffic-etl-raw-collection
   cancel-in-progress: true
 
 jobs:
@@ -31,23 +30,23 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Run ETL inside configured Vietnam-time windows
+      - name: Collect raw TomTom and OSM data
         env:
           TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
-        run: python run_etl.py --respect-windows
+        run: python run_raw_measurement.py --measurement-label "${{ inputs.measurement_label }}"
 
-      - name: Commit collected outputs
+      - name: Commit raw measurement outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git pull --rebase --autostash origin main
 
-          git add -f outputs
+          git add -f outputs/raw_measurements
 
           if git diff --cached --quiet; then
             echo "No output changes to commit"
           else
-            git commit -m "Collect traffic ETL snapshot"
+            git commit -m "Collect raw traffic measurement: ${{ inputs.measurement_label }}"
             git push origin main
           fi

@@ -1,4 +1,45 @@
-# Giai thich output ETL giao thong
+# Giai thich output du lieu giao thong
+
+## 0. Raw-only measurement hien tai
+
+Huong hien tai la thu raw theo tung dot do thu cong, khong tu dong transform/fusion/report trong GitHub Actions.
+
+Moi dot do nam tai:
+
+```text
+outputs/raw_measurements/YYYY-MM-DD/HH-mm-ss_<measurement_label>/
+```
+
+Vi du:
+
+```text
+outputs/raw_measurements/2026-04-28/06-27-00_morning_06_27/
+```
+
+Ben trong co:
+
+- `metadata.json`: thong tin dot do.
+- `edge_nodes.json`: toa do node bien.
+- `tomtom_flow_records.json`: raw TomTom tong hop cua dot do.
+- `osm_edges.json`: raw OSM/topology cua dot do.
+- `tomtom_flow_<NODE_ID>_<SAMPLE_ID>.json`: raw TomTom rieng tung sample.
+
+Index tong hop:
+
+```text
+outputs/raw_measurements/index.csv
+outputs/raw_measurements/index.jsonl
+```
+
+Neu mot buoi sang do 3 lan, se co 3 thu muc rieng:
+
+```text
+outputs/raw_measurements/2026-04-28/06-15-00_morning_06_15/
+outputs/raw_measurements/2026-04-28/06-45-00_morning_06_45/
+outputs/raw_measurements/2026-04-28/07-30-00_morning_07_30/
+```
+
+GitHub Actions hien chi chay khi bam `Run workflow`, khong con schedule tu dong.
 
 ## 1. File tong ket chinh
 

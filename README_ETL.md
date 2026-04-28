@@ -37,7 +37,52 @@ Neu khong co `TOMTOM_API_KEY`, pipeline van chay bang `synthetic_fallback` de ta
    - Tinh `fused_velocity`, `fused_congestion_ratio`, `LOS`, `congestion_level`.
 7. Load: xuat CSV/JSON va Parquet neu runtime co engine Parquet.
 
-## Output
+## Raw-only measurement workflow
+
+Huong hien tai uu tien thu du lieu raw theo tung dot do thu cong. Tren GitHub:
+
+```text
+Actions -> Traffic ETL Raw Collection -> Run workflow
+```
+
+Nhap label, vi du:
+
+```text
+morning_06_27
+noon_11_30
+afternoon_17_15
+```
+
+Moi lan chay se tao thu muc rieng:
+
+```text
+outputs/raw_measurements/YYYY-MM-DD/HH-mm-ss_<measurement_label>/
+```
+
+Ben trong co:
+
+```text
+metadata.json
+edge_nodes.json
+tomtom_flow_records.json
+osm_edges.json
+tomtom_flow_<NODE_ID>_<SAMPLE_ID>.json
+```
+
+Index tich luy:
+
+```text
+outputs/raw_measurements/index.csv
+outputs/raw_measurements/index.jsonl
+```
+
+Chay local:
+
+```powershell
+python run_raw_measurement.py --measurement-label test_manual
+```
+
+## Output ETL cu
 
 Pipeline ghi ra 3 nhom output:
 
