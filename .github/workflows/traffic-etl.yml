@@ -4,9 +4,23 @@ on:
   workflow_dispatch:
     inputs:
       measurement_label:
-        description: "Measurement label, e.g. morning_06_27, noon_11_30, afternoon_17_15"
-        required: true
+        description: "Measurement label (để trống sẽ tự động đặt tên)"
+        required: false
         type: string
+      measurement_date:
+        description: "Vietnam measurement date, YYYY-MM-DD (để trống lấy giờ hiện tại)"
+        required: false
+        type: string
+      measurement_time:
+        description: "Vietnam measurement time, HH:MM (để trống lấy giờ hiện tại)"
+        required: false
+        type: string
+  schedule:
+    # Vietnam time (UTC+7):
+    # 06:00-08:00 -> 23:00-01:00 UTC
+    # 11:00-13:00 -> 04:00-06:00 UTC
+    # 16:00-19:00 -> 09:00-12:00 UTC
+    - cron: "*/10 23,0,1,4,5,6,9,10,11,12 * * *"
 
 concurrency:
   group: traffic-etl-raw-collection
@@ -33,7 +47,33 @@ jobs:
       - name: Collect raw TomTom and OSM data
         env:
           TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
-        run: python run_raw_measurement.py --measurement-label "${{ inputs.measurement_label }}"
+        run: |
+          # Xử lý label tự động nếu không nhập
+          LABEL="${{ inputs.measurement_label }}"
+          if [ -z "$LABEL" ]; then
+            if [ "${{ github.event_name }}" = "schedule" ]; then
+              LABEL="auto_cron"
+            else
+              LABEL="manual_dispatch"
+            fi
+          fi
+          
+          CMD="python run_raw_measurement.py --measurement-label \"$LABEL\""
+          
+          # Nếu user có nhập tay ngày giờ thì mới truyền vào, nếu không python sẽ tự lấy giờ hiện tại
+          DATE="${{ inputs.measurement_date }}"
+          TIME="${{ inputs.measurement_time }}"
+          
+          if [ -n "$DATE" ]; then
+            CMD="$CMD --measurement-date \"$DATE\""
+          fi
+          
+          if [ -n "$TIME" ]; then
+            CMD="$CMD --measurement-time \"$TIME\""
+          fi
+          
+          echo "Executing: $CMD"
+          eval $CMD
 
       - name: Commit raw measurement outputs
         run: |
@@ -47,6 +87,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No output changes to commit"
           else
-            git commit -m "Collect raw traffic measurement: ${{ inputs.measurement_label }}"
+            git commit -m "Collect raw traffic measurement: ${{ inputs.measurement_label || 'auto_scheduled' }}"
             git push origin main
           fi
