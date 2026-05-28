@@ -4,7 +4,7 @@ sampling:
   recency_window_minutes: 30
 collection:
   initial_history_days: 7
-  auto_collection_months: 0
+  auto_collection_months: 6
   timezone: Asia/Ho_Chi_Minh
   interval_minutes: 30
   windows: 06:00-08:00,11:00-13:00,16:00-19:00
