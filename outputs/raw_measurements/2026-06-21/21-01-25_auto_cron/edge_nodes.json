@@ -1,0 +1,47 @@
+[
+  {
+    "node_id": "N01_LY_THUONG_KIET",
+    "name": "Ly Thuong Kiet",
+    "query": "Ly Thuong Kiet, Ho Chi Minh City, Vietnam",
+    "radius_m": 900,
+    "fallback_lat": 10.770501,
+    "fallback_lon": 106.658107,
+    "target_road_names": "Lý Thường Kiệt",
+    "sample_points": "",
+    "lat": 10.770501,
+    "lon": 106.658107,
+    "geocode_source": "manual_config",
+    "source_api": "config/nodes.yaml",
+    "extracted_at": "2026-06-21T14:01:25+00:00"
+  },
+  {
+    "node_id": "N02_CONG_HOA",
+    "name": "Cong Hoa",
+    "query": "Cong Hoa, Tan Binh, Ho Chi Minh City, Vietnam",
+    "radius_m": 1200,
+    "fallback_lat": 10.800431,
+    "fallback_lon": 106.661012,
+    "target_road_names": "Cộng Hòa",
+    "sample_points": "",
+    "lat": 10.800431,
+    "lon": 106.661012,
+    "geocode_source": "manual_config",
+    "source_api": "config/nodes.yaml",
+    "extracted_at": "2026-06-21T14:01:25+00:00"
+  },
+  {
+    "node_id": "N03_TRUONG_CHINH",
+    "name": "Truong Chinh",
+    "query": "Truong Chinh, Tan Binh, Ho Chi Minh City, Vietnam",
+    "radius_m": 1200,
+    "fallback_lat": 10.806527,
+    "fallback_lon": 106.635795,
+    "target_road_names": "Trường Chinh",
+    "sample_points": "",
+    "lat": 10.806527,
+    "lon": 106.635795,
+    "geocode_source": "manual_config",
+    "source_api": "config/nodes.yaml",
+    "extracted_at": "2026-06-21T14:01:25+00:00"
+  }
+]
