@@ -5,9 +5,9 @@ import sys
 
 def get_seconds_to_next_run():
     now = datetime.now()
-    # Tính số phút cần chờ để tới phút 00 hoặc 30 tiếp theo
-    minutes_to_next = 30 - (now.minute % 30)
-    if minutes_to_next == 30 and now.second == 0:
+    # Tính số phút cần chờ để tới mốc 2 phút tiếp theo (phút % 2 == 0)
+    minutes_to_next = 2 - (now.minute % 2)
+    if minutes_to_next == 2 and now.second == 0:
         return 0
     
     # Tính tổng số giây cần chờ
@@ -15,9 +15,9 @@ def get_seconds_to_next_run():
     return seconds_to_wait
 
 def main():
-    print("=== HỆ THỐNG TỰ ĐỘNG CHẠY LẤY DỮ LIỆU (AUTO SCHEDULER) ===")
-    print("Chương trình sẽ tự động chạy mỗi 30 phút (tại phút 00 và phút 30).")
-    print("Các khung giờ lấy dữ liệu hợp lệ được cấu hình trong config/etl.yaml (ví dụ: 06:00-08:00, 11:00-13:00, 16:00-19:00)")
+    print("=== HỆ THỐNG TỰ ĐỘNG CHẠY LẤY DỮ LIỆU REAL-TIME (AUTO SCHEDULER 2 MIN) ===")
+    print("Chương trình sẽ tự động chạy liên tục mỗi 2 phút một lần (24/7).")
+    print("Mọi khung giờ trong ngày đều hợp lệ (00:00 - 23:59).")
     print("-> Bạn chỉ cần TREO cửa sổ này, không cần chạy thủ công nữa.\n")
     
     # Nếu vừa bật lên mà muốn chạy luôn 1 lần đầu thì uncomment dòng dưới

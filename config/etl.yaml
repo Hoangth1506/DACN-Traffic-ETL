@@ -6,8 +6,8 @@ collection:
   initial_history_days: 7
   auto_collection_months: 6
   timezone: Asia/Ho_Chi_Minh
-  interval_minutes: 30
-  windows: 06:00-08:00,11:00-13:00,16:00-19:00
+  interval_minutes: 2
+  windows: 00:00-23:59
 fusion:
   alpha_confidence: 0.5
   beta_recency: 0.3

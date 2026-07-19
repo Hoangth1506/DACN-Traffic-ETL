@@ -1,24 +1,80 @@
 nodes:
   - node_id: N01_LY_THUONG_KIET
     name: Ly Thuong Kiet
-    query: Ly Thuong Kiet, Ho Chi Minh City, Vietnam
-    radius_m: 900
+    query: Ly Thuong Kiet, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
     fallback_lat: 10.770501
     fallback_lon: 106.658107
     target_road_names: Lý Thường Kiệt
     sample_points: ""
-  - node_id: N02_CONG_HOA
+  - node_id: N02_BA_THANG_HAI
+    name: Ba Thang Hai
+    query: Ba Thang Hai, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.768200
+    fallback_lon: 106.669800
+    target_road_names: Ba Tháng Hai
+    sample_points: ""
+  - node_id: N03_CMT8
+    name: Cach Mang Thang Tam
+    query: Cach Mang Thang Tam, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.782100
+    fallback_lon: 106.671200
+    target_road_names: Cách Mạng Tháng Tám
+    sample_points: ""
+  - node_id: N04_THANH_THAI
+    name: Thanh Thai
+    query: Thanh Thai, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.774500
+    fallback_lon: 106.662100
+    target_road_names: Thành Thái
+    sample_points: ""
+  - node_id: N05_TO_HIEN_THANH
+    name: To Hien Thanh
+    query: To Hien Thanh, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.778100
+    fallback_lon: 106.664500
+    target_road_names: Tô Hiến Thành
+    sample_points: ""
+  - node_id: N06_NGUYEN_TRI_PHUONG
+    name: Nguyen Tri Phuong
+    query: Nguyen Tri Phuong, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.763500
+    fallback_lon: 106.667200
+    target_road_names: Nguyễn Tri Phương
+    sample_points: ""
+  - node_id: N07_SU_VAN_HANH
+    name: Su Van Hanh
+    query: Su Van Hanh, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.776200
+    fallback_lon: 106.668000
+    target_road_names: Sư Vạn Hạnh
+    sample_points: ""
+  - node_id: N08_DIEN_BIEN_PHU
+    name: Dien Bien Phu
+    query: Dien Bien Phu, District 10, Ho Chi Minh City, Vietnam
+    radius_m: 2500
+    fallback_lat: 10.775800
+    fallback_lon: 106.678200
+    target_road_names: Điện Biên Phủ
+    sample_points: ""
+  - node_id: N09_CONG_HOA
     name: Cong Hoa
     query: Cong Hoa, Tan Binh, Ho Chi Minh City, Vietnam
-    radius_m: 1200
+    radius_m: 3000
     fallback_lat: 10.800431
     fallback_lon: 106.661012
     target_road_names: Cộng Hòa
     sample_points: ""
-  - node_id: N03_TRUONG_CHINH
+  - node_id: N10_TRUONG_CHINH
     name: Truong Chinh
     query: Truong Chinh, Tan Binh, Ho Chi Minh City, Vietnam
-    radius_m: 1200
+    radius_m: 3000
     fallback_lat: 10.806527
     fallback_lon: 106.635795
     target_road_names: Trường Chinh
