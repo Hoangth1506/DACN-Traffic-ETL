@@ -1,3 +1,4 @@
+# Automated 24/7 Traffic Pipeline - Verified Python 3.10 Build
 name: Continuous 24/7 Realtime Traffic ETL & Dashboard Build
 
 on:
@@ -48,7 +49,8 @@ jobs:
         run: |
           cd dashboard
           npm install --legacy-peer-deps
-          npm run build
+          chmod +x node_modules/.bin/* || true
+          npx vite build
 
       - name: Commit and Push Updated Data to GitHub
         uses: stefanzweifel/git-auto-commit-action@v5
