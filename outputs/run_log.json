@@ -1,14 +1,14 @@
 {
   "status": "ok",
-  "run_start_utc": "2026-07-21T10:38:56.439451+00:00",
-  "run_end_utc": "2026-07-21T10:39:04.728238+00:00",
-  "elapsed_seconds": 8.29,
-  "sessions_found": 22,
-  "sessions_ok": 22,
+  "run_start_utc": "2026-07-21T12:02:57.185005+00:00",
+  "run_end_utc": "2026-07-21T12:03:04.872954+00:00",
+  "elapsed_seconds": 7.69,
+  "sessions_found": 25,
+  "sessions_ok": 25,
   "sessions_failed": 0,
-  "total_rows": 1575,
-  "parquet_path": "C:\\Users\\hoang\\Desktop\\DACN github\\DACN-Traffic-ETL\\outputs\\unified_traffic.parquet",
-  "quality_path": "C:\\Users\\hoang\\Desktop\\DACN github\\DACN-Traffic-ETL\\outputs\\quality_report.json",
-  "index_path": "C:\\Users\\hoang\\Desktop\\DACN github\\DACN-Traffic-ETL\\outputs\\session_index.csv",
-  "quality_overall": 0.9782
+  "total_rows": 1833,
+  "parquet_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/unified_traffic.parquet",
+  "quality_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/quality_report.json",
+  "index_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/session_index.csv",
+  "quality_overall": 0.9748
 }
