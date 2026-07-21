@@ -5,6 +5,9 @@ on:
     - cron: '*/5 * * * *' # Minimum reliable interval supported by GitHub Actions (every 5 minutes)
   workflow_dispatch: # Allows manual trigger from GitHub UI anytime
 
+permissions:
+  contents: write
+
 jobs:
   run-etl-and-deploy:
     runs-on: ubuntu-latest
@@ -22,7 +25,7 @@ jobs:
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas numpy pyarrow zoneinfo requests
+          pip install pandas numpy pyarrow requests pyyaml scipy scikit-learn
 
       - name: Run Real-Time Raw Measurement Collection
         run: |
