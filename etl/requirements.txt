@@ -1,0 +1,24 @@
+# DACN-Dashboard ETL — Python dependencies
+# Cài đặt: pip install -r requirements.txt
+# Hoặc chạy: install_requirements.bat
+
+# Core data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Spatial processing
+scipy>=1.11.0          # KDTree spatial join
+shapely>=2.0.0         # geometry utilities
+
+# Parquet I/O
+pyarrow>=14.0.0        # đọc/ghi Parquet
+
+# Timezone handling (stdlib từ Python 3.9+, nhưng backport cho < 3.9)
+# zoneinfo đã có sẵn trong stdlib Python 3.9+
+
+# Optional: nếu muốn dùng geopandas thay scipy
+# geopandas>=0.14.0
+# fiona>=1.9.0
+
+# Logging / progress
+tqdm>=4.65.0

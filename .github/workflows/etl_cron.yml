@@ -1,12 +1,12 @@
-name: Automated Realtime Raw Traffic Extraction
+name: Continuous 24/7 Realtime Traffic ETL & Dashboard Build
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Automated trigger every 5 minutes (GitHub Actions minimum interval)
-  workflow_dispatch: # Allows manual triggering from GitHub UI at any time
+    - cron: '*/5 * * * *' # Minimum reliable interval supported by GitHub Actions (every 5 minutes)
+  workflow_dispatch: # Allows manual trigger from GitHub UI anytime
 
 jobs:
-  collect-raw-data:
+  run-etl-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -19,17 +19,39 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pandas numpy pyarrow zoneinfo requests
 
       - name: Run Real-Time Raw Measurement Collection
         run: |
-          python run_raw_measurement.py --measurement-label github_realtime_cron
+          python run_raw_measurement.py --measurement-label github_cron_live
+        continue-on-error: true
 
-      - name: Commit and Push New Raw Data to GitHub
+      - name: Run ETL Data Generation
+        run: |
+          python generate_data.py
+        continue-on-error: true
+
+      - name: Export Public JSON Files
+        run: |
+          python export_json.py
+        continue-on-error: true
+
+      - name: Setup Node.js & Build Vite Dashboard
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install & Build Dashboard
+        run: |
+          cd dashboard
+          npm install
+          npm run build
+
+      - name: Commit and Push Updated Data to GitHub
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "auto: collect 10-node real-time raw measurement [skip ci]"
-          file_pattern: "outputs/raw_measurements/**"
+          commit_message: "auto: continuous real-time traffic data update [skip ci]"
+          file_pattern: "dashboard/public/*.json dashboard/dist/* outputs/*.parquet outputs/*.json outputs/raw_measurements/**"
