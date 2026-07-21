@@ -1,0 +1,22 @@
+{
+  "measurement_id": "20260719T133711_VN_test_realtime_5m",
+  "measurement_label": "test_realtime_5m",
+  "measurement_date": "2026-07-19",
+  "measurement_time": "13:37:11",
+  "collected_at_vn": "2026-07-19T13:37:11+07:00",
+  "collected_at_utc": "2026-07-19T06:37:11+00:00",
+  "collected_at_actual_utc": "2026-07-19T06:37:11+00:00",
+  "collection_type": "manual_raw_measurement",
+  "is_official_collection_window": true,
+  "official_window": "00:00-23:59",
+  "tomtom_mode": "synthetic_fallback",
+  "node_count": 3,
+  "sample_count": 27,
+  "raw_dir": "outputs\\raw_measurements\\2026-07-19\\13-37-11_test_realtime_5m",
+  "outputs": {
+    "metadata": "outputs\\raw_measurements\\2026-07-19\\13-37-11_test_realtime_5m\\metadata.json",
+    "edge_nodes": "outputs\\raw_measurements\\2026-07-19\\13-37-11_test_realtime_5m\\edge_nodes.json",
+    "tomtom_flow_records": "outputs\\raw_measurements\\2026-07-19\\13-37-11_test_realtime_5m\\tomtom_flow_records.json",
+    "osm_edges": "outputs\\raw_measurements\\2026-07-19\\13-37-11_test_realtime_5m\\osm_edges.json"
+  }
+}
