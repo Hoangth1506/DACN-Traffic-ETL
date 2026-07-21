@@ -2,8 +2,8 @@ name: Continuous 24/7 Realtime Traffic ETL & Dashboard Build
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Minimum reliable interval supported by GitHub Actions (every 5 minutes)
-  workflow_dispatch: # Allows manual trigger from GitHub UI anytime
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -30,31 +30,28 @@ jobs:
       - name: Run Real-Time Raw Measurement Collection
         run: |
           python run_raw_measurement.py --measurement-label github_cron_live
-        continue-on-error: true
 
       - name: Run ETL Data Generation
         run: |
           python generate_data.py
-        continue-on-error: true
 
       - name: Export Public JSON Files
         run: |
           python export_json.py
-        continue-on-error: true
 
       - name: Setup Node.js & Build Vite Dashboard
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install & Build Dashboard
         run: |
           cd dashboard
-          npm install
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Commit and Push Updated Data to GitHub
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "auto: continuous real-time traffic data update [skip ci]"
           file_pattern: "dashboard/public/*.json dashboard/dist/* outputs/*.parquet outputs/*.json outputs/raw_measurements/**"
