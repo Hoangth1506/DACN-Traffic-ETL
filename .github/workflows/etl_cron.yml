@@ -1,4 +1,3 @@
-# Automated 24/7 Traffic Pipeline - Verified Python 3.10 Build
 name: Continuous 24/7 Realtime Traffic ETL & Dashboard Build
 
 on:
@@ -55,4 +54,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "auto: continuous real-time traffic data update [skip ci]"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           file_pattern: "dashboard/public/*.json dashboard/dist/* outputs/*.parquet outputs/*.json outputs/raw_measurements/**"

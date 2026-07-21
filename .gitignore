@@ -3,13 +3,5 @@
 __pycache__/
 *.pyc
 *.mp4
-outputs/raw/*
-outputs/processed/*
-outputs/report/*
-outputs/history/*
-outputs/raw_measurements/*
-!outputs/raw/.gitkeep
-!outputs/processed/.gitkeep
-!outputs/report/.gitkeep
-!outputs/history/.gitkeep
-!outputs/raw_measurements/.gitkeep
+dashboard/node_modules/
+dashboard/.vite/
