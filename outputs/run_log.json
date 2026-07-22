@@ -1,14 +1,14 @@
 {
   "status": "ok",
-  "run_start_utc": "2026-07-22T16:57:52.193364+00:00",
-  "run_end_utc": "2026-07-22T16:58:06.652482+00:00",
-  "elapsed_seconds": 14.46,
-  "sessions_found": 50,
-  "sessions_ok": 50,
+  "run_start_utc": "2026-07-22T18:11:07.367490+00:00",
+  "run_end_utc": "2026-07-22T18:11:22.098657+00:00",
+  "elapsed_seconds": 14.73,
+  "sessions_found": 51,
+  "sessions_ok": 51,
   "sessions_failed": 0,
-  "total_rows": 3933,
+  "total_rows": 4017,
   "parquet_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/unified_traffic.parquet",
   "quality_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/quality_report.json",
   "index_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/session_index.csv",
-  "quality_overall": 0.9632
+  "quality_overall": 0.9626
 }
