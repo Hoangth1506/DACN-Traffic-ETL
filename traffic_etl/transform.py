@@ -11,17 +11,17 @@ from .config import EtlConfig
 def los_from_velocity(velocity: float | None) -> str:
     if velocity is None or pd.isna(velocity):
         return "unknown"
-    if velocity < 7:
-        return "F"
-    if velocity < 13:
-        return "E"
-    if velocity < 20:
-        return "D"
-    if velocity < 30:
-        return "C"
-    if velocity < 35:
-        return "B"
-    return "A"
+    if velocity >= 35:
+        return "F"  # Thông thoáng (Green)
+    if velocity >= 28:
+        return "E"  # Ổn định (Light Green)
+    if velocity >= 20:
+        return "D"  # Trung bình (Yellow)
+    if velocity >= 14:
+        return "C"  # Gần tắc (Orange)
+    if velocity >= 8:
+        return "B"  # Tắc nghẽn (Red)
+    return "A"      # Kẹt xe nghiêm trọng (Dark Red)
 
 
 def congestion_level(
@@ -31,15 +31,16 @@ def congestion_level(
 ) -> str:
     if road_closed:
         return "closed"
+    if velocity_kmph is not None and not pd.isna(velocity_kmph):
+        if velocity_kmph >= 30:
+            return "thoang"
+        if velocity_kmph >= 20:
+            return "trung_binh"
+        if velocity_kmph >= 12:
+            return "dong"
+        return "un_tac"
     if congestion_ratio is None or pd.isna(congestion_ratio):
         return "unknown"
-    if velocity_kmph is not None and not pd.isna(velocity_kmph):
-        if velocity_kmph < 13:
-            return "un_tac"
-        if velocity_kmph < 20:
-            return "dong"
-        if velocity_kmph < 30:
-            return "trung_binh"
     if congestion_ratio < 0.2:
         return "thoang"
     if congestion_ratio < 0.45:
