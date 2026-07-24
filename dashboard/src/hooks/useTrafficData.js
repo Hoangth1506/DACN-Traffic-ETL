@@ -1,6 +1,5 @@
 // useTrafficData.js — Hook load và filter traffic data từ public JSON
-
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 
 const DEFAULT_FILTERS = {
   nodes: [
@@ -23,8 +22,8 @@ export function useTrafficData() {
   const [loading, setLoading]               = useState(true)
   const [filters, setFilters]               = useState(DEFAULT_FILTERS)
 
-  useEffect(() => {
-    Promise.all([
+  const fetchData = useCallback(() => {
+    return Promise.all([
       fetch('/traffic_data.json').then(r => r.json()),
       fetch('/aggregates.json').then(r => r.json()),
       fetch('/quality_summary.json').then(r => r.json()),
@@ -39,11 +38,22 @@ export function useTrafficData() {
       setQuality(qual)
       setPerfMetrics(perf)
       setLoading(false)
+
+      // Mặc định chọn NGÀY MỚI NHẤT (Hôm nay) khi nạp ứng dụng
+      const latestDate = agg?.date_range?.max || '2026-07-24'
+      setFilters(prev => ({
+        ...prev,
+        dateRange: [latestDate, latestDate]
+      }))
     }).catch(err => {
       console.error('Failed to load data:', err)
       setLoading(false)
     })
   }, [])
+
+  useEffect(() => {
+    fetchData()
+  }, [fetchData])
 
   // ── Filter helper ─────────────────────────────────────────────────────────
   function applyFilters(records, {
@@ -60,7 +70,7 @@ export function useTrafficData() {
     })
   }
 
-  // Filtered traffic_data (unified, cho các tab khác)
+  // Filtered traffic_data
   const filtered = useMemo(() => {
     if (!allData.length) return []
     return applyFilters(allData)
@@ -85,10 +95,10 @@ export function useTrafficData() {
   }, [allNodeStates, filters])
 
   const resetFilters = () => {
-    const firstDate = aggregates?.date_range?.min || '2026-04-28'
+    const latestDate = aggregates?.date_range?.max || '2026-07-24'
     setFilters({
       ...DEFAULT_FILTERS,
-      dateRange: [firstDate, firstDate],
+      dateRange: [latestDate, latestDate],
     })
   }
 
@@ -98,9 +108,9 @@ export function useTrafficData() {
     allNodeStates,
     aggregates, quality, loading,
     filters, setFilters, resetFilters,
+    refetch: fetchData,
   }
 }
-
 
 // Helpers
 export const LOS_COLOR = {
@@ -150,13 +160,4 @@ export function avg(arr, key) {
   const vals = arr.map(r => r[key]).filter(v => v != null && !isNaN(v))
   if (!vals.length) return null
   return vals.reduce((s, v) => s + v, 0) / vals.length
-}
-
-export function computeSMA(data, window = 3) {
-  return data.map((_, i) => {
-    if (i < window - 1) return null
-    const slice = data.slice(i - window + 1, i + 1)
-    const vals = slice.map(d => d.speed).filter(v => v != null)
-    return vals.length ? vals.reduce((s, v) => s + v, 0) / vals.length : null
-  })
 }

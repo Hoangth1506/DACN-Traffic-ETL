@@ -51,20 +51,17 @@ const LiveCountdownBar = memo(function LiveCountdownBar({ onExpire }) {
   }, [onExpire])
 
   return (
-    <>
-      <span style={{ color: '#06b6d4', fontWeight: 800 }}>{countdown}s</span>
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 3, zIndex: 9999, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' }}>
-        <div
-          className="progress-bar-fill"
-          style={{
-            height: '100%',
-            width: `${((120 - countdown) / 120) * 100}%`,
-            background: 'linear-gradient(90deg, #06b6d4, #10b981)',
-            boxShadow: '0 0 10px #06b6d4'
-          }}
-        />
-      </div>
-    </>
+    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 3, zIndex: 9999, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' }}>
+      <div
+        className="progress-bar-fill"
+        style={{
+          height: '100%',
+          width: `${((120 - countdown) / 120) * 100}%`,
+          background: 'linear-gradient(90deg, #06b6d4, #10b981)',
+          boxShadow: '0 0 10px #06b6d4'
+        }}
+      />
+    </div>
   )
 })
 
