@@ -41,16 +41,16 @@ function majorityLOS(records) {
 
 // Tính avg speed
 function avgSpeed(records) {
-  const valid = records.filter(r => r.velocity != null)
+  const valid = records.filter(r => (r.current_speed ?? r.velocity_kmph ?? r.velocity) != null)
   if (!valid.length) return null
-  return valid.reduce((s, r) => s + r.velocity, 0) / valid.length
+  return valid.reduce((s, r) => s + (r.current_speed ?? r.velocity_kmph ?? r.velocity ?? 0), 0) / valid.length
 }
 
 // Tính avg density
 function avgDensity(records) {
-  const valid = records.filter(r => r.density != null)
+  const valid = records.filter(r => (r.congestion_index ?? r.fused_density ?? r.density) != null)
   if (!valid.length) return null
-  return valid.reduce((s, r) => s + r.density, 0) / valid.length
+  return valid.reduce((s, r) => s + (r.congestion_index ?? r.fused_density ?? r.density ?? 0), 0) / valid.length
 }
 
 // Tính khoảng cách Haversine giữa 2 điểm tọa độ (đơn vị: km)
