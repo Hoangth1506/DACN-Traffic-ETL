@@ -61,17 +61,30 @@ export function useTrafficData() {
   // ── Filter helper ─────────────────────────────────────────────────────────
   function applyFilters(records, {
     nodeKey = 'node_id', slotKey = 'time_slot',
-    losKey = 'los', dateKey = 'date_str', speedKey = 'velocity'
+    losKey = 'los', dateKey = 'date_str', speedKey = 'current_speed'
   } = {}) {
     return records.filter(r => {
-      if (filters.nodes.length && !filters.nodes.includes(r[nodeKey])) return false
+      // 1. Node filter (hỗ trợ cả N02_CONG_HOA và N02_BA_THANG_HAI)
+      if (filters.nodes.length) {
+        const nid = r[nodeKey]
+        const isMatch = filters.nodes.includes(nid) ||
+          (nid === 'N02_CONG_HOA' && filters.nodes.includes('N02_BA_THANG_HAI')) ||
+          (nid === 'N02_BA_THANG_HAI' && filters.nodes.includes('N02_CONG_HOA'))
+        if (!isMatch) return false
+      }
+
+      // 2. Time slot filter
       if (filters.timeSlots.length && slotKey && r[slotKey] && !filters.timeSlots.includes(r[slotKey])) return false
+
+      // 3. LOS filter
       if (filters.losLevels.length && losKey && r[losKey] && !filters.losLevels.includes(r[losKey])) return false
-      if (filters.dateRange[0] && r[dateKey] < filters.dateRange[0]) return false
-      if (filters.dateRange[1] && r[dateKey] > filters.dateRange[1]) return false
+
+      // 4. Date range filter
+      if (filters.dateRange[0] && r[dateKey] && r[dateKey] < filters.dateRange[0]) return false
+      if (filters.dateRange[1] && r[dateKey] && r[dateKey] > filters.dateRange[1]) return false
       
-      // Filter vận tốc
-      const v = r[speedKey] ?? r.fused_velocity
+      // 5. Vận tốc filter
+      const v = r.current_speed ?? r.velocity_kmph ?? r.fused_velocity ?? r[speedKey]
       if (v != null && !isNaN(v)) {
         if (filters.minSpeed > 0 && v < filters.minSpeed) return false
         if (filters.maxSpeed < 100 && v > filters.maxSpeed) return false
