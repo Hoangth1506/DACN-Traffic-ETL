@@ -52,9 +52,17 @@ function avgDensity(records) {
   return valid.reduce((s, r) => s + r.density, 0) / valid.length
 }
 
-// Sắp xếp camera theo lat (từ nam → bắc) để polyline liên tục
-function sortCameras(cams) {
-  return [...cams].sort((a, b) => a.lat - b.lat)
+// Tính khoảng cách Haversine giữa 2 điểm tọa độ (đơn vị: km)
+function getDistanceKm(lat1, lon1, lat2, lon2) {
+  if (lat1 == null || lon1 == null || lat2 == null || lon2 == null) return 0
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
 }
 
 export default function MapView({ data, nodeStates, cameraRecords, filters }) {
@@ -122,11 +130,22 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
 
     if (!sourceData?.length) return
 
-    // Auto-fit vao khu vuc co data (chi lan dau, khi map da trong)
     const { map } = leafRef.current
+    // Cập nhật lại kích thước khung hình chuẩn cho Leaflet Flexbox
+    map.invalidateSize()
+
+    // Auto-fit gom toàn bộ 10 Node Agents vào chính giữa màn hình (Quận 10 & Tân Bình)
     if (corridors.getLayers().length === 0) {
-      // Center vao giua 3 node
-      map.setView([10.792, 106.649], 14)
+      const validPts = sourceData
+        .map(r => [r.lat ?? r.sample_lat, r.lon ?? r.sample_lon])
+        .filter(pt => pt[0] != null && pt[1] != null && !isNaN(pt[0]) && !isNaN(pt[1]))
+
+      if (validPts.length > 0) {
+        const bounds = L.latLngBounds(validPts)
+        map.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 })
+      } else {
+        map.setView([10.782, 106.662], 14)
+      }
     }
 
     // Nhom theo node_id
@@ -153,7 +172,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       const camPoints = Object.values(byCam)
         .filter(c => c.lat != null && c.lon != null)
         .sort((a, b) => {
-          if (nid === 'N02_CONG_HOA') {
+          if (nid === 'N02_CONG_HOA' || nid === 'N09_CONG_HOA') {
             return a.lon - b.lon; // Đường Cộng Hòa chạy hướng Tây-Đông: xếp theo Kinh độ
           } else {
             return a.lat - b.lat; // Các đường khác chạy hướng Bắc-Nam/chéo: xếp theo Vĩ độ
@@ -164,12 +183,16 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
         // Vẽ từng đoạn polyline giữa 2 camera liên tiếp, màu theo LOS đoạn đó
         for (let i = 0; i < camPoints.length - 1; i++) {
           const seg = camPoints[i]
+          const nextSeg = camPoints[i + 1]
+
+          // 🛡️ SPATIAL DISTANCE GUARD: Bỏ qua đoạn vẽ nếu 2 điểm đo nằm xa quá 450 mét (0.45 km)
+          const distKm = getDistanceKm(seg.lat, seg.lon, nextSeg.lat, nextSeg.lon)
+          if (distKm > 0.45) continue
+
           const segLOS = majorityLOS(seg.records)
           const segColor = LOS_COLOR[segLOS] || LOS_COLOR.unknown
           const segSpeed = avgSpeed(seg.records)
           const segDen = avgDensity(seg.records)
-
-          const nextSeg = camPoints[i + 1]
 
           // Popup cho segment với đầy đủ thông tin: Vận tốc, Mật độ và LOS
           const roadName = seg.records[0]?.road_segment || seg.records[0]?.matched_road_name || nid
