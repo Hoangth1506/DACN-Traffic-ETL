@@ -6,6 +6,7 @@
 //   • Tự động cập nhật khi filter thay đổi (date/timeslot/node)
 
 import { useEffect, useRef, useState } from 'react'
+import L from 'leaflet'
 import { LOS_COLOR, NODE_COLORS } from '../hooks/useTrafficData'
 
 const NODE_META = {
@@ -72,52 +73,62 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
   // Layer groups — tái tạo khi data thay đổi
   const layersRef = useRef({ corridors: null, cameras: null, nodes: null })
 
-  // Layer visibility toggle
   const [showCameras,   setShowCameras]   = useState(true)
   const [showCorridors, setShowCorridors] = useState(true)
   const [showNodes,     setShowNodes]     = useState(true)
+  const [mapReady,      setMapReady]      = useState(false)
 
   // ── 1. Khởi tạo map (chỉ 1 lần) ──────────────────────────────────────────
   useEffect(() => {
-    if (leafRef.current) return
-    import('leaflet').then(L => {
-      const map = L.map(mapRef.current, {
-        center: [10.782, 106.655],
-        zoom: 13,
-        zoomControl: true,
-        preferCanvas: true,
-      })
+    if (leafRef.current || !mapRef.current) return
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap © CARTO',
-        maxZoom: 19,
-      }).addTo(map)
-
-      // Khởi tạo 3 layer groups
-      layersRef.current.corridors = L.layerGroup().addTo(map)
-      layersRef.current.cameras   = L.layerGroup().addTo(map)
-      layersRef.current.nodes     = L.layerGroup().addTo(map)
-
-      leafRef.current = { map, L }
-
-      // CSS popup
-      const style = document.createElement('style')
-      style.textContent = `
-        .popup-title { font-size:13px; font-weight:700; color:#f1f5f9; margin-bottom:6px; border-bottom:1px solid #334155; padding-bottom:4px; }
-        .popup-row { display:flex; justify-content:space-between; gap:12px; font-size:11px; color:#94a3b8; margin-bottom:3px; }
-        .popup-val { color:#e2e8f0; font-weight:600; }
-        .leaflet-popup-content-wrapper { background:#0d1424; border:1px solid #1e3a5f; border-radius:8px; color:#e2e8f0; }
-        .leaflet-popup-tip { background:#0d1424; }
-      `
-      document.head.appendChild(style)
+    const map = L.map(mapRef.current, {
+      center: [10.782, 106.662],
+      zoom: 13.5,
+      zoomControl: true,
+      preferCanvas: true,
     })
-    return () => { if (leafRef.current) { leafRef.current.map.remove(); leafRef.current = null } }
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap © CARTO',
+      maxZoom: 19,
+    }).addTo(map)
+
+    // Khởi tạo 3 layer groups
+    layersRef.current.corridors = L.layerGroup().addTo(map)
+    layersRef.current.cameras   = L.layerGroup().addTo(map)
+    layersRef.current.nodes     = L.layerGroup().addTo(map)
+
+    leafRef.current = { map, L }
+    setMapReady(true)
+
+    // CSS popup
+    const style = document.createElement('style')
+    style.textContent = `
+      .popup-title { font-size:13px; font-weight:700; color:#f1f5f9; margin-bottom:6px; border-bottom:1px solid #334155; padding-bottom:4px; }
+      .popup-row { display:flex; justify-content:space-between; gap:12px; font-size:11px; color:#94a3b8; margin-bottom:3px; }
+      .popup-val { color:#e2e8f0; font-weight:600; }
+      .leaflet-popup-content-wrapper { background:#0d1424; border:1px solid #1e3a5f; border-radius:8px; color:#e2e8f0; }
+      .leaflet-popup-tip { background:#0d1424; }
+    `
+    document.head.appendChild(style)
+
+    setTimeout(() => {
+      if (map) map.invalidateSize()
+    }, 200)
+
+    return () => {
+      if (leafRef.current) {
+        leafRef.current.map.remove()
+        leafRef.current = null
+      }
+    }
   }, [])
 
-  // ── 2. Cập nhật corridors + cameras khi data (filtered) thay đổi ─────────
+  // ── 2. Cập nhật corridors + cameras khi data (filtered) hoặc mapReady thay đổi ─────────
   useEffect(() => {
-    if (!leafRef.current) return
-    const { L } = leafRef.current
+    if (!leafRef.current || !mapReady) return
+    const { L, map } = leafRef.current
     const { corridors, cameras } = layersRef.current
     if (!corridors || !cameras) return
 
@@ -130,7 +141,6 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
 
     if (!sourceData?.length) return
 
-    const { map } = leafRef.current
     // Cập nhật lại kích thước khung hình chuẩn cho Leaflet Flexbox
     map.invalidateSize()
 
@@ -261,11 +271,11 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
     // -- C. INTER-NODE CONNECTOR LINES --
     // Bo 3 cai duong noi giua 3 node lon theo yeu cau cua user
     // (Da bo theo thiet ke)
-  }, [data, cameraRecords, nodeStates, showCameras, showCorridors])
+  }, [data, cameraRecords, nodeStates, showCameras, showCorridors, mapReady])
 
   // ── 3. Cập nhật node markers khi nodeStates thay đổi ─────────────────────
   useEffect(() => {
-    if (!leafRef.current) return
+    if (!leafRef.current || !mapReady) return
     const { L } = leafRef.current
     const { nodes } = layersRef.current
     if (!nodes) return
@@ -356,7 +366,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       nodes.addLayer(marker)
       nodes.addLayer(iconMarker)
     })
-  }, [nodeStates, showNodes])
+  }, [nodeStates, showNodes, mapReady])
 
   // ── 4. Show/hide layers khi toggle ───────────────────────────────────────
   useEffect(() => {
