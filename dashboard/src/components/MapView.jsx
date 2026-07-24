@@ -226,18 +226,18 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
           )
           hitLine.bindPopup(popupHtml, { maxWidth: 240 })
 
+          // Outline mờ làm nền (trắng mỏng) chỉ cho đoạn này
+          const segOutline = L.polyline(
+            [[seg.lat, seg.lon], [nextSeg.lat, nextSeg.lon]],
+            { color: '#ffffff', weight: 8, opacity: 0.08, lineCap: 'round', interactive: false }
+          )
+
           if (showCorridors) {
+            corridors.addLayer(segOutline)
             corridors.addLayer(line)
             corridors.addLayer(hitLine)
           }
         }
-
-        // Outline mờ làm nền (trắng mỏng) để corridor nổi hơn nền tối
-        const outlinePts = camPoints.map(c => [c.lat, c.lon])
-        const outline = L.polyline(outlinePts, {
-          color: '#ffffff', weight: 10, opacity: 0.07, lineCap: 'round', interactive: false
-        })
-        if (showCorridors) corridors.addLayer(outline)
       }
 
       // ── B. CAMERA DOT MARKERS ─────────────────────────────────────────────
