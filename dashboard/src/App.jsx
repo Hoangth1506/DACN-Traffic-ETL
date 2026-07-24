@@ -1,5 +1,6 @@
 // App.jsx — Ultra-Optimized Dashboard with Isolated Clock & Zero-Lag Render Tree
 import { useState, useEffect, memo } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { useTrafficData } from './hooks/useTrafficData'
 import Sidebar from './components/Sidebar'
 import MapView from './components/MapView'
@@ -266,6 +267,7 @@ export default function App() {
         .spin-icon { animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
       `}</style>
+      <Analytics />
     </div>
   )
 }
