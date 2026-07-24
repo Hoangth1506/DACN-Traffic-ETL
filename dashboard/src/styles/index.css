@@ -1,16 +1,17 @@
-/* index.css — Cyberpunk / Sleek Dark Glassmorphism Design System */
+/* index.css — Cyberpunk Ultra-Modern Glassmorphism Design System */
 
 :root {
   --bg-dark: #070a12;
-  --bg-card: rgba(15, 23, 42, 0.72);
-  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --bg-card-hover: rgba(30, 41, 59, 0.88);
   --bg-card-solid: #0f172a;
   --border-glass: rgba(255, 255, 255, 0.08);
-  --border-glass-glow: rgba(56, 189, 248, 0.3);
+  --border-glass-glow: rgba(56, 189, 248, 0.35);
 
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
 
   --accent-cyan: #06b6d4;
   --accent-sky: #38bdf8;
@@ -21,8 +22,9 @@
 
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   --shadow-neon-cyan: 0 0 20px rgba(6, 182, 212, 0.35);
   --shadow-neon-emerald: 0 0 20px rgba(16, 185, 129, 0.35);
   --shadow-neon-rose: 0 0 20px rgba(244, 63, 94, 0.35);
@@ -39,9 +41,9 @@ body {
   color: var(--text-primary);
   font-family: var(--font-main);
   background-image: 
-    radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 45%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.06) 0px, transparent 50%);
   background-attachment: fixed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -56,11 +58,11 @@ body {
   background: rgba(7, 10, 18, 0.8);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.2);
+  background: rgba(148, 163, 184, 0.25);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.5);
+  background: rgba(56, 189, 248, 0.6);
 }
 
 /* Glassmorphism Containers */
@@ -75,7 +77,7 @@ body {
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .glass-card-interactive {
@@ -93,9 +95,18 @@ body {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), var(--shadow-neon-cyan);
 }
 
-/* Typography Display */
+/* Typography Classes */
 .font-display {
   font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  letter-spacing: -0.03em;
 }
 
 .gradient-text-cyan {
@@ -116,17 +127,41 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Table Styling */
+.cyber-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.825rem;
+}
+
+.cyber-table th {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cyber-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+.cyber-table tr:hover td {
+  background: rgba(30, 41, 59, 0.4);
+  color: var(--text-primary);
+}
+
 /* Pulse & Live Animations */
 @keyframes live-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-  }
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .live-dot-pulse {
@@ -138,67 +173,25 @@ body {
   display: inline-block;
 }
 
-@keyframes countdown-glow {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; filter: drop-shadow(0 0 8px #06b6d4); }
-}
-
-.countdown-badge {
-  animation: countdown-glow 3s infinite ease-in-out;
-}
-
-/* Progress bar animation */
-.progress-bar-fill {
-  transition: width 1s linear;
-}
-
-/* Badges */
-.badge-glass {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-}
-
-.badge-live-stream {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #34d399;
-}
-
-.badge-warning {
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  color: #fbbf24;
-}
-
-.badge-danger {
-  background: rgba(244, 63, 94, 0.12);
-  border: 1px solid rgba(244, 63, 94, 0.3);
-  color: #f43f5e;
-}
-
-/* Leaflet Customizations */
-.leaflet-container {
-  background: #080c16 !important;
-  font-family: var(--font-main) !important;
-}
-
-.leaflet-popup-content-wrapper {
+/* Recharts Custom Tooltip */
+.recharts-default-tooltip {
   background: rgba(15, 23, 42, 0.95) !important;
-  backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(56, 189, 248, 0.3) !important;
-  border-radius: 12px !important;
-  color: #f8fafc !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  padding: 10px 14px !important;
 }
 
-.leaflet-popup-tip {
-  background: rgba(15, 23, 42, 0.95) !important;
+.recharts-tooltip-label {
+  color: #38bdf8 !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  margin-bottom: 4px !important;
+}
+
+.recharts-tooltip-item-name,
+.recharts-tooltip-item-value {
+  color: #f8fafc !important;
+  font-family: var(--font-mono) !important;
 }

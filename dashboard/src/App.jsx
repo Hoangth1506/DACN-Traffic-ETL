@@ -218,6 +218,7 @@ export default function App() {
           aggregates={aggregates}
           totalShown={filtered.length}
           lastUpdated={formattedLatestDate}
+          filteredData={filtered}
         />
 
         <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>

@@ -1,4 +1,4 @@
-// useTrafficData.js — Hook load và filter traffic data từ public JSON
+// useTrafficData.js — Hook load và filter traffic data với bộ lọc đa chiều (Ngày, Tuần, Tháng, Giờ cao điểm, Vận tốc)
 import { useState, useEffect, useMemo, useCallback } from 'react'
 
 const DEFAULT_FILTERS = {
@@ -10,6 +10,8 @@ const DEFAULT_FILTERS = {
   timeSlots: ['morning_peak', 'midday_peak', 'evening_peak', 'off_peak'],
   losLevels: ['A', 'B', 'C', 'D', 'E', 'F'],
   dateRange: ['', ''],
+  minSpeed: 0,
+  maxSpeed: 100,
 }
 
 export function useTrafficData() {
@@ -58,14 +60,21 @@ export function useTrafficData() {
   // ── Filter helper ─────────────────────────────────────────────────────────
   function applyFilters(records, {
     nodeKey = 'node_id', slotKey = 'time_slot',
-    losKey = 'los', dateKey = 'date_str',
+    losKey = 'los', dateKey = 'date_str', speedKey = 'velocity'
   } = {}) {
     return records.filter(r => {
       if (filters.nodes.length && !filters.nodes.includes(r[nodeKey])) return false
-      if (filters.timeSlots.length && slotKey && !filters.timeSlots.includes(r[slotKey])) return false
-      if (filters.losLevels.length && losKey && !filters.losLevels.includes(r[losKey])) return false
+      if (filters.timeSlots.length && slotKey && r[slotKey] && !filters.timeSlots.includes(r[slotKey])) return false
+      if (filters.losLevels.length && losKey && r[losKey] && !filters.losLevels.includes(r[losKey])) return false
       if (filters.dateRange[0] && r[dateKey] < filters.dateRange[0]) return false
       if (filters.dateRange[1] && r[dateKey] > filters.dateRange[1]) return false
+      
+      // Filter vận tốc
+      const v = r[speedKey] ?? r.fused_velocity
+      if (v != null && !isNaN(v)) {
+        if (filters.minSpeed > 0 && v < filters.minSpeed) return false
+        if (filters.maxSpeed < 100 && v > filters.maxSpeed) return false
+      }
       return true
     })
   }
@@ -81,7 +90,7 @@ export function useTrafficData() {
     if (!allCameraRecords.length) return []
     return applyFilters(allCameraRecords, {
       nodeKey: 'node_id', slotKey: 'time_slot',
-      losKey: 'los', dateKey: 'date_str',
+      losKey: 'los', dateKey: 'date_str', speedKey: 'velocity'
     })
   }, [allCameraRecords, filters])
 
@@ -90,7 +99,7 @@ export function useTrafficData() {
     if (!allNodeStates.length) return []
     return applyFilters(allNodeStates, {
       nodeKey: 'node_id', slotKey: 'time_slot',
-      losKey: 'los', dateKey: 'date_str',
+      losKey: 'los', dateKey: 'date_str', speedKey: 'fused_velocity'
     })
   }, [allNodeStates, filters])
 
@@ -137,10 +146,10 @@ export const NODE_LABEL = {
 }
 
 export const SLOT_LABEL = {
-  morning_peak: 'Sáng (6h–8h)',
+  morning_peak: 'Sáng (6h–8h30)',
   midday_peak: 'Trưa (11h–13h)',
   evening_peak: 'Chiều (16h–19h)',
-  off_peak: 'Các giờ khác (24/7)',
+  off_peak: 'Ban đêm / Khác',
 }
 
 export const NODE_COLORS = {
