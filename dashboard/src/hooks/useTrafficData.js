@@ -25,13 +25,14 @@ export function useTrafficData() {
   const [filters, setFilters]               = useState(DEFAULT_FILTERS)
 
   const fetchData = useCallback(() => {
+    const t = Date.now()
     return Promise.all([
-      fetch('/traffic_data.json').then(r => r.json()),
-      fetch('/aggregates.json').then(r => r.json()),
-      fetch('/quality_summary.json').then(r => r.json()),
-      fetch('/camera_records.json').then(r => r.json()).catch(() => []),
-      fetch('/node_states.json').then(r => r.json()).catch(() => []),
-      fetch('/performance_metrics.json').then(r => r.json()).catch(() => null),
+      fetch(`/traffic_data.json?t=${t}`).then(r => r.json()),
+      fetch(`/aggregates.json?t=${t}`).then(r => r.json()),
+      fetch(`/quality_summary.json?t=${t}`).then(r => r.json()),
+      fetch(`/camera_records.json?t=${t}`).then(r => r.json()).catch(() => []),
+      fetch(`/node_states.json?t=${t}`).then(r => r.json()).catch(() => []),
+      fetch(`/performance_metrics.json?t=${t}`).then(r => r.json()).catch(() => null),
     ]).then(([data, agg, qual, cams, ns, perf]) => {
       setAllData(data)
       setAllCameras(cams || [])
