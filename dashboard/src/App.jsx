@@ -1,5 +1,5 @@
-// App.jsx — Modern Cyberpunk Dashboard with Live Clock & Real-time Data Proof
-import { useState, useEffect } from 'react'
+// App.jsx — Ultra-Optimized Dashboard with Isolated Clock & Zero-Lag Render Tree
+import { useState, useEffect, memo } from 'react'
 import { useTrafficData } from './hooks/useTrafficData'
 import Sidebar from './components/Sidebar'
 import MapView from './components/MapView'
@@ -8,7 +8,7 @@ import VelocityPanel from './components/VelocityPanel'
 import SystemMetrics from './components/SystemMetrics'
 import PerformancePanel from './components/PerformancePanel'
 import EvaluationPanel from './components/EvaluationPanel'
-import { Clock, RefreshCw, Maximize2, Activity, CheckCircle2, ShieldCheck, Zap } from 'lucide-react'
+import { Clock, RefreshCw, Maximize2, Activity, ShieldCheck } from 'lucide-react'
 
 const TABS = [
   { id: 'map',         label: 'Bản đồ Giao thông GIS', icon: '🗺️' },
@@ -19,10 +19,57 @@ const TABS = [
   { id: 'performance', label: 'Hiệu năng Hệ thống',icon: '⚙️' },
 ]
 
+// Component Đồng Hồ Độc Lập (Ngăn re-render toàn bộ App mỗi 1s)
+const LiveClock = memo(function LiveClock() {
+  const [time, setTime] = useState(new Date())
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000)
+    return () => clearInterval(timer)
+  }, [])
+  return (
+    <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#f8fafc' }}>
+      {time.toLocaleTimeString('vi-VN')}
+    </div>
+  )
+})
+
+// Component Đếm Lùi Độc Lập
+const LiveCountdownBar = memo(function LiveCountdownBar({ onExpire }) {
+  const [countdown, setCountdown] = useState(120)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          onExpire()
+          return 120
+        }
+        return prev - 1
+      })
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [onExpire])
+
+  return (
+    <>
+      <span style={{ color: '#06b6d4', fontWeight: 800 }}>{countdown}s</span>
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 3, zIndex: 9999, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' }}>
+        <div
+          className="progress-bar-fill"
+          style={{
+            height: '100%',
+            width: `${((120 - countdown) / 120) * 100}%`,
+            background: 'linear-gradient(90deg, #06b6d4, #10b981)',
+            boxShadow: '0 0 10px #06b6d4'
+          }}
+        />
+      </div>
+    </>
+  )
+})
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('map')
-  const [currentTime, setCurrentTime] = useState(new Date())
-  const [countdown, setCountdown] = useState(120)
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [lastRefetchedAt, setLastRefetchedAt] = useState(new Date())
 
@@ -33,34 +80,11 @@ export default function App() {
     allNodeStates, allData, refetch
   } = useTrafficData()
 
-  // 1. Đồng hồ thời gian thực ICT (chạy theo từng giây)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date())
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  // 2. Thanh đếm lùi 2 phút tự động làm mới dữ liệu
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          handleManualRefresh()
-          return 120
-        }
-        return prev - 1
-      })
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
   const handleManualRefresh = async () => {
     setIsRefreshing(true)
     if (refetch) await refetch()
     setLastRefetchedAt(new Date())
-    setCountdown(120)
-    setTimeout(() => setIsRefreshing(false), 800)
+    setTimeout(() => setIsRefreshing(false), 600)
   }
 
   const toggleFullscreen = () => {
@@ -83,7 +107,6 @@ export default function App() {
     )
   }
 
-  // Mốc thời gian của bản ghi mới nhất nhận được
   const latestRecordDate = cameraRecords?.[0]?.timestamp || allData?.[0]?.timestamp || new Date().toISOString()
   const formattedLatestDate = new Date(latestRecordDate).toLocaleString('vi-VN', {
     hour: '2-digit', minute: '2-digit', second: '2-digit',
@@ -93,116 +116,104 @@ export default function App() {
   return (
     <div className="app-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#070a12' }}>
       
-      {/* ── HEADER THANH CÔNG CỤ CAO CẤP ────────────────────────────────── */}
+      {/* THANH BÁO TIẾN TRÌNH ĐẾM NGUỢC TÁCH BIỆT */}
+      <LiveCountdownBar onExpire={handleManualRefresh} />
+
+      {/* ── HEADER CẤU TRÚC NHẸ ──────────────────────────────────────────── */}
       <header className="glass-panel" style={{
-        margin: '12px 16px 0 16px', padding: '12px 20px',
+        margin: '12px 16px 0 16px', padding: '10px 18px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         flexWrap: 'wrap', gap: 12, borderBottom: '1px solid rgba(255,255,255,0.08)'
       }}>
-        {/* LOGO & HỆ THỐNG */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        {/* LOGO */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
-            width: 42, height: 42, borderRadius: 12,
+            width: 38, height: 38, borderRadius: 10,
             background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 0 16px rgba(6,182,212,0.4)'
+            boxShadow: '0 0 14px rgba(6,182,212,0.35)'
           }}>
-            <Activity color="#fff" size={24} />
+            <Activity color="#fff" size={20} />
           </div>
           <div>
-            <div className="font-display gradient-text-cyan" style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.02em' }}>
+            <div className="font-display gradient-text-cyan" style={{ fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em' }}>
               Giám Sát Giao Thông TP.HCM — Real-Time 24/7
             </div>
-            <div style={{ fontSize: 12, color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>Kiến trúc Node-Agent-Edge</span>
+            <div style={{ fontSize: 11, color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span>Node-Agent-Edge</span>
               <span>•</span>
               <span style={{ color: '#38bdf8', fontWeight: 600 }}>Quận 10 & Tân Bình (10 Nodes)</span>
             </div>
           </div>
         </div>
 
-        {/* CẮT GỌN BẰNG CHỨNG REAL-TIME & ĐỒNG HỒ */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+        {/* THÔNG TIN REALTIME */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
           
-          {/* ĐỒNG HỒ ĐIỆN TỬ HIỆN TẠI (ICT) */}
+          {/* ĐỒNG HỒ TỰ CẬP NHẬT */}
           <div className="glass-card-interactive" style={{
-            padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 8,
+            padding: '4px 12px', display: 'flex', alignItems: 'center', gap: 8,
             border: '1px solid rgba(56,189,248,0.3)', background: 'rgba(15,23,42,0.8)'
           }}>
-            <Clock size={16} color="#38bdf8" />
+            <Clock size={15} color="#38bdf8" />
             <div>
-              <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
+              <div style={{ fontSize: 9, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
                 Giờ Hệ Thống (ICT)
               </div>
-              <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#f8fafc' }}>
-                {currentTime.toLocaleTimeString('vi-VN')}
-              </div>
+              <LiveClock />
             </div>
           </div>
 
-          {/* HỘP BẰNG CHỨNG DỮ LIỆU TƯƠI (LIVE PROOF) */}
+          {/* BẰNG CHỨNG DỮ LIỆU TƯƠI */}
           <div className="glass-card-interactive" style={{
-            padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 10,
+            padding: '4px 12px', display: 'flex', alignItems: 'center', gap: 8,
             border: '1px solid rgba(16,185,129,0.3)', background: 'rgba(16,185,129,0.06)'
           }}>
             <div className="live-dot-pulse" />
             <div>
-              <div style={{ fontSize: 10, color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 4 }}>
-                <ShieldCheck size={12} /> Dữ liệu Tươi 100% Real-Time
+              <div style={{ fontSize: 9, color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <ShieldCheck size={11} /> Real-Time Live Stream
               </div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: '#f8fafc' }}>
-                Khung nhận: <span style={{ color: '#38bdf8' }}>{formattedLatestDate}</span>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#f8fafc' }}>
+                Bản ghi: <span style={{ color: '#38bdf8' }}>{formattedLatestDate}</span>
               </div>
             </div>
           </div>
 
-          {/* NÚT TẢI LAI VÀ FULLSCREEN */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {/* NÚT THAO TÁC */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <button
               onClick={handleManualRefresh}
               className="glass-card-interactive"
               style={{
-                padding: '8px 14px', cursor: 'pointer', color: '#f8fafc',
+                padding: '6px 12px', cursor: 'pointer', color: '#f8fafc',
                 display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600,
                 background: 'rgba(6,182,212,0.15)', border: '1px solid rgba(6,182,212,0.4)'
               }}
-              title="Tải lại dữ liệu tươi mới ngay tức thì"
+              title="Làm mới dữ liệu"
             >
-              <RefreshCw size={14} className={isRefreshing ? 'spin-icon' : ''} color="#06b6d4" />
-              <span>Cập Nhật Ngay ({countdown}s)</span>
+              <RefreshCw size={13} className={isRefreshing ? 'spin-icon' : ''} color="#06b6d4" />
+              <span>Cập Nhật Ngay</span>
             </button>
 
             <button
               onClick={toggleFullscreen}
               className="glass-card-interactive"
               style={{
-                padding: '8px', cursor: 'pointer', color: '#94a3b8',
+                padding: '6px 8px', cursor: 'pointer', color: '#94a3b8',
                 display: 'flex', alignItems: 'center', justifyContent: 'center'
               }}
               title="Toàn màn hình"
             >
-              <Maximize2 size={16} />
+              <Maximize2 size={15} />
             </button>
           </div>
 
         </div>
       </header>
 
-      {/* THANH BÁO TIẾN TRÌNH ĐẾM NGUỢC 2 PHÚT (PROGRESS BAR) */}
-      <div style={{ margin: '8px 16px 0 16px', background: 'rgba(255,255,255,0.05)', height: 3, borderRadius: 2, overflow: 'hidden' }}>
-        <div
-          className="progress-bar-fill"
-          style={{
-            height: '100%',
-            width: `${((120 - countdown) / 120) * 100}%`,
-            background: 'linear-gradient(90deg, #06b6d4, #10b981)',
-            boxShadow: '0 0 10px #06b6d4'
-          }}
-        />
-      </div>
-
-      {/* ── THÂN ỨNG DỤNG (SIDEBAR + MAIN CONTENT) ────────────────────────── */}
-      <div className="app-body" style={{ flex: 1, display: 'flex', gap: 16, padding: '12px 16px 16px 16px', overflow: 'hidden' }}>
+      {/* ── THÂN DỰ ÁN ──────────────────────────────────────────────────── */}
+      <div className="app-body" style={{ flex: 1, display: 'flex', gap: 14, padding: '12px 16px 16px 16px', overflow: 'hidden' }}>
         <Sidebar
           filters={filters}
           setFilters={setFilters}
@@ -210,27 +221,26 @@ export default function App() {
           aggregates={aggregates}
           totalShown={filtered.length}
           lastUpdated={formattedLatestDate}
-          countdown={countdown}
         />
 
-        <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
+        <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
           
-          {/* THANH CHUYỂN TAB GLASSMORPHIC */}
-          <div className="glass-panel" style={{ display: 'flex', padding: 6, gap: 6, overflowX: 'auto' }}>
+          {/* TABS */}
+          <div className="glass-panel" style={{ display: 'flex', padding: 5, gap: 5, overflowX: 'auto' }}>
             {TABS.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 style={{
-                  flex: 1, minWidth: 140, padding: '10px 14px', borderRadius: 10,
-                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  fontSize: 13, fontWeight: 700, fontFamily: 'Plus Jakarta Sans',
-                  transition: 'all 0.2s ease',
+                  flex: 1, minWidth: 130, padding: '8px 12px', borderRadius: 8,
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  fontSize: 12, fontWeight: 700, fontFamily: 'Plus Jakarta Sans',
+                  transition: 'all 0.15s ease',
                   background: activeTab === tab.id
                     ? 'linear-gradient(135deg, rgba(6,182,212,0.25) 0%, rgba(59,130,246,0.25) 100%)'
                     : 'transparent',
                   color: activeTab === tab.id ? '#38bdf8' : '#94a3b8',
-                  boxShadow: activeTab === tab.id ? '0 0 15px rgba(6,182,212,0.25)' : 'none',
+                  boxShadow: activeTab === tab.id ? '0 0 12px rgba(6,182,212,0.25)' : 'none',
                   border: activeTab === tab.id ? '1px solid rgba(56,189,248,0.4)' : '1px solid transparent'
                 }}
               >
@@ -240,7 +250,7 @@ export default function App() {
             ))}
           </div>
 
-          {/* VÙNG NỘI DUNG CÁC TAB */}
+          {/* VÙNG NỘI DUNG TABS */}
           <div className="tab-content" style={{ flex: 1, minHeight: 0 }}>
             {activeTab === 'map'         && <MapView data={filtered} nodeStates={nodeStates} cameraRecords={cameraRecords} filters={filters} />}
             {activeTab === 'kpi'         && <KPIPanel data={filtered} aggregates={aggregates} quality={quality} />}

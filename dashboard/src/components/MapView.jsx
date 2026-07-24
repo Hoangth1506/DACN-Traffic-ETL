@@ -77,6 +77,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
         center: [10.782, 106.655],
         zoom: 13,
         zoomControl: true,
+        preferCanvas: true,
       })
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
