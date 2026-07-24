@@ -84,6 +84,9 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
       // Tháng 7/2026
       const monthStart = '2026-07-01'
       setFilters(f => ({ ...f, dateRange: [monthStart, latestDate] }))
+    } else if (mode === 'single') {
+      // Mặc định chọn ngày tươi nhất khi bấm nút Lịch sử
+      setFilters(f => ({ ...f, dateRange: [latestDate, latestDate] }))
     }
   }
 
