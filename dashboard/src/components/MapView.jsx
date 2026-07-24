@@ -173,6 +173,12 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       // Nhóm theo camera_id → lấy vị trí và avg LOS
       const byCam = {}
       records.forEach(r => {
+        // 🛡️ SMART OSM CORRIDOR FILTER: Bỏ qua các điểm đo nhiễu thuộc loại fallback vòng tròn (radius_ring / synthetic_fallback)
+        const isMatched = r.osm_matched === true || r.osm_matched === 1 || (r.road_segment && r.road_segment !== nid) || (r.matched_road_name && r.matched_road_name !== nid)
+        const isFallbackRing = r.sampling_method === 'radius_ring' || r.source_name === 'synthetic_fallback' || (r.osm_matched === false && !r.road_segment)
+        
+        if (isFallbackRing && !isMatched) return
+
         const cid = r.camera_id || r.sample_id
         if (!byCam[cid]) byCam[cid] = { lat: r.lat ?? r.sample_lat, lon: r.lon ?? r.sample_lon, records: [] }
         byCam[cid].records.push(r)
