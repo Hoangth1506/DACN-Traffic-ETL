@@ -41,16 +41,16 @@ function majorityLOS(records) {
 
 // Tính avg speed
 function avgSpeed(records) {
-  const valid = records.filter(r => r.current_speed != null)
+  const valid = records.filter(r => (r.current_speed ?? r.velocity) != null)
   if (!valid.length) return null
-  return valid.reduce((s, r) => s + r.current_speed, 0) / valid.length
+  return valid.reduce((s, r) => s + (r.current_speed ?? r.velocity), 0) / valid.length
 }
 
 // Tính avg density (congestion_index cho camera, fused_density cho node)
 function avgDensity(records) {
-  const valid = records.filter(r => (r.congestion_index ?? r.fused_density) != null)
+  const valid = records.filter(r => (r.congestion_index ?? r.density ?? r.fused_density) != null)
   if (!valid.length) return null
-  return valid.reduce((s, r) => s + (r.congestion_index ?? r.fused_density ?? 0), 0) / valid.length
+  return valid.reduce((s, r) => s + (r.congestion_index ?? r.density ?? r.fused_density ?? 0), 0) / valid.length
 }
 
 // Tính khoảng cách Haversine giữa 2 điểm tọa độ (đơn vị: km)
@@ -253,7 +253,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
           const los = majorityLOS(cam.records)
           const color = LOS_COLOR[los] || LOS_COLOR.unknown
           const speed = avgSpeed(cam.records)
-          const density = cam.records[0]?.congestion_index
+          const density = cam.records[0]?.congestion_index ?? cam.records[0]?.density
 
           const dot = L.circleMarker([cam.lat, cam.lon], {
             radius: 5, color: '#0d1424', fillColor: color,
@@ -396,8 +396,8 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
 
   const nodeStats = Object.keys(NODE_META).map(nid => {
     const nd = sourceData.filter(r => r.node_id === nid)
-    const v = nd.filter(r => r.current_speed != null)
-    const avgV = v.length ? (v.reduce((s, r) => s + r.current_speed, 0) / v.length).toFixed(1) : 'N/A'
+    const v = nd.filter(r => (r.current_speed ?? r.velocity) != null)
+    const avgV = v.length ? (v.reduce((s, r) => s + (r.current_speed ?? r.velocity), 0) / v.length).toFixed(1) : 'N/A'
     const pctTac = nd.length ? ((nd.filter(r => r.is_congested).length / nd.length) * 100).toFixed(0) : 0
     const los = majorityLOS(nd)
     return { nid, avgV, pctTac, los, count: nd.length }
