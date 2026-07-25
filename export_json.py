@@ -28,9 +28,16 @@ QUALITY_JSON = BASE / "outputs" / "quality_report.json"
 OUT_DIR = BASE / "dashboard" / "public"
 
 NODE_META = {
-    "N01_LY_THUONG_KIET": {"name": "Ly Thuong Kiet", "lat": 10.770501, "lon": 106.658107, "radius_m": 900},
-    "N02_CONG_HOA":        {"name": "Cong Hoa",        "lat": 10.800431, "lon": 106.661012, "radius_m": 1200},
-    "N03_TRUONG_CHINH":    {"name": "Truong Chinh",    "lat": 10.806527, "lon": 106.635795, "radius_m": 1200},
+    "N01_LY_THUONG_KIET":   {"name": "Ly Thuong Kiet", "lat": 10.770501, "lon": 106.658107, "radius_m": 2500},
+    "N02_BA_THANG_HAI":     {"name": "Ba Thang Hai", "lat": 10.768200, "lon": 106.669800, "radius_m": 2500},
+    "N03_CMT8":             {"name": "Cach Mang Thang Tam", "lat": 10.782100, "lon": 106.671200, "radius_m": 2500},
+    "N04_THANH_THAI":       {"name": "Thanh Thai", "lat": 10.774500, "lon": 106.662100, "radius_m": 2500},
+    "N05_TO_HIEN_THANH":    {"name": "To Hien Thanh", "lat": 10.778100, "lon": 106.664500, "radius_m": 2500},
+    "N06_NGUYEN_TRI_PHUONG":{"name": "Nguyen Tri Phuong", "lat": 10.763500, "lon": 106.667200, "radius_m": 2500},
+    "N07_SU_VAN_HANH":      {"name": "Su Van Hanh", "lat": 10.776200, "lon": 106.668000, "radius_m": 2500},
+    "N08_DIEN_BIEN_PHU":    {"name": "Dien Bien Phu", "lat": 10.775800, "lon": 106.678200, "radius_m": 2500},
+    "N09_CONG_HOA":         {"name": "Cong Hoa", "lat": 10.800431, "lon": 106.661012, "radius_m": 3000},
+    "N10_TRUONG_CHINH":     {"name": "Truong Chinh", "lat": 10.806527, "lon": 106.635795, "radius_m": 3000},
 }
 
 
