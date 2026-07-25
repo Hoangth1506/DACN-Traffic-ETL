@@ -114,7 +114,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 100.0,
+      "osm_match_pct": 86.67,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -154,7 +154,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 46.67,
+      "osm_match_pct": 13.33,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -174,7 +174,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 6.67,
+      "osm_match_pct": 80.0,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -209,7 +209,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 93.33,
+      "osm_match_pct": 100.0,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -254,7 +254,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 93.33,
+      "osm_match_pct": 100.0,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -269,7 +269,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 100.0,
+      "osm_match_pct": 93.33,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -314,7 +314,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 100.0,
+      "osm_match_pct": 80.0,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -359,7 +359,7 @@
       "max_speed": 23.6,
       "avg_congestion_index": 0.5,
       "pct_congested": 40.0,
-      "osm_match_pct": 86.67,
+      "osm_match_pct": 80.0,
       "los_distribution": {
         "D": 9,
         "C": 6
@@ -440,8 +440,7 @@
   },
   "heatmap_speed": {
     "2026-07-26": {
-      "3": 21.5,
-      "4": 20.0
+      "5": 20.1
     }
   },
   "road_profiles": {
@@ -454,7 +453,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 19.4,
           "free_flow": 42.0,
@@ -464,7 +463,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.2,
           "free_flow": 42.0,
@@ -474,7 +473,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.0,
           "free_flow": 42.0,
@@ -484,7 +483,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.0,
           "free_flow": 42.0,
@@ -494,7 +493,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 19.4,
           "free_flow": 42.0,
@@ -504,7 +503,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 24.8,
           "free_flow": 42.0,
@@ -522,7 +521,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 24.8,
           "free_flow": 42.0,
@@ -540,7 +539,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 26.6,
           "free_flow": 42.0,
@@ -558,7 +557,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 19.4,
           "free_flow": 42.0,
@@ -576,7 +575,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.2,
           "free_flow": 42.0,
@@ -594,7 +593,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 24.8,
           "free_flow": 42.0,
@@ -612,7 +611,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 26.6,
           "free_flow": 42.0,
@@ -630,7 +629,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.2,
           "free_flow": 42.0,
@@ -648,7 +647,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.0,
           "free_flow": 42.0,
@@ -666,234 +665,12 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 3,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 26.6,
           "free_flow": 42.0,
           "los": "D",
           "congestion_index": 0.3667
-        }
-      ]
-    },
-    "Hẻm 377 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 2,
-      "avg_speed": 17.3,
-      "std_speed": 1.27,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 4,
-      "avg_speed": 19.55,
-      "std_speed": 3.07,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 20.0,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.5
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Hẻm 343/8 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 1,
-      "avg_speed": 21.8,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 21.8,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.455
-        }
-      ]
-    },
-    "Hẻm 343 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 2,
-      "avg_speed": 20.0,
-      "std_speed": 5.09,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        }
-      ]
-    },
-    "Hẻm 308 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 1,
-      "avg_speed": 18.2,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Hẻm 308/18 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 1,
-      "avg_speed": 20.0,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 20.0,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.5
-        }
-      ]
-    },
-    "Hẻm 282 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 2,
-      "avg_speed": 20.9,
-      "std_speed": 1.27,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 21.8,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.455
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 20.0,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.5
-        }
-      ]
-    },
-    "Hẻm 450 Đường Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 1,
-      "avg_speed": 21.8,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 21.8,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.455
-        }
-      ]
-    },
-    "Hẻm 295 Nguyễn Tri Phương": {
-      "node_id": "N06_NGUYEN_TRI_PHUONG",
-      "records": 1,
-      "avg_speed": 23.6,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
         }
       ]
     },
@@ -906,7 +683,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -916,7 +693,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -934,7 +711,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -952,7 +729,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -970,7 +747,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -988,7 +765,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1006,7 +783,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1024,7 +801,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1042,7 +819,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1060,7 +837,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1078,7 +855,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1088,7 +865,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1106,7 +883,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1124,7 +901,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1142,7 +919,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1160,7 +937,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1170,7 +947,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1188,7 +965,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1206,7 +983,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1216,7 +993,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1234,7 +1011,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1252,7 +1029,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1270,7 +1047,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1280,7 +1057,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1298,7 +1075,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1316,7 +1093,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1334,7 +1111,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1352,7 +1129,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1370,7 +1147,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1380,12 +1157,226 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.41
+        }
+      ]
+    },
+    "Hẻm 353/16 Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 1,
+      "avg_speed": 16.4,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        }
+      ]
+    },
+    "Hẻm 353 Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 2,
+      "avg_speed": 19.1,
+      "std_speed": 1.27,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
+        }
+      ]
+    },
+    "Hẻm 2/6 Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 1,
+      "avg_speed": 20.0,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
+        }
+      ]
+    },
+    "Hẻm 379 Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 2,
+      "avg_speed": 22.7,
+      "std_speed": 1.27,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 21.8,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.455
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 23.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.41
+        }
+      ]
+    },
+    "Hẻm 331 Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 2,
+      "avg_speed": 17.3,
+      "std_speed": 1.27,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        }
+      ]
+    },
+    "Hẻm 331/1G Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 1,
+      "avg_speed": 21.8,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 21.8,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.455
+        }
+      ]
+    },
+    "Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 4,
+      "avg_speed": 21.35,
+      "std_speed": 3.41,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 23.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.41
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 21.8,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.455
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 23.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.41
+        }
+      ]
+    },
+    "Hẻm 331/1 Lê Hồng Phong": {
+      "node_id": "N11_LE_HONG_PHONG",
+      "records": 2,
+      "avg_speed": 19.1,
+      "std_speed": 1.27,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
         }
       ]
     },
@@ -1398,7 +1389,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1408,7 +1399,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1426,7 +1417,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1436,7 +1427,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1454,7 +1445,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1472,7 +1463,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1482,7 +1473,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1500,7 +1491,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1518,7 +1509,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1536,7 +1527,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1546,7 +1537,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1564,7 +1555,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1574,7 +1565,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1592,7 +1583,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1610,7 +1601,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1619,8 +1610,8 @@
         }
       ]
     },
-    "Hẻm 449 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
+    "Hẻm 409 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
       "records": 1,
       "avg_speed": 16.4,
       "std_speed": null,
@@ -1628,7 +1619,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1637,8 +1628,8 @@
         }
       ]
     },
-    "Hẻm 421 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
+    "Hẻm 395 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
       "records": 1,
       "avg_speed": 18.2,
       "std_speed": null,
@@ -1646,7 +1637,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1655,16 +1646,16 @@
         }
       ]
     },
-    "Bà Hạt": {
-      "node_id": "N15_BA_HAT",
-      "records": 4,
-      "avg_speed": 20.0,
-      "std_speed": 2.94,
+    "Hẻm 450 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 2,
+      "avg_speed": 20.9,
+      "std_speed": 1.27,
       "data": [
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1674,45 +1665,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 20.0,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.5
-        }
-      ]
-    },
-    "Hẻm 513 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
-      "records": 1,
-      "avg_speed": 21.8,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1721,100 +1674,8 @@
         }
       ]
     },
-    "Hẻm 356 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
-      "records": 1,
-      "avg_speed": 18.2,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Hẻm 318 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
-      "records": 1,
-      "avg_speed": 21.8,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 21.8,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.455
-        }
-      ]
-    },
-    "Hẻm 247 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
-      "records": 3,
-      "avg_speed": 19.4,
-      "std_speed": 3.75,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Hẻm 478 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
-      "records": 1,
-      "avg_speed": 20.0,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 20.0,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.5
-        }
-      ]
-    },
-    "Hẻm 581 Bà Hạt": {
-      "node_id": "N15_BA_HAT",
+    "Hẻm 416 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
       "records": 2,
       "avg_speed": 22.7,
       "std_speed": 1.27,
@@ -1822,7 +1683,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1832,7 +1693,153 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 23.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.41
+        }
+      ]
+    },
+    "Hẻm 465 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 2,
+      "avg_speed": 20.0,
+      "std_speed": 5.09,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 23.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.41
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        }
+      ]
+    },
+    "Hẻm 477 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 2,
+      "avg_speed": 19.1,
+      "std_speed": 1.27,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
+        }
+      ]
+    },
+    "Hẻm 325 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 1,
+      "avg_speed": 16.4,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        }
+      ]
+    },
+    "Hẻm 325A Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 1,
+      "avg_speed": 18.2,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        }
+      ]
+    },
+    "Hẻm 300 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 1,
+      "avg_speed": 20.0,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
+        }
+      ]
+    },
+    "Hẻm 270 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 1,
+      "avg_speed": 21.8,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 21.8,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.455
+        }
+      ]
+    },
+    "Hẻm 236 Hòa Hảo": {
+      "node_id": "N14_HOA_HAO",
+      "records": 1,
+      "avg_speed": 23.6,
+      "std_speed": null,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1850,7 +1857,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1868,7 +1875,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1886,7 +1893,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1904,7 +1911,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1922,7 +1929,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -1932,7 +1939,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -1942,7 +1949,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1952,7 +1959,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -1970,7 +1977,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -1980,7 +1987,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -1998,7 +2005,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -2016,7 +2023,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -2034,7 +2041,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -2052,7 +2059,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -2062,7 +2069,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
@@ -2071,82 +2078,16 @@
         }
       ]
     },
-    "Hẻm 66 Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
-      "records": 1,
-      "avg_speed": 16.4,
-      "std_speed": null,
+    "Hẻm 95 Bắc Hải": {
+      "node_id": "N22_BAC_HAI",
+      "records": 2,
+      "avg_speed": 19.1,
+      "std_speed": 3.82,
       "data": [
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        }
-      ]
-    },
-    "Hẻm 112/9 Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
-      "records": 1,
-      "avg_speed": 18.2,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
-      "records": 9,
-      "avg_speed": 20.4,
-      "std_speed": 2.16,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 20.0,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.5
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 21.8,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.455
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
-        },
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 16.4,
           "free_flow": 40.0,
@@ -2156,7 +2097,25 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 21.8,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.455
+        }
+      ]
+    },
+    "Cư xá Bắc Hải": {
+      "node_id": "N22_BAC_HAI",
+      "records": 4,
+      "avg_speed": 19.55,
+      "std_speed": 3.07,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 18.2,
           "free_flow": 40.0,
@@ -2166,7 +2125,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 20.0,
           "free_flow": 40.0,
@@ -2176,7 +2135,85 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 23.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.41
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        }
+      ]
+    },
+    "Bắc Hải": {
+      "node_id": "N22_BAC_HAI",
+      "records": 7,
+      "avg_speed": 19.74,
+      "std_speed": 2.42,
+      "data": [
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 16.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.59
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 18.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.545
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
+          "time_slot": "off_peak",
+          "speed": 20.0,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.5
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-07-26",
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -2186,17 +2223,25 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
-          "speed": 20.0,
+          "speed": 23.6,
           "free_flow": 40.0,
           "los": "D",
-          "congestion_index": 0.5
-        },
+          "congestion_index": 0.41
+        }
+      ]
+    },
+    "Hẻm 61/4 Bắc Hải": {
+      "node_id": "N22_BAC_HAI",
+      "records": 1,
+      "avg_speed": 21.8,
+      "std_speed": null,
+      "data": [
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 21.8,
           "free_flow": 40.0,
@@ -2205,8 +2250,8 @@
         }
       ]
     },
-    "Hẻm 197 Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
+    "Hẻm 61 Bắc Hải": {
+      "node_id": "N22_BAC_HAI",
       "records": 1,
       "avg_speed": 23.6,
       "std_speed": null,
@@ -2214,61 +2259,7 @@
         {
           "session": "ub_cron_live",
           "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 23.6,
-          "free_flow": 40.0,
-          "los": "D",
-          "congestion_index": 0.41
-        }
-      ]
-    },
-    "Hẻm 147 Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
-      "records": 1,
-      "avg_speed": 16.4,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 16.4,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.59
-        }
-      ]
-    },
-    "Hẻm 185 Đường Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
-      "records": 1,
-      "avg_speed": 18.2,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
-          "time_slot": "off_peak",
-          "speed": 18.2,
-          "free_flow": 40.0,
-          "los": "C",
-          "congestion_index": 0.545
-        }
-      ]
-    },
-    "Hẻm 11 Nguyễn Lâm": {
-      "node_id": "N18_NGUYEN_LAM",
-      "records": 1,
-      "avg_speed": 23.6,
-      "std_speed": null,
-      "data": [
-        {
-          "session": "ub_cron_live",
-          "date": "2026-07-26",
-          "hour": 4,
+          "hour": 5,
           "time_slot": "off_peak",
           "speed": 23.6,
           "free_flow": 40.0,
