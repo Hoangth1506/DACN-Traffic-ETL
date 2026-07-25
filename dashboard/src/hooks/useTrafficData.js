@@ -26,13 +26,16 @@ export function useTrafficData() {
 
   const fetchData = useCallback(() => {
     const t = Date.now()
+    // Fetch directly from GitHub Raw to avoid needing Vercel redeploys for data updates
+    const BASE_URL = 'https://raw.githubusercontent.com/Hoangth1506/DACN-Traffic-ETL/main/dashboard/public'
+    
     return Promise.all([
-      fetch(`/traffic_data.json?t=${t}`).then(r => r.json()),
-      fetch(`/aggregates.json?t=${t}`).then(r => r.json()),
-      fetch(`/quality_summary.json?t=${t}`).then(r => r.json()),
-      fetch(`/camera_records.json?t=${t}`).then(r => r.json()).catch(() => []),
-      fetch(`/node_states.json?t=${t}`).then(r => r.json()).catch(() => []),
-      fetch(`/performance_metrics.json?t=${t}`).then(r => r.json()).catch(() => null),
+      fetch(`${BASE_URL}/traffic_data.json?t=${t}`).then(r => r.json()),
+      fetch(`${BASE_URL}/aggregates.json?t=${t}`).then(r => r.json()),
+      fetch(`${BASE_URL}/quality_summary.json?t=${t}`).then(r => r.json()),
+      fetch(`${BASE_URL}/camera_records.json?t=${t}`).then(r => r.json()).catch(() => []),
+      fetch(`${BASE_URL}/node_states.json?t=${t}`).then(r => r.json()).catch(() => []),
+      fetch(`${BASE_URL}/performance_metrics.json?t=${t}`).then(r => r.json()).catch(() => null),
     ]).then(([data, agg, qual, cams, ns, perf]) => {
       setAllData(data)
       setAllCameras(cams || [])
