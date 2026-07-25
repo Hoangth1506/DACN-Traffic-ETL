@@ -35,14 +35,14 @@ const LiveClock = memo(function LiveClock() {
 
 // Component Đếm Lùi Độc Lập
 const LiveCountdownBar = memo(function LiveCountdownBar({ onExpire }) {
-  const [countdown, setCountdown] = useState(120)
+  const [countdown, setCountdown] = useState(300)
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown(prev => {
         if (prev <= 1) {
           onExpire()
-          return 120
+          return 300
         }
         return prev - 1
       })
@@ -56,7 +56,7 @@ const LiveCountdownBar = memo(function LiveCountdownBar({ onExpire }) {
         className="progress-bar-fill"
         style={{
           height: '100%',
-          width: `${((120 - countdown) / 120) * 100}%`,
+          width: `${((300 - countdown) / 300) * 100}%`,
           background: 'linear-gradient(90deg, #06b6d4, #10b981)',
           boxShadow: '0 0 10px #06b6d4'
         }}

@@ -128,7 +128,7 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
             <span>REAL-TIME STREAMING</span>
           </div>
           <span style={{ fontSize: 10, background: 'rgba(6,182,212,0.2)', color: '#38bdf8', padding: '2px 6px', borderRadius: 4, fontWeight: 700 }}>
-            2 PHÚT/LẦN
+            5 PHÚT/LẦN
           </span>
         </div>
 
