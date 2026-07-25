@@ -57,4 +57,4 @@ jobs:
         with:
           commit_message: "auto: continuous real-time traffic data update [skip ci]"
           commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-          file_pattern: "dashboard/public/*.json dashboard/dist/* outputs/*.parquet outputs/*.json outputs/raw_measurements/**"
+          file_pattern: "dashboard/public/*.json dashboard/dist/*"
