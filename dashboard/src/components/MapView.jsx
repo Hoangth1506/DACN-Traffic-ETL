@@ -41,16 +41,16 @@ function majorityLOS(records) {
 
 // Tính avg speed
 function avgSpeed(records) {
-  const valid = records.filter(r => (r.current_speed ?? r.velocity_kmph ?? r.velocity) != null)
+  const valid = records.filter(r => r.current_speed != null)
   if (!valid.length) return null
-  return valid.reduce((s, r) => s + (r.current_speed ?? r.velocity_kmph ?? r.velocity ?? 0), 0) / valid.length
+  return valid.reduce((s, r) => s + r.current_speed, 0) / valid.length
 }
 
-// Tính avg density
+// Tính avg density (congestion_index cho camera, fused_density cho node)
 function avgDensity(records) {
-  const valid = records.filter(r => (r.congestion_index ?? r.fused_density ?? r.density) != null)
+  const valid = records.filter(r => (r.congestion_index ?? r.fused_density) != null)
   if (!valid.length) return null
-  return valid.reduce((s, r) => s + (r.congestion_index ?? r.fused_density ?? r.density ?? 0), 0) / valid.length
+  return valid.reduce((s, r) => s + (r.congestion_index ?? r.fused_density ?? 0), 0) / valid.length
 }
 
 // Tính khoảng cách Haversine giữa 2 điểm tọa độ (đơn vị: km)
@@ -174,12 +174,12 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       const byCam = {}
       records.forEach(r => {
         // 🛡️ SMART OSM CORRIDOR FILTER: Bỏ qua các điểm đo nhiễu thuộc loại fallback vòng tròn (radius_ring / synthetic_fallback)
-        const isMatched = r.osm_matched === true || r.osm_matched === 1 || (r.road_segment && r.road_segment !== nid) || (r.matched_road_name && r.matched_road_name !== nid)
-        const isFallbackRing = r.sampling_method === 'radius_ring' || r.source_name === 'synthetic_fallback' || (r.osm_matched === false && !r.road_segment)
+        const isMatched = r.osm_matched === true || r.osm_matched === 1 || (r.matched_road_name && r.matched_road_name !== nid)
+        const isFallbackRing = r.sampling_method === 'radius_ring' || (r.osm_matched === false && !r.matched_road_name)
         
         if (isFallbackRing && !isMatched) return
 
-        const cid = r.camera_id || r.sample_id
+        const cid = r.sample_id
         if (!byCam[cid]) byCam[cid] = { lat: r.lat ?? r.sample_lat, lon: r.lon ?? r.sample_lon, records: [] }
         byCam[cid].records.push(r)
       })
@@ -253,7 +253,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
           const los = majorityLOS(cam.records)
           const color = LOS_COLOR[los] || LOS_COLOR.unknown
           const speed = avgSpeed(cam.records)
-          const density = cam.records[0]?.density
+          const density = cam.records[0]?.congestion_index
 
           const dot = L.circleMarker([cam.lat, cam.lon], {
             radius: 5, color: '#0d1424', fillColor: color,
@@ -300,8 +300,8 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       if (ns.fused_velocity != null) nodeAvg[nid].velocities.push(ns.fused_velocity)
       if (ns.fused_density != null)  nodeAvg[nid].densities.push(ns.fused_density)
       if (ns.confidence != null)     nodeAvg[nid].confidences.push(ns.confidence)
-      if (ns.congestion_level)       nodeAvg[nid].levels.push(ns.congestion_level)
-      if (ns.latency_ms != null)     nodeAvg[nid].latencies.push(ns.latency_ms)
+      if (ns.los)                    nodeAvg[nid].levels.push(ns.los)
+      // latency_ms không tồn tại trong node_states.json
     })
 
     Object.entries(NODE_META).forEach(([nid, meta]) => {
@@ -311,12 +311,15 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       const avgC   = agg?.confidences.length? agg.confidences.reduce((s,v)=>s+v,0)/agg.confidences.length: null
       const avgLat = agg?.latencies.length  ? agg.latencies.reduce((s,v)=>s+v,0)/agg.latencies.length   : null
 
-      // Dominant congestion level
+      // Dominant LOS level
       const levelCount = {}
       agg?.levels.forEach(l => { levelCount[l] = (levelCount[l]||0)+1 })
-      const dominantLevel = agg?.levels.length
+      // Ánh xạ LOS sang congestion level cho màu sắc
+      const LOS_TO_CONGESTION = { A: 'critical', B: 'high', C: 'high', D: 'medium', E: 'low', F: 'low' }
+      const dominantLOS = agg?.levels.length
         ? Object.entries(levelCount).sort((a,b)=>b[1]-a[1])[0][0]
-        : 'unknown'
+        : null
+      const dominantLevel = dominantLOS ? (LOS_TO_CONGESTION[dominantLOS] || 'unknown') : 'unknown'
 
       const fillColor = CONGESTION_COLORS[dominantLevel] || CONGESTION_COLORS.unknown
       const nodeColor = NODE_COLORS[nid] || '#64748b'
@@ -393,8 +396,8 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
 
   const nodeStats = Object.keys(NODE_META).map(nid => {
     const nd = sourceData.filter(r => r.node_id === nid)
-    const v = nd.filter(r => (r.current_speed ?? r.velocity_kmph ?? r.velocity) != null)
-    const avgV = v.length ? (v.reduce((s, r) => s + (r.current_speed ?? r.velocity_kmph ?? r.velocity ?? 0), 0) / v.length).toFixed(1) : 'N/A'
+    const v = nd.filter(r => r.current_speed != null)
+    const avgV = v.length ? (v.reduce((s, r) => s + r.current_speed, 0) / v.length).toFixed(1) : 'N/A'
     const pctTac = nd.length ? ((nd.filter(r => r.is_congested).length / nd.length) * 100).toFixed(0) : 0
     const los = majorityLOS(nd)
     return { nid, avgV, pctTac, los, count: nd.length }

@@ -39,9 +39,9 @@ function toggle(arr, val) {
 
 export default function Sidebar({ filters, setFilters, resetFilters, aggregates, lastUpdated, filteredData }) {
   const [searchTerm, setSearchTerm] = useState('')
-  const dates = aggregates?.date_range?.all || []
-  const latestDate = aggregates?.date_range?.max || '2026-07-24'
-  const minDate = aggregates?.date_range?.min || '2026-07-19'
+  const dates = aggregates?.by_date ? Object.keys(aggregates.by_date).sort() : []
+  const latestDate = dates.length ? dates[dates.length - 1] : new Date().toISOString().slice(0, 10)
+  const minDate = dates.length ? dates[0] : latestDate
 
   // Mode chọn thời gian: 'today' | 'week' | 'month' | 'single'
   const [timeMode, setTimeMode] = useState('today')

@@ -42,8 +42,9 @@ export function useTrafficData() {
       setPerfMetrics(perf)
       setLoading(false)
 
-      // Mặc định chọn NGÀY MỚI NHẤT (Hôm nay) khi nạp ứng dụng
-      const latestDate = agg?.date_range?.max || '2026-07-24'
+      // Tính date_range từ by_date keys (aggregates.json không có field date_range)
+      const allDates = agg?.by_date ? Object.keys(agg.by_date).sort() : []
+      const latestDate = allDates.length ? allDates[allDates.length - 1] : new Date().toISOString().slice(0, 10)
       setFilters(prev => ({
         ...prev,
         dateRange: [latestDate, latestDate]
@@ -84,7 +85,7 @@ export function useTrafficData() {
       if (filters.dateRange[1] && r[dateKey] && r[dateKey] > filters.dateRange[1]) return false
       
       // 5. Vận tốc filter
-      const v = r.current_speed ?? r.velocity_kmph ?? r.fused_velocity ?? r[speedKey]
+      const v = r.current_speed ?? r.fused_velocity ?? r[speedKey]
       if (v != null && !isNaN(v)) {
         if (filters.minSpeed > 0 && v < filters.minSpeed) return false
         if (filters.maxSpeed < 100 && v > filters.maxSpeed) return false
@@ -104,7 +105,7 @@ export function useTrafficData() {
     if (!allCameraRecords.length) return []
     return applyFilters(allCameraRecords, {
       nodeKey: 'node_id', slotKey: 'time_slot',
-      losKey: 'los', dateKey: 'date_str', speedKey: 'velocity'
+      losKey: 'los', dateKey: 'date_str', speedKey: 'current_speed'
     })
   }, [allCameraRecords, filters])
 
@@ -118,7 +119,8 @@ export function useTrafficData() {
   }, [allNodeStates, filters])
 
   const resetFilters = () => {
-    const latestDate = aggregates?.date_range?.max || '2026-07-24'
+    const allDates = aggregates?.by_date ? Object.keys(aggregates.by_date).sort() : []
+    const latestDate = allDates.length ? allDates[allDates.length - 1] : new Date().toISOString().slice(0, 10)
     setFilters({
       ...DEFAULT_FILTERS,
       dateRange: [latestDate, latestDate],
