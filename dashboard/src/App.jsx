@@ -155,7 +155,7 @@ export default function App() {
             <div style={{ fontSize: 11, color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
               <span>Node-Agent-Edge</span>
               <span>•</span>
-              <span style={{ color: '#38bdf8', fontWeight: 600 }}>Quận 10 & Tân Bình (10 Nodes)</span>
+              <span style={{ color: '#38bdf8', fontWeight: 600 }}>Quận 10 & Tân Bình (22 Nodes)</span>
             </div>
           </div>
         </div>
