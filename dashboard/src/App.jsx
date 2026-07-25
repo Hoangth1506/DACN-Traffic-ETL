@@ -104,7 +104,23 @@ export default function App() {
     )
   }
 
-  const latestRecordDate = cameraRecords?.[0]?.extracted_at || allData?.[0]?.extracted_at || new Date().toISOString()
+  // Lấy bản ghi mới nhất bằng cách so sánh ngày tháng
+  const getLatestDate = (arr) => {
+    if (!arr || !arr.length) return null;
+    let max = null;
+    for (const r of arr) {
+      if (r.extracted_at) {
+        if (!max || r.extracted_at > max) max = r.extracted_at;
+      } else if (r.date_str && r.hour_vn != null) {
+        // Fallback in case extracted_at is missing
+        const d = `${r.date_str}T${String(r.hour_vn).padStart(2, '0')}:00:00`;
+        if (!max || d > max) max = d;
+      }
+    }
+    return max;
+  }
+  
+  const latestRecordDate = getLatestDate(cameraRecords) || getLatestDate(allData) || new Date().toISOString()
   const formattedLatestDate = new Date(latestRecordDate).toLocaleString('vi-VN', {
     hour: '2-digit', minute: '2-digit', second: '2-digit',
     day: '2-digit', month: '2-digit', year: 'numeric'

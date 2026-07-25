@@ -224,7 +224,7 @@ def export_camera_records(out_dir: Path) -> None:
             "lat", "lon", "velocity", "free_flow_velocity", "density",
             "image_quality", "reliability", "los", "is_congested",
             "time_slot", "date_str", "hour_vn", "frc", "osm_matched",
-            "segment_length_km", "delay_index", "speed_ratio"]
+            "segment_length_km", "delay_index", "speed_ratio", "extracted_at"]
     cols = [c for c in keep if c in df.columns]
     out = df[cols].copy()
     out["is_congested"] = out["is_congested"].fillna(False).astype(bool)
