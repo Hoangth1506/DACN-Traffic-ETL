@@ -29,8 +29,8 @@ export function useTrafficData() {
 
   const fetchData = useCallback(() => {
     const t = Date.now()
-    // Fetch directly from GitHub Raw to avoid needing Vercel redeploys for data updates
-    const BASE_URL = 'https://raw.githubusercontent.com/Hoangth1506/DACN-Traffic-ETL/main/dashboard/public'
+    // Fetch from public folder locally
+    const BASE_URL = ''
     
     return Promise.all([
       fetch(`${BASE_URL}/traffic_data.json?t=${t}`).then(r => r.json()),

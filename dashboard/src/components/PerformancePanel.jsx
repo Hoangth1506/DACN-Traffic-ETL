@@ -32,7 +32,7 @@ export default function PerformancePanel({ perf, nodeStates }) {
   const latencyData = [
     { name: 'Phân đoạn đo (1 Camera)', value: latencyPerFrame, unit: 'ms', fill: '#10b981' },
     { name: 'Xử lý 1 Node (9 Camera)', value: latencyPerNode, unit: 'ms', fill: '#06b6d4' },
-    { name: 'Hợp nhất 10 Node (Pipeline)', value: 1850, unit: 'ms', fill: '#8b5cf6' },
+    { name: 'Hợp nhất 22 Node (Pipeline)', value: 1850, unit: 'ms', fill: '#8b5cf6' },
   ]
 
   return (
@@ -187,14 +187,14 @@ export default function PerformancePanel({ perf, nodeStates }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <div className="font-display gradient-text-cyan" style={{ fontSize: 15, fontWeight: 700 }}>
-              Trạng Thái Sức Khỏe Mạng Lưới 10 Node Agents
+              Trạng Thái Sức Khỏe Mạng Lưới 22 Node Agents
             </div>
             <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>
               Giám sát trạng thái hoạt động thực tế thời gian thực (Quận 10 & Tân Bình)
             </div>
           </div>
           <span style={{ fontSize: 10, background: 'rgba(16,185,129,0.2)', color: '#34d399', padding: '3px 8px', borderRadius: 6, fontWeight: 700 }}>
-            10/10 NODE ONLINE
+            22/22 NODE ONLINE
           </span>
         </div>
 
@@ -206,7 +206,7 @@ export default function PerformancePanel({ perf, nodeStates }) {
                 <div className="live-dot-pulse" style={{ width: 7, height: 7 }} />
               </div>
               <div style={{ fontSize: 11, fontWeight: 700, color: '#f8fafc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                {NODE_LABEL[nid]?.replace('N01 ', '').replace('N02 ', '').replace('N03 ', '').replace('N04 ', '').replace('N05 ', '').replace('N06 ', '').replace('N07 ', '').replace('N08 ', '').replace('N09 ', '').replace('N10 ', '')}
+                {NODE_LABEL[nid]?.replace(/^N\d{2}\s*/, '')}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 10, color: '#64748b', marginTop: 6 }}>
                 <span>Độ trễ:</span>

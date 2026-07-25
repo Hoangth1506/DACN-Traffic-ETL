@@ -34,7 +34,7 @@ export default function KPIPanel({ data, aggregates, quality }) {
     const spd = nd.length ? avg(nd, 'current_speed') : 0
     const den = nd.length ? avg(nd, 'congestion_index') : 0
     return {
-      name: NODE_LABEL[nid]?.replace('N01 ', '').replace('N02 ', '').replace('N03 ', '').replace('N04 ', '').replace('N05 ', '').replace('N06 ', '').replace('N07 ', '').replace('N08 ', '').replace('N09 ', '').replace('N10 ', '') ?? nid,
+      name: NODE_LABEL[nid]?.replace(/^N\d{2}\s*/, '') ?? nid,
       speed: spd ? +spd.toFixed(1) : 0,
       density: den ? +(den * 100).toFixed(1) : 0,
       fill: color

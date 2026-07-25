@@ -30,14 +30,19 @@ def _get_json(url: str, params: dict[str, Any], timeout: int = 20) -> dict[str, 
     full_url = f"{url}?{urllib.parse.urlencode(params)}"
     request = urllib.request.Request(full_url, headers={"User-Agent": "DACN-traffic-etl/1.0"})
     
-    max_retries = 3
+    is_overpass = "overpass" in url
+    max_retries = 1 if is_overpass else 3
+    actual_timeout = 10 if is_overpass else timeout
+
     for attempt in range(max_retries):
         try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
+            with urllib.request.urlopen(request, timeout=actual_timeout) as response:
                 return json.loads(response.read().decode("utf-8"))
         except Exception as e:
             if attempt == max_retries - 1:
+                print(f"API Error after {max_retries} attempts: {e}")
                 raise e
+            print(f"API Error {e}, retrying {attempt+1}/{max_retries}...")
             time.sleep(2 ** attempt)  # Chờ 1s, 2s trước khi thử lại
 
 
@@ -126,18 +131,23 @@ def _osm_corridor_sample_points(
     target_names: list[str],
     sample_count: int,
 ) -> list[dict[str, Any]]:
-    radius_m = int(node.get("radius_m") or 900)
-    escaped_names = "|".join(re.escape(name) for name in target_names)
-    query = f"""
-    [out:json][timeout:25];
-    (
-      way(around:{radius_m},{node['lat']},{node['lon']})["highway"]["name"~"^({escaped_names})$"];
-    );
-    out body;
-    >;
-    out skel qt;
-    """
-    data = _get_json(OVERPASS_URL, {"data": query}, timeout=35)
+    cache_file = Path(".osm_cache") / f"corridor_{node['node_id']}.json"
+    cache_file.parent.mkdir(exist_ok=True)
+    if cache_file.exists():
+        data = json.loads(cache_file.read_text(encoding="utf-8"))
+    else:
+        query = f"""
+        [out:json][timeout:25];
+        way(around:{int(node['radius_m'])},{node['lat']},{node['lon']})["name"~"({'|'.join(target_names)})",i];
+        node(w);
+        out;
+        way(around:{int(node['radius_m'])},{node['lat']},{node['lon']})["name"~"({'|'.join(target_names)})",i];
+        out;
+        """
+        data = _get_json(OVERPASS_URL, {"data": query}, timeout=35)
+        cache_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        time.sleep(0.5)
+
     node_coords: dict[int, tuple[float, float]] = {}
     ways: list[dict[str, Any]] = []
     for element in data.get("elements", []):
@@ -253,6 +263,7 @@ def extract_tomtom_flow(
                 continue
             try:
                 current_key = random.choice(api_keys)
+                print(f"Fetching TomTom data for {node['node_id']} {point['sample_id']}...")
                 data = _get_json(
                     TOMTOM_FLOW_URL,
                     {
@@ -313,14 +324,25 @@ def extract_osm_edges(geocoded_nodes: list[dict[str, Any]], raw_dir: Path) -> li
     raw_dir.mkdir(parents=True, exist_ok=True)
     extracted_at = utc_now_iso()
     records: list[dict[str, Any]] = []
+    
+    cache_dir = Path(".osm_cache")
+    cache_dir.mkdir(exist_ok=True)
+
     for node in geocoded_nodes:
         try:
-            query = f"""
-            [out:json][timeout:25];
-            way(around:{int(node['radius_m'])},{node['lat']},{node['lon']})["highway"];
-            out tags center;
-            """
-            data = _get_json(OVERPASS_URL, {"data": query}, timeout=35)
+            cache_file = cache_dir / f"edges_{node['node_id']}.json"
+            if cache_file.exists():
+                data = json.loads(cache_file.read_text(encoding="utf-8"))
+            else:
+                query = f"""
+                [out:json][timeout:25];
+                way(around:{int(node['radius_m'])},{node['lat']},{node['lon']})["highway"];
+                out tags center;
+                """
+                data = _get_json(OVERPASS_URL, {"data": query}, timeout=35)
+                cache_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+                time.sleep(0.5)
+
             raw_path = raw_dir / f"osm_edges_{node['node_id']}.json"
             raw_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
             for element in data.get("elements", []):

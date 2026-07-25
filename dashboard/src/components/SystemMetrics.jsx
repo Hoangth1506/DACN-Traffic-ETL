@@ -24,7 +24,7 @@ export default function SystemMetrics({ data, quality, aggregates, nodeStates })
     const nd = data.filter(r => r.node_id === nid)
     const matched = nd.filter(r => r.osm_matched).length
     return {
-      node: NODE_LABEL[nid]?.replace('N01 ', '').replace('N02 ', '').replace('N03 ', '').replace('N04 ', '').replace('N05 ', '').replace('N06 ', '').replace('N07 ', '').replace('N08 ', '').replace('N09 ', '').replace('N10 ', '') || nid,
+      node: NODE_LABEL[nid]?.replace(/^N\d{2}\s*/, '') || nid,
       coverage: nd.length ? +(matched/nd.length*100).toFixed(1) : 0,
       fill: color,
     }

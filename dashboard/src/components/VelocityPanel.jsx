@@ -190,7 +190,7 @@ export default function VelocityPanel({ nodeStates }) {
                 border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc', fontSize: 11, cursor: 'pointer'
               }}
             >
-              <option value="ALL">-- Tất cả 10 Node --</option>
+              <option value="ALL">-- Tất cả 22 Node --</option>
               {Object.entries(NODE_LABEL).map(([nid, name]) => (
                 <option key={nid} value={nid}>{name}</option>
               ))}

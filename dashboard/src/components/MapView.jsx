@@ -20,6 +20,18 @@ const NODE_META = {
   N08_DIEN_BIEN_PHU:    { lat: 10.775800, lon: 106.678200, label: 'N08 Điện Biên Phủ', short: 'N08' },
   N09_CONG_HOA:         { lat: 10.800431, lon: 106.661012, label: 'N09 Cộng Hòa', short: 'N09' },
   N10_TRUONG_CHINH:     { lat: 10.806527, lon: 106.635795, label: 'N10 Trường Chinh', short: 'N10' },
+  N11_LE_HONG_PHONG:    { lat: 10.763116, lon: 106.674998, label: 'N11 Lê Hồng Phong', short: 'N11' },
+  N12_NGO_GIA_TU:       { lat: 10.760721, lon: 106.669865, label: 'N12 Ngô Gia Tự', short: 'N12' },
+  N13_VINH_VIEN:        { lat: 10.762145, lon: 106.668875, label: 'N13 Vĩnh Viễn', short: 'N13' },
+  N14_HOA_HAO:          { lat: 10.761001, lon: 106.666993, label: 'N14 Hòa Hảo', short: 'N14' },
+  N15_BA_HAT:           { lat: 10.764500, lon: 106.667500, label: 'N15 Bà Hạt', short: 'N15' },
+  N16_NHAT_TAO:         { lat: 10.763100, lon: 106.665300, label: 'N16 Nhật Tảo', short: 'N16' },
+  N17_TRAN_NHAN_TON:    { lat: 10.764300, lon: 106.670200, label: 'N17 Trần Nhân Tôn', short: 'N17' },
+  N18_NGUYEN_LAM:       { lat: 10.765600, lon: 106.668300, label: 'N18 Nguyễn Lâm', short: 'N18' },
+  N19_DONG_NAI:         { lat: 10.778800, lon: 106.665500, label: 'N19 Đồng Nai', short: 'N19' },
+  N20_CUU_LONG:         { lat: 10.779700, lon: 106.664400, label: 'N20 Cửu Long', short: 'N20' },
+  N21_HO_BA_KIEN:       { lat: 10.781600, lon: 106.666800, label: 'N21 Hồ Bá Kiện', short: 'N21' },
+  N22_BAC_HAI:          { lat: 10.781200, lon: 106.663500, label: 'N22 Bắc Hải', short: 'N22' },
 }
 
 const LOS_LABELS = {

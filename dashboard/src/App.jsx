@@ -97,7 +97,7 @@ export default function App() {
       <div style={{ display:'flex', gap:16, alignItems:'center', justifyContent:'center', height:'100vh', flexDirection:'column', background:'#070a12' }}>
         <div style={{ width:56, height:56, border:'3px solid rgba(6,182,212,0.2)', borderTop:'3px solid #06b6d4', borderRadius:'50%', animation:'spin 0.8s linear infinite' }} />
         <div style={{ color:'#94a3b8', fontSize:15, fontWeight:600, fontFamily:'Plus Jakarta Sans' }}>
-          Đang kết nối luồng dữ liệu 10 Node Real-time...
+          Đang kết nối luồng dữ liệu 22 Node Real-time...
         </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
