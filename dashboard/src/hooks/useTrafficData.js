@@ -6,6 +6,9 @@ const DEFAULT_FILTERS = {
     'N01_LY_THUONG_KIET', 'N02_BA_THANG_HAI', 'N03_CMT8', 'N04_THANH_THAI',
     'N05_TO_HIEN_THANH', 'N06_NGUYEN_TRI_PHUONG', 'N07_SU_VAN_HANH',
     'N08_DIEN_BIEN_PHU', 'N09_CONG_HOA', 'N10_TRUONG_CHINH',
+    'N11_LE_HONG_PHONG', 'N12_NGO_GIA_TU', 'N13_VINH_VIEN', 'N14_HOA_HAO',
+    'N15_BA_HAT', 'N16_NHAT_TAO', 'N17_TRAN_NHAN_TON', 'N18_NGUYEN_LAM',
+    'N19_DONG_NAI', 'N20_CUU_LONG', 'N21_HO_BA_KIEN', 'N22_BAC_HAI',
   ],
   timeSlots: ['morning_peak', 'midday_peak', 'evening_peak', 'off_peak'],
   losLevels: ['A', 'B', 'C', 'D', 'E', 'F'],
@@ -162,6 +165,18 @@ export const NODE_LABEL = {
   N08_DIEN_BIEN_PHU: 'N08 Điện Biên Phủ',
   N09_CONG_HOA: 'N09 Cộng Hòa',
   N10_TRUONG_CHINH: 'N10 Trường Chinh',
+  N11_LE_HONG_PHONG: 'N11 Lê Hồng Phong',
+  N12_NGO_GIA_TU: 'N12 Ngô Gia Tự',
+  N13_VINH_VIEN: 'N13 Vĩnh Viễn',
+  N14_HOA_HAO: 'N14 Hòa Hảo',
+  N15_BA_HAT: 'N15 Bà Hạt',
+  N16_NHAT_TAO: 'N16 Nhật Tảo',
+  N17_TRAN_NHAN_TON: 'N17 Trần Nhân Tôn',
+  N18_NGUYEN_LAM: 'N18 Nguyễn Lâm',
+  N19_DONG_NAI: 'N19 Đồng Nai',
+  N20_CUU_LONG: 'N20 Cửu Long',
+  N21_HO_BA_KIEN: 'N21 Hồ Bá Kiện',
+  N22_BAC_HAI: 'N22 Bắc Hải',
 }
 
 export const SLOT_LABEL = {
@@ -182,6 +197,18 @@ export const NODE_COLORS = {
   N08_DIEN_BIEN_PHU: '#ec4899',
   N09_CONG_HOA: '#6366f1',
   N10_TRUONG_CHINH: '#f59e0b',
+  N11_LE_HONG_PHONG: '#ff6b6b',
+  N12_NGO_GIA_TU: '#4ecdc4',
+  N13_VINH_VIEN: '#45b7d1',
+  N14_HOA_HAO: '#96ceb4',
+  N15_BA_HAT: '#ffeead',
+  N16_NHAT_TAO: '#d4a5a5',
+  N17_TRAN_NHAN_TON: '#9b5de5',
+  N18_NGUYEN_LAM: '#f15bb5',
+  N19_DONG_NAI: '#fee440',
+  N20_CUU_LONG: '#00bbf9',
+  N21_HO_BA_KIEN: '#00f5d4',
+  N22_BAC_HAI: '#84dcc6',
 }
 
 export function avg(arr, key) {

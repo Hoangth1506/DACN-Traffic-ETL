@@ -23,6 +23,9 @@ const LiveCountdownText = memo(function LiveCountdownText() {
 const Q10_NODES = [
   'N01_LY_THUONG_KIET', 'N02_BA_THANG_HAI', 'N03_CMT8', 'N04_THANH_THAI',
   'N05_TO_HIEN_THANH', 'N06_NGUYEN_TRI_PHUONG', 'N07_SU_VAN_HANH', 'N08_DIEN_BIEN_PHU',
+  'N11_LE_HONG_PHONG', 'N12_NGO_GIA_TU', 'N13_VINH_VIEN', 'N14_HOA_HAO',
+  'N15_BA_HAT', 'N16_NHAT_TAO', 'N17_TRAN_NHAN_TON', 'N18_NGUYEN_LAM',
+  'N19_DONG_NAI', 'N20_CUU_LONG', 'N21_HO_BA_KIEN', 'N22_BAC_HAI',
 ]
 
 const TAN_BINH_NODES = [
@@ -178,7 +181,7 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
               background: 'rgba(255,255,255,0.04)', color: '#f8fafc', fontSize: 11, fontWeight: 600, cursor: 'pointer'
             }}
           >
-            Quận 10 (8 Node)
+            Quận 10 (20 Node)
           </button>
           <button
             onClick={() => selectPreset('tanbinh')}
@@ -305,7 +308,7 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <Layers size={12} color="#38bdf8" /> Nút Giao ({filters.nodes.length}/10)
+            <Layers size={12} color="#38bdf8" /> Nút Giao ({filters.nodes.length}/22)
           </span>
         </div>
 
@@ -329,7 +332,7 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 180, overflowY: 'auto', paddingRight: 4 }}>
           {filteredQ10.length > 0 && (
             <div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: '#06b6d4', margin: '4px 0 2px 2px' }}>QUẬN 10 (8 NODE)</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: '#06b6d4', margin: '4px 0 2px 2px' }}>QUẬN 10 (20 NODE)</div>
               {filteredQ10.map(nid => {
                 const isChecked = filters.nodes.includes(nid)
                 return (

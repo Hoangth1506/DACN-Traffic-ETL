@@ -9,7 +9,7 @@ Hệ thống hợp nhất toàn bộ quy trình **Thu thập dữ liệu thô (E
 
 1. **🛑 100% Không dùng Camera Vật lý / Không Video**:
    * Hệ thống vận hành hoàn toàn dựa trên cảm biến ảo từ **TomTom Traffic Flow API** kết hợp với mạng lưới hạ tầng đường bộ **OpenStreetMap (OSM)** thông qua giải thuật **KDTree Spatial Join** ($r \le 50\text{ m}$).
-2. **📍 Mạng lưới 10 Node Agents (Bao trọn 100% Quận 10 & Tân Bình)**:
+2. **📍 Mạng lưới 22 Node Agents (Bao trọn 100% Quận 10 & Tân Bình)**:
    * `N01_LY_THUONG_KIET`: Tuyến Lý Thường Kiệt (Q.10 - Tân Bình)
    * `N02_BA_THANG_HAI`: Nút Ba Tháng Hai (Quận 10)
    * `N03_CMT8`: Tuyến Cách Mạng Tháng Tám (Quận 10)
@@ -82,7 +82,7 @@ DACN-Traffic-ETL/
 ├── .github/workflows/
 │   └── etl_cron.yml          # GitHub Actions 24/7 Automation Workflow
 ├── config/
-│   ├── nodes.yaml            # Cấu hình 10 Node Agents (Quận 10 & Tân Bình)
+│   ├── nodes.yaml            # Cấu hình 22 Node Agents (Quận 10 & Tân Bình)
 │   └── etl.yaml              # Cấu hình tần suất 5 phút/lần (00:00-23:59)
 ├── dashboard/                # Mã nguồn Web Dashboard (React + Vite + GIS)
 │   ├── public/               # Dữ liệu JSON thời gian thực
@@ -95,3 +95,11 @@ DACN-Traffic-ETL/
 ├── export_json.py            # Script xuất dữ liệu JSON public cho Dashboard
 └── run_raw_measurement.py    # Script thu thập dữ liệu đo thô
 ```
+
+### Xoay v�ng API Key (API Key Rotation)
+H? th?ng l?y m?u tr�n di?n r?ng 22 Node ti�u t?n kho?ng hon 300 requests m?i 5 ph�t. �? kh�ng b? gi?i h?n 2500 calls/ng�y c?a TomTom, h? th?ng h? tr? t�ch h?p nhi?u API Key. 
+M? file .env v� nh?p nhi?u API key c�ch nhau b?ng d?u ph?y:
+\\\
+TOMTOM_API_KEYS=key1_xxx,key2_yyy,key3_zzz
+\\\
+H? th?ng s? t? d?ng ph�n b? lu�n phi�n c�c API Key trong m?i l?n qu�t d? san s? t?i.

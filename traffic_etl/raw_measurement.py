@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 
 from .config import load_etl_config, load_nodes
-from .extract import extract_osm_edges, extract_tomtom_flow, geocode_nodes, get_api_key
+from .extract import extract_osm_edges, extract_tomtom_flow, geocode_nodes, get_api_keys
 from .io import append_jsonl, append_table, write_json
 from .schedule import parse_window
 
@@ -25,7 +25,7 @@ def run_raw_measurement(
     label = _sanitize_label(measurement_label)
     etl = load_etl_config(etl_path)
     nodes = load_nodes(nodes_path)
-    api_key = get_api_key()
+    api_keys = get_api_keys()
     actual_utc = datetime.now(timezone.utc).replace(microsecond=0)
     measurement_vn = _measurement_datetime_vn(measurement_date, measurement_time, etl.timezone)
     measurement_utc = measurement_vn.astimezone(timezone.utc)
@@ -33,8 +33,8 @@ def run_raw_measurement(
     run_dir = base_dir / measurement_vn.strftime("%Y-%m-%d") / f"{measurement_vn.strftime('%H-%M-%S')}_{label}"
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    edge_nodes = geocode_nodes(nodes, api_key)
-    tomtom_records = extract_tomtom_flow(edge_nodes, etl, api_key, run_dir)
+    edge_nodes = geocode_nodes(nodes, api_keys[0] if api_keys else None)
+    tomtom_records = extract_tomtom_flow(edge_nodes, etl, api_keys, run_dir)
     osm_records = extract_osm_edges(edge_nodes, run_dir)
 
     write_json(edge_nodes, run_dir / "edge_nodes.json")
@@ -53,7 +53,7 @@ def run_raw_measurement(
         "collection_type": "manual_raw_measurement",
         "is_official_collection_window": official_window is not None,
         "official_window": official_window or "",
-        "tomtom_mode": "live_current_flow" if api_key else "synthetic_fallback",
+        "tomtom_mode": "live_current_flow" if api_keys else "synthetic_fallback",
         "node_count": len(edge_nodes),
         "sample_count": len(tomtom_records),
         "raw_dir": str(run_dir),

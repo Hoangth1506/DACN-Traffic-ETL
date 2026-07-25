@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import random
 import re
 import time
 import urllib.parse
@@ -215,7 +216,7 @@ def _distance_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 def extract_tomtom_flow(
     geocoded_nodes: list[dict[str, Any]],
     etl: EtlConfig,
-    api_key: str | None,
+    api_keys: list[str],
     raw_dir: Path,
     synthetic_slots: list[datetime] | None = None,
 ) -> list[dict[str, Any]]:
@@ -237,7 +238,7 @@ def extract_tomtom_flow(
                 "source_api": "TomTom Traffic Flow Segment Data API",
                 "extracted_at": extracted_at,
             }
-            if not api_key:
+            if not api_keys:
                 slots = synthetic_slots or [datetime.now(timezone.utc)]
                 for slot in slots:
                     records.append(
@@ -251,10 +252,11 @@ def extract_tomtom_flow(
                     )
                 continue
             try:
+                current_key = random.choice(api_keys)
                 data = _get_json(
                     TOMTOM_FLOW_URL,
                     {
-                        "key": api_key,
+                        "key": current_key,
                         "point": f"{point['lat']},{point['lon']}",
                         "unit": "KMPH",
                     },
@@ -367,17 +369,19 @@ def _synthetic_osm_edges(node: dict[str, Any], extracted_at: str, error: str) ->
     ]
 
 
-def get_api_key() -> str | None:
-    key = os.environ.get("TOMTOM_API_KEY", "").strip()
-    if key:
-        return key
-    env_path = Path(".env")
-    if env_path.exists():
-        for raw in env_path.read_text(encoding="utf-8").splitlines():
-            line = raw.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            name, value = line.split("=", 1)
-            if name.strip() == "TOMTOM_API_KEY":
-                return value.strip().strip('"').strip("'") or None
-    return None
+def get_api_keys() -> list[str]:
+    keys_str = os.environ.get("TOMTOM_API_KEYS") or os.environ.get("TOMTOM_API_KEY", "").strip()
+    if not keys_str:
+        env_path = Path(".env")
+        if env_path.exists():
+            for raw in env_path.read_text(encoding="utf-8").splitlines():
+                line = raw.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                name, value = line.split("=", 1)
+                if name.strip() in ("TOMTOM_API_KEYS", "TOMTOM_API_KEY"):
+                    keys_str = value.strip().strip('"').strip("'")
+                    break
+    if keys_str:
+        return [k.strip() for k in keys_str.split(",") if k.strip()]
+    return []
