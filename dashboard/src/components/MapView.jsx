@@ -179,7 +179,8 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
         
         if (isFallbackRing && !isMatched) return
 
-        const cid = r.sample_id
+        const cid = r.sample_id ?? r.camera_id
+        if (cid == null) return // Skip if no valid ID
         if (!byCam[cid]) byCam[cid] = { lat: r.lat ?? r.sample_lat, lon: r.lon ?? r.sample_lon, records: [] }
         byCam[cid].records.push(r)
       })
