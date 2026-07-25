@@ -40,6 +40,14 @@ def _clean(obj):
         return {k: _clean(v) for k, v in obj.items()}
     if isinstance(obj, list):
         return [_clean(v) for v in obj]
+    
+    # Catch pd.NA, np.nan, float('nan'), NaT
+    try:
+        if pd.isna(obj):
+            return None
+    except Exception:
+        pass
+
     if isinstance(obj, float):
         if math.isnan(obj) or math.isinf(obj):
             return None
