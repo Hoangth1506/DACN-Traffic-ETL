@@ -16,7 +16,7 @@ from .config import EtlConfig, NodeConfig
 
 TOMTOM_FLOW_URL = (
     "https://api.tomtom.com/traffic/services/4/flowSegmentData/"
-    "absolute/10/json"
+    "absolute/22/json"
 )
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 
