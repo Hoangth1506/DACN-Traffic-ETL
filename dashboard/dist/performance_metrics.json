@@ -78,7 +78,7 @@
         "std": NaN
       },
       "N20_CUU_LONG": {
-        "mean": 16.0,
+        "mean": 15.79,
         "std": NaN
       },
       "N21_HO_BA_KIEN": {
@@ -90,7 +90,7 @@
         "std": NaN
       }
     },
-    "overall_velocity_mean": 16.14,
+    "overall_velocity_mean": 16.13,
     "overall_velocity_std": 0.64,
     "camera_agreement_rate_avg": 1.0,
     "camera_agreement_per_node": {
@@ -117,7 +117,7 @@
       "N21_HO_BA_KIEN": 1.0,
       "N22_BAC_HAI": 1.0
     },
-    "confidence_avg": 0.5411,
+    "confidence_avg": 0.541,
     "confidence_per_node": {
       "N01_LY_THUONG_KIET": 0.5411,
       "N02_BA_THANG_HAI": 0.5411,
@@ -138,14 +138,14 @@
       "N17_TRAN_NHAN_TON": 0.5411,
       "N18_NGUYEN_LAM": 0.5411,
       "N19_DONG_NAI": 0.5411,
-      "N20_CUU_LONG": 0.5411,
+      "N20_CUU_LONG": 0.539,
       "N21_HO_BA_KIEN": 0.5411,
       "N22_BAC_HAI": 0.5411
     },
     "congestion_detection_rate": 1.0,
     "intra_session_velocity_spread_avg": 1.27,
-    "fusion_mae": 0.992,
-    "fusion_mape": 6.218
+    "fusion_mae": 0.99,
+    "fusion_mape": 6.211
   },
   "group2_collection_performance": {
     "sessions_per_day_avg": 1.0,
@@ -179,22 +179,22 @@
       "N22_BAC_HAI": 1.0
     },
     "api_latency_per_camera_ms": 140,
-    "api_latency_per_node_ms": 2100.0,
-    "api_latency_all_nodes_ms": 6300.0,
-    "alert_response_estimate_ms": 2400.0,
+    "api_latency_per_node_ms": 2062.0,
+    "api_latency_all_nodes_ms": 6185.0,
+    "alert_response_estimate_ms": 2362.0,
     "data_freshness_score": 0.0,
-    "avg_image_quality": 0.662,
+    "avg_image_quality": 0.6619,
     "pct_high_quality": 1.0
   },
   "group3_data_efficiency": {
-    "camera_record_size_bytes": 672,
-    "node_state_size_bytes": 708,
-    "raw_data_per_session_bytes": 18144,
-    "fused_data_per_session_bytes": 2124,
-    "compression_ratio": 8.54,
-    "bandwidth_reduction_pct": 88.3,
-    "daily_raw_bandwidth_kb": 17.7,
-    "daily_fused_bandwidth_kb": 2.1,
+    "camera_record_size_bytes": 613,
+    "node_state_size_bytes": 671,
+    "raw_data_per_session_bytes": 16551,
+    "fused_data_per_session_bytes": 2013,
+    "compression_ratio": 8.22,
+    "bandwidth_reduction_pct": 87.8,
+    "daily_raw_bandwidth_kb": 16.2,
+    "daily_fused_bandwidth_kb": 2.0,
     "cameras_per_node": 9,
     "nodes": 3,
     "records_per_session": 27
@@ -202,15 +202,15 @@
   "group4_robustness": {
     "scenario_a_camera_dropout": {
       "description": "Xoa 1 camera yeu nhat khoi node, tinh lai fused_velocity",
-      "avg_velocity_delta_pct": 0.64,
-      "max_velocity_delta_pct": 0.64,
-      "resilience_score": 0.9936,
+      "avg_velocity_delta_pct": 0.65,
+      "max_velocity_delta_pct": 1.02,
+      "resilience_score": 0.9935,
       "n_simulations": 22
     },
     "scenario_b_quality_degradation": {
       "description": "Giam nguong image_quality tu 0.5 xuong 0.3 (anh mo/nhieu)",
-      "confidence_normal": 0.5411,
-      "confidence_degraded": 0.5411,
+      "confidence_normal": 0.541,
+      "confidence_degraded": 0.541,
       "confidence_drop_pct": 0.0,
       "availability_normal": 1.0,
       "availability_degraded": 1.0,
@@ -246,7 +246,7 @@
           ],
           "coverage_pct": 95.5,
           "speed_impact_pct": 0.85,
-          "resilience_score": 0.9465
+          "resilience_score": 0.9464
         },
         "N02_BA_THANG_HAI": {
           "remaining_nodes": [
@@ -777,8 +777,8 @@
             "N22_BAC_HAI"
           ],
           "coverage_pct": 95.5,
-          "speed_impact_pct": 0.04,
-          "resilience_score": 0.9542
+          "speed_impact_pct": 0.1,
+          "resilience_score": 0.9536
         },
         "N21_HO_BA_KIEN": {
           "remaining_nodes": [
