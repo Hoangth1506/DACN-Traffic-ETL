@@ -52,6 +52,9 @@ jobs:
           chmod +x node_modules/.bin/* || true
           npx vite build
 
+      - name: Pull latest changes
+        run: git pull --rebase --autostash origin main
+
       - name: Commit and Push Updated Data to GitHub
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
