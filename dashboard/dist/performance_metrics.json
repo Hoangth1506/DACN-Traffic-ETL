@@ -78,8 +78,8 @@
         "std": 2.961
       },
       "N20_CUU_LONG": {
-        "mean": 21.647,
-        "std": 3.038
+        "mean": 21.655,
+        "std": 3.033
       },
       "N21_HO_BA_KIEN": {
         "mean": 20.368,
@@ -117,7 +117,7 @@
       "N21_HO_BA_KIEN": 0.9923,
       "N22_BAC_HAI": 0.9949
     },
-    "confidence_avg": 0.7812,
+    "confidence_avg": 0.7813,
     "confidence_per_node": {
       "N01_LY_THUONG_KIET": 0.8428,
       "N02_BA_THANG_HAI": 0.7679,
@@ -138,14 +138,14 @@
       "N17_TRAN_NHAN_TON": 0.758,
       "N18_NGUYEN_LAM": 0.7688,
       "N19_DONG_NAI": 0.7382,
-      "N20_CUU_LONG": 0.7447,
+      "N20_CUU_LONG": 0.7448,
       "N21_HO_BA_KIEN": 0.7668,
       "N22_BAC_HAI": 0.7643
     },
-    "congestion_detection_rate": 0.9423,
+    "congestion_detection_rate": 0.9441,
     "intra_session_velocity_spread_avg": 1.97,
-    "fusion_mae": 1.58,
-    "fusion_mape": 7.005
+    "fusion_mae": 1.579,
+    "fusion_mape": 7.004
   },
   "group2_collection_performance": {
     "sessions_per_day_avg": 5.2,
@@ -179,11 +179,11 @@
       "N22_BAC_HAI": 1.0
     },
     "api_latency_per_camera_ms": 140,
-    "api_latency_per_node_ms": 2082.0,
-    "api_latency_all_nodes_ms": 6247.0,
-    "alert_response_estimate_ms": 2382.0,
-    "data_freshness_score": 0.6171,
-    "avg_image_quality": 0.9865,
+    "api_latency_per_node_ms": 2084.0,
+    "api_latency_all_nodes_ms": 6252.0,
+    "alert_response_estimate_ms": 2384.0,
+    "data_freshness_score": 0.6554,
+    "avg_image_quality": 0.9863,
     "pct_high_quality": 1.0
   },
   "group3_data_efficiency": {
@@ -202,15 +202,15 @@
   "group4_robustness": {
     "scenario_a_camera_dropout": {
       "description": "Xoa 1 camera yeu nhat khoi node, tinh lai fused_velocity",
-      "avg_velocity_delta_pct": 0.45,
+      "avg_velocity_delta_pct": 0.44,
       "max_velocity_delta_pct": 1.57,
-      "resilience_score": 0.9955,
+      "resilience_score": 0.9956,
       "n_simulations": 572
     },
     "scenario_b_quality_degradation": {
       "description": "Giam nguong image_quality tu 0.5 xuong 0.3 (anh mo/nhieu)",
-      "confidence_normal": 0.7812,
-      "confidence_degraded": 0.7812,
+      "confidence_normal": 0.7813,
+      "confidence_degraded": 0.7813,
       "confidence_drop_pct": 0.0,
       "availability_normal": 1.0,
       "availability_degraded": 1.0,
@@ -525,7 +525,7 @@
             "N22_BAC_HAI"
           ],
           "coverage_pct": 95.5,
-          "speed_impact_pct": 0.48,
+          "speed_impact_pct": 0.49,
           "resilience_score": 0.9499
         },
         "N12_NGO_GIA_TU": {
@@ -778,7 +778,7 @@
           ],
           "coverage_pct": 95.5,
           "speed_impact_pct": 0.24,
-          "resilience_score": 0.9522
+          "resilience_score": 0.9523
         },
         "N21_HO_BA_KIEN": {
           "remaining_nodes": [
