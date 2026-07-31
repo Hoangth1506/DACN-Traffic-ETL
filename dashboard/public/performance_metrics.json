@@ -78,8 +78,8 @@
         "std": 2.821
       },
       "N20_CUU_LONG": {
-        "mean": 21.634,
-        "std": 2.718
+        "mean": 21.629,
+        "std": 2.722
       },
       "N21_HO_BA_KIEN": {
         "mean": 20.362,
@@ -142,10 +142,10 @@
       "N21_HO_BA_KIEN": 0.7688,
       "N22_BAC_HAI": 0.7713
     },
-    "congestion_detection_rate": 0.9402,
+    "congestion_detection_rate": 0.939,
     "intra_session_velocity_spread_avg": 1.95,
     "fusion_mae": 1.56,
-    "fusion_mape": 6.984
+    "fusion_mape": 6.985
   },
   "group2_collection_performance": {
     "sessions_per_day_avg": 5.4,
@@ -179,11 +179,11 @@
       "N22_BAC_HAI": 1.0
     },
     "api_latency_per_camera_ms": 140,
-    "api_latency_per_node_ms": 2081.0,
-    "api_latency_all_nodes_ms": 6243.0,
-    "alert_response_estimate_ms": 2381.0,
-    "data_freshness_score": 0.6321,
-    "avg_image_quality": 0.9905,
+    "api_latency_per_node_ms": 2080.0,
+    "api_latency_all_nodes_ms": 6240.0,
+    "alert_response_estimate_ms": 2380.0,
+    "data_freshness_score": 0.6324,
+    "avg_image_quality": 0.9906,
     "pct_high_quality": 1.0
   },
   "group3_data_efficiency": {
@@ -777,7 +777,7 @@
             "N22_BAC_HAI"
           ],
           "coverage_pct": 95.5,
-          "speed_impact_pct": 0.19,
+          "speed_impact_pct": 0.2,
           "resilience_score": 0.9527
         },
         "N21_HO_BA_KIEN": {
