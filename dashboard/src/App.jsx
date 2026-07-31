@@ -130,7 +130,7 @@ export default function App() {
     <div className="app-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#070a12' }}>
       
       {/* THANH BÁO TIẾN TRÌNH ĐẾM NGUỢC TÁCH BIỆT */}
-      <LiveCountdownBar onExpire={handleManualRefresh} />
+      <LiveCountdownBar key={lastRefetchedAt} onExpire={handleManualRefresh} />
 
       {/* ── HEADER CẤU TRÚC NHẸ ──────────────────────────────────────────── */}
       <header className="glass-panel" style={{
@@ -235,6 +235,7 @@ export default function App() {
           totalShown={filtered.length}
           lastUpdated={formattedLatestDate}
           filteredData={filtered}
+          lastRefetchedAt={lastRefetchedAt}
         />
 
         <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>

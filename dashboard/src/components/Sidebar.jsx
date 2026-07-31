@@ -4,11 +4,11 @@ import { NODE_LABEL, LOS_COLOR, LOS_LABEL, SLOT_LABEL } from '../hooks/useTraffi
 import { Filter, Layers, Calendar, RotateCcw, Search, Sparkles, Clock, AlertTriangle, Gauge, Download } from 'lucide-react'
 
 const LiveCountdownText = memo(function LiveCountdownText() {
-  const [countdown, setCountdown] = useState(120)
+  const [countdown, setCountdown] = useState(300)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCountdown(prev => (prev <= 1 ? 120 : prev - 1))
+      setCountdown(prev => (prev <= 1 ? 300 : prev - 1))
     }, 1000)
     return () => clearInterval(timer)
   }, [])
@@ -40,7 +40,7 @@ function toggle(arr, val) {
   return arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val]
 }
 
-export default function Sidebar({ filters, setFilters, resetFilters, aggregates, lastUpdated, filteredData }) {
+export default function Sidebar({ filters, setFilters, resetFilters, aggregates, lastUpdated, filteredData, lastRefetchedAt }) {
   const [searchTerm, setSearchTerm] = useState('')
   const dates = aggregates?.by_date ? Object.keys(aggregates.by_date).sort() : []
   const latestDate = dates.length ? dates[dates.length - 1] : new Date().toISOString().slice(0, 10)
@@ -144,7 +144,7 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 11, color: '#64748b', paddingTop: 6, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           <span>Tự động làm mới:</span>
-          <LiveCountdownText />
+          <LiveCountdownText key={lastRefetchedAt} />
         </div>
       </div>
 
