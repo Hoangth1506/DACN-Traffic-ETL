@@ -4,6 +4,10 @@ name: Continuous 24/7 Realtime Traffic ETL & Dashboard Build
 on:
   schedule:
     - cron: '*/5 * * * *'
+  workflow_run:
+    workflows: ['Traffic ETL Raw Collection']
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
