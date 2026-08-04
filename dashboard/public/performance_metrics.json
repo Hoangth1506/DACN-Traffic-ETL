@@ -78,8 +78,8 @@
         "std": 3.058
       },
       "N20_CUU_LONG": {
-        "mean": 21.803,
-        "std": 2.857
+        "mean": 21.8,
+        "std": 2.864
       },
       "N21_HO_BA_KIEN": {
         "mean": 20.628,
@@ -144,14 +144,14 @@
     },
     "congestion_detection_rate": 0.9483,
     "intra_session_velocity_spread_avg": 1.94,
-    "fusion_mae": 1.554,
+    "fusion_mae": 1.555,
     "fusion_mape": 6.948
   },
   "group2_collection_performance": {
-    "sessions_per_day_avg": 6.5,
-    "sessions_per_day_min": 5,
+    "sessions_per_day_avg": 5.9,
+    "sessions_per_day_min": 1,
     "sessions_per_day_max": 8,
-    "total_days": 10,
+    "total_days": 11,
     "total_sessions": 65,
     "camera_availability_avg": 1.0,
     "camera_availability_per_node": {
@@ -180,9 +180,9 @@
     },
     "api_latency_per_camera_ms": 140,
     "api_latency_per_node_ms": 2082.0,
-    "api_latency_all_nodes_ms": 6247.0,
+    "api_latency_all_nodes_ms": 6245.0,
     "alert_response_estimate_ms": 2382.0,
-    "data_freshness_score": 0.6307,
+    "data_freshness_score": 0.6309,
     "avg_image_quality": 0.9885,
     "pct_high_quality": 1.0
   },
@@ -193,8 +193,8 @@
     "fused_data_per_session_bytes": 2118,
     "compression_ratio": 9.78,
     "bandwidth_reduction_pct": 89.8,
-    "daily_raw_bandwidth_kb": 131.5,
-    "daily_fused_bandwidth_kb": 13.4,
+    "daily_raw_bandwidth_kb": 119.5,
+    "daily_fused_bandwidth_kb": 12.2,
     "cameras_per_node": 9,
     "nodes": 3,
     "records_per_session": 27
