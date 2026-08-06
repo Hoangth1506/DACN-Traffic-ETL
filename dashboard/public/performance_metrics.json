@@ -78,8 +78,8 @@
         "std": 2.892
       },
       "N20_CUU_LONG": {
-        "mean": 21.841,
-        "std": 2.696
+        "mean": 21.844,
+        "std": 2.694
       },
       "N21_HO_BA_KIEN": {
         "mean": 20.768,
@@ -142,10 +142,10 @@
       "N21_HO_BA_KIEN": 0.7704,
       "N22_BAC_HAI": 0.7706
     },
-    "congestion_detection_rate": 0.9465,
+    "congestion_detection_rate": 0.9471,
     "intra_session_velocity_spread_avg": 1.94,
     "fusion_mae": 1.551,
-    "fusion_mape": 6.931
+    "fusion_mape": 6.93
   },
   "group2_collection_performance": {
     "sessions_per_day_avg": 6.1,
@@ -179,11 +179,11 @@
       "N22_BAC_HAI": 1.0
     },
     "api_latency_per_camera_ms": 140,
-    "api_latency_per_node_ms": 2083.0,
-    "api_latency_all_nodes_ms": 6250.0,
-    "alert_response_estimate_ms": 2383.0,
-    "data_freshness_score": 0.6304,
-    "avg_image_quality": 0.9898,
+    "api_latency_per_node_ms": 2084.0,
+    "api_latency_all_nodes_ms": 6251.0,
+    "alert_response_estimate_ms": 2384.0,
+    "data_freshness_score": 0.6303,
+    "avg_image_quality": 0.9897,
     "pct_high_quality": 1.0
   },
   "group3_data_efficiency": {
