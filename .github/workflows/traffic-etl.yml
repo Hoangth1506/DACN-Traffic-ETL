@@ -52,6 +52,7 @@ jobs:
         run: git pull --rebase --autostash origin main
 
       - name: Commit and Push Updated Data to GitHub
+        if: ${{ false }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
