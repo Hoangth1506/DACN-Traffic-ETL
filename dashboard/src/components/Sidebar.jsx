@@ -2,7 +2,7 @@ import { useState, useEffect, memo } from 'react'
 import { NODE_LABEL, LOS_COLOR, LOS_LABEL, SLOT_LABEL } from '../hooks/useTrafficData'
 import { Layers, Calendar, RotateCcw, Search, Sparkles, Clock, AlertTriangle, Gauge, Download } from 'lucide-react'
 
-const REFRESH_INTERVAL_SECONDS = 120
+const REFRESH_INTERVAL_SECONDS = 300
 
 const LiveCountdownText = memo(function LiveCountdownText() {
   const [countdown, setCountdown] = useState(REFRESH_INTERVAL_SECONDS)
@@ -117,14 +117,14 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
   const filteredTB = TAN_BINH_NODES.filter(matchesSearch)
 
   return (
-    <div className="glass-panel dashboard-sidebar" style={{ width: 320, display: 'flex', flexDirection: 'column', gap: 14, padding: 16, flexShrink: 0, overflowY: 'auto' }}>
+    <aside className="glass-panel dashboard-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: 14, padding: 16 }}>
       <div className="sidebar-realtime-card">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#34d399', fontSize: 12, fontWeight: 800 }}>
             <div className="live-dot-pulse" />
             <span>REAL-TIME STREAMING</span>
           </div>
-          <span className="sidebar-live-badge">2 PHÚT/LẦN</span>
+          <span className="sidebar-live-badge">5 PHÚT/LẦN</span>
         </div>
 
         <div style={{ fontSize: 11, color: '#94a3b8', lineHeight: 1.45, marginBottom: 8 }}>
@@ -376,6 +376,6 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
           <RotateCcw size={13} /> Đặt lại mặc định (Hôm nay)
         </button>
       </div>
-    </div>
+    </aside>
   )
 }

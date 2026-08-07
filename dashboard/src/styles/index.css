@@ -53,6 +53,26 @@ body {
   min-height: 100vh;
 }
 
+.app-layout {
+  min-height: 100vh;
+}
+
+.app-body {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  align-items: start;
+}
+
+.main-content,
+.dashboard-tab-content {
+  min-width: 0;
+}
+
+.dashboard-tab-content {
+  display: flex;
+  flex-direction: column;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -164,7 +184,13 @@ body {
 }
 
 .dashboard-sidebar {
-  min-width: 300px;
+  width: min(340px, 100%);
+  min-width: 280px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  position: sticky;
+  top: 96px;
+  align-self: start;
 }
 
 .sidebar-realtime-card,
@@ -361,13 +387,66 @@ body {
 }
 
 .dashboard-scroll-column {
+  flex: 1;
   min-width: 0;
+  min-height: 0;
 }
 
 .dashboard-two-panel {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
   gap: 16px;
+}
+
+.dashboard-tab-content > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+.map-view-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 320px);
+  gap: 12px;
+  min-height: clamp(620px, calc(100vh - 190px), 920px);
+}
+
+.map-view-canvas {
+  position: relative;
+  min-height: 620px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.map-view-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  max-height: clamp(620px, calc(100vh - 190px), 920px);
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.tab-content .glass-panel,
+.tab-content .glass-card-interactive {
+  min-width: 0;
+}
+
+.tab-content table {
+  table-layout: fixed;
+}
+
+.tab-content .cyber-table {
+  min-width: 0;
+}
+
+.tab-content .recharts-responsive-container {
+  min-width: 0 !important;
+}
+
+.node-list-scroll {
+  min-height: 0;
 }
 
 .kpi-grid {
@@ -474,13 +553,15 @@ body {
 
 @media (max-width: 1100px) {
   .app-body {
+    display: flex;
     flex-direction: column;
-    overflow: auto !important;
   }
 
   .dashboard-sidebar {
+    position: static;
     width: 100% !important;
     min-width: 0;
+    max-height: none;
   }
 }
 
@@ -495,6 +576,30 @@ body {
 
   .sidebar-segmented-control {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-two-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .map-view-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .map-view-canvas {
+    min-height: 520px;
+  }
+
+  .map-view-rail {
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-body {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
   }
 }
 
