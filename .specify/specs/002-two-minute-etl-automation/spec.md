@@ -6,12 +6,12 @@ The repository's intended operating model is a 24/7 traffic ETL pipeline. The au
 
 ## Desired outcome
 
-Automation on `main` runs every 2 minutes, raw collection remains traceable, ETL artifacts are regenerated, and dashboard JSON outputs are refreshed from the latest ETL outputs.
+Automation on `main` runs every 5 minutes, raw collection remains traceable, ETL artifacts are regenerated, and dashboard JSON outputs are refreshed from the latest ETL outputs.
 
 ## Requirements
 
-1. GitHub Actions must schedule raw collection on a 2-minute interval.
-2. GitHub Actions must run ETL and dashboard JSON export on a 2-minute interval or equivalent end-to-end automated trigger.
+1. GitHub Actions must schedule raw collection on a 5-minute interval.
+2. GitHub Actions must run ETL and dashboard JSON export on a 5-minute interval or equivalent end-to-end automated trigger.
 3. Automation must not rely on unsupported camera/video inputs.
 4. Dashboard JSON exports must remain generated from ETL outputs committed by automation.
 5. The automation path must remain compatible with the current 22-node configuration.
@@ -24,6 +24,6 @@ Automation on `main` runs every 2 minutes, raw collection remains traceable, ETL
 
 ## Acceptance signals
 
-- Workflow files declare 2-minute schedules
+- Workflow files declare 5-minute schedules
 - ETL workflow runs raw collection, ETL generation, and JSON export
 - Dashboard public JSON files are part of the automated output path

@@ -6,8 +6,8 @@
 
 ## Foundational
 
-- [x] Align raw collection workflow cadence to 2 minutes
-- [x] Align ETL/export workflow cadence to 2 minutes
+- [x] Align raw collection workflow cadence to 5 minutes
+- [x] Align ETL/export workflow cadence to 5 minutes
 - [x] Ensure workflow dependency installation uses repository requirements
 
 ## Implementation
@@ -24,4 +24,4 @@
 
 ## Documentation
 
-- [x] Update repository documentation to describe the spec-driven workflow and current 2-minute automation model
+- [x] Update repository documentation to describe the spec-driven workflow and current 5-minute automation model

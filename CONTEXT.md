@@ -55,7 +55,7 @@ When discussing LOS, always confirm you mean the repository's reversed scale.
 
 ## Automation language
 
-- **2-minute cadence**: the intended automation interval for collection and ETL refresh.
+- **5-minute cadence**: the intended automation interval for collection and ETL refresh.
 - **Continuous 24/7 pipeline**: raw collection, ETL, and dashboard export are expected to keep data fresh around the clock.
 - **Dashboard-facing JSON outputs**: files in `dashboard/public/` consumed directly by the frontend.
 
@@ -73,7 +73,7 @@ Prefer these phrases:
 - **virtual observation point** instead of "camera" when talking about system semantics
 - **legacy-compatible field name** when `camera_id` or `camera_records` must be preserved for compatibility
 - **22-node network** instead of older 10-node wording
-- **2-minute realtime cadence** instead of older 5-minute wording
+- **5-minute realtime cadence** for the current automation model
 
 Avoid these phrases unless discussing legacy compatibility:
 

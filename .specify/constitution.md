@@ -10,7 +10,7 @@ The operational network is the repository's configured node set in `config/nodes
 
 ## 3. Automation cadence
 
-The intended automation model is a **24/7 continuous pipeline** with a **2-minute collection interval**. Changes affecting scheduling, workflows, or collection windows must keep ETL, exported outputs, and operational documentation in sync.
+The intended automation model is a **24/7 continuous pipeline** with a **5-minute collection interval**. Changes affecting scheduling, workflows, or collection windows must keep ETL, exported outputs, and operational documentation in sync.
 
 ## 4. ETL correctness
 

@@ -23,9 +23,9 @@ This workspace contains the **DACN-Traffic-ETL** Python data collection and prep
      - `N09_CONG_HOA`: Cộng Hòa (Tân Bình)
      - `N10_TRUONG_CHINH`: Trường Chinh (Tân Bình - Tân Phú)
 
-3. **REAL-TIME 2-MINUTE CONTINUOUS STREAM**:
-   - `config/etl.yaml` has `interval_minutes: 2` and `windows: 00:00-23:59`.
-   - `auto_run.py` triggers continuous collection every 2 minutes 24/7 (`now.minute % 2 == 0`).
+3. **REAL-TIME 5-MINUTE CONTINUOUS STREAM**:
+   - `config/etl.yaml` has `interval_minutes: 5` and `windows: 00:00-23:59`.
+   - `auto_run.py` triggers continuous collection every 5 minutes 24/7 (`now.minute % 5 == 0`).
 
 4. **ETL PIPELINE ALGORITHMS**:
    - Layer 1: KDTree spatial join (threshold <= 50m) + Hybrid 3-point Spatial Rolling Mean (Window=3) + 20% Consensus Median Shrinkage.

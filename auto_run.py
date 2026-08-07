@@ -5,8 +5,8 @@ import sys
 
 def get_seconds_to_next_run():
     now = datetime.now()
-    # Tính số phút cần chờ để tới mốc 2 phút tiếp theo (phút % 2 == 0)
-    interval_minutes = 2
+    # Tính số phút cần chờ để tới mốc 5 phút tiếp theo (phút % 5 == 0)
+    interval_minutes = 5
     minutes_to_next = interval_minutes - (now.minute % interval_minutes)
     if minutes_to_next == interval_minutes and now.second == 0:
         return 0
@@ -16,8 +16,8 @@ def get_seconds_to_next_run():
     return seconds_to_wait
 
 def main():
-    print("=== HỆ THỐNG TỰ ĐỘNG CHẠY LẤY DỮ LIỆU REAL-TIME (AUTO SCHEDULER 2 MIN) ===")
-    print("Chương trình sẽ tự động chạy liên tục mỗi 2 phút một lần (24/7).")
+    print("=== HỆ THỐNG TỰ ĐỘNG CHẠY LẤY DỮ LIỆU REAL-TIME (AUTO SCHEDULER 5 MIN) ===")
+    print("Chương trình sẽ tự động chạy liên tục mỗi 5 phút một lần (24/7).")
     print("Mọi khung giờ trong ngày đều hợp lệ (00:00 - 23:59).")
     print("-> Bạn chỉ cần TREO cửa sổ này, không cần chạy thủ công nữa.\n")
     

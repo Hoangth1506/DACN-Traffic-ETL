@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+from datetime import datetime
 from typing import Any
 
 import numpy as np
@@ -182,6 +183,41 @@ def _group2_collection_performance(cam_df: pd.DataFrame, ns_df: pd.DataFrame) ->
         g["sessions_per_day_max"] = int(spd.max())
         g["total_days"]           = int(spd.count())
         g["total_sessions"]       = int(cam_df["session_id"].nunique())
+
+    if "session_id" in cam_df.columns:
+        session_ids = (
+            cam_df["session_id"]
+            .dropna()
+            .astype(str)
+            .drop_duplicates()
+            .sort_values()
+            .tolist()
+        )
+        collected_at: list[datetime] = []
+        for session_id in session_ids:
+            try:
+                collected_at.append(datetime.strptime(session_id[:15], "%Y%m%dT%H%M%S"))
+            except ValueError:
+                continue
+
+        if len(collected_at) >= 2:
+            collected_at = sorted(collected_at)
+            interval_minutes = [
+                (curr - prev).total_seconds() / 60.0
+                for prev, curr in zip(collected_at, collected_at[1:])
+                if curr >= prev
+            ]
+            if interval_minutes:
+                g["collection_interval_avg_min"] = round(float(np.mean(interval_minutes)), 2)
+                g["collection_interval_p95_min"] = round(float(np.percentile(interval_minutes, 95)), 2)
+                g["collection_interval_max_min"] = round(float(np.max(interval_minutes)), 2)
+                g["expected_sessions_per_day_at_5min"] = 288
+                g["schedule_adherence_ratio"] = round(len(collected_at) / max(len(collected_at), 1), 4)
+                within_target = sum(1 for gap in interval_minutes if gap <= 3.0)
+                g["schedule_hit_rate_le_3min"] = round(within_target / len(interval_minutes), 4)
+                g["missed_interval_estimate"] = int(sum(max(0, round(gap / 2.0) - 1) for gap in interval_minutes if gap > 2.0))
+        elif collected_at:
+            g["expected_sessions_per_day_at_5min"] = 288
 
     # Active cameras ratio per session
     if "active_cameras" in ns_df.columns and "total_cameras" in ns_df.columns:
@@ -413,6 +449,9 @@ def print_performance_summary(metrics: dict[str, Any]) -> None:
     g2 = metrics.get("group2_collection_performance", {})
     print("\n[Nhom 2] Hieu nang thu thap:")
     print(f"  Sessions/ngay        : {g2.get('sessions_per_day_avg', 'N/A')}")
+    print(f"  Interval TB (phut)   : {g2.get('collection_interval_avg_min', 'N/A')}")
+    print(f"  Interval p95 (phut)  : {g2.get('collection_interval_p95_min', 'N/A')}")
+    print(f"  Hit rate <=3 phut    : {g2.get('schedule_hit_rate_le_3min', 'N/A')}")
     print(f"  Latency/node (ms)    : {g2.get('api_latency_per_node_ms', 'N/A')}")
     print(f"  Alert response (ms)  : {g2.get('alert_response_estimate_ms', 'N/A')}")
     print(f"  Data freshness       : {g2.get('data_freshness_score', 'N/A')}")
