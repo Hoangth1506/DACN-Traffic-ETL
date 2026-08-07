@@ -61,6 +61,7 @@ class DataQualityReport:
     timeliness_score: float = 0.0
     fusion_coverage: float = 0.0
     conflict_rate: float = 0.0
+    unmatched_rate: float = 0.0
     issues: list[str] = field(default_factory=list)
     by_node: dict[str, dict[str, Any]] = field(default_factory=dict)
 
@@ -87,6 +88,7 @@ class DataQualityReport:
             "timeliness_score":    round(self.timeliness_score, 4),
             "fusion_coverage":     round(self.fusion_coverage, 4),
             "conflict_rate":       round(self.conflict_rate, 4),
+            "unmatched_rate":      round(self.unmatched_rate, 4),
             "overall_score":       self.overall_score,
             "issues":              self.issues,
             "by_node":             self.by_node,
@@ -104,6 +106,7 @@ class DataQualityReport:
             ("Consistency",             self.consistency_score),
             ("Timeliness",              self.timeliness_score),
             ("Fusion Coverage",         self.fusion_coverage),
+            ("Unmatched Rate (low=ok)", 1.0 - self.fusion_coverage),
             ("Conflict Rate (low=ok)",  self.conflict_rate),
         ]
         for name, val in rows:
@@ -264,8 +267,14 @@ def generate_quality_report(df: pd.DataFrame) -> dict[str, Any]:
     if "osm_matched" in df.columns:
         matched = df["osm_matched"].fillna(False)
         report.fusion_coverage = float(matched.mean())
+        report.unmatched_rate = float((~matched).mean())
+        if report.unmatched_rate > 0.10:
+            report.issues.append(
+                f"Ty le unmatched OSM cao: {report.unmatched_rate * 100:.1f}%"
+            )
     else:
         report.fusion_coverage = 0.0
+        report.unmatched_rate = 1.0
         report.issues.append("Thiếu cột osm_matched — chưa chạy T3 spatial join")
 
     # ── Conflict Rate ─────────────────────────────────────────────────────────
@@ -301,6 +310,43 @@ def generate_quality_report(df: pd.DataFrame) -> dict[str, Any]:
                 "completeness":   round(comp, 4),
                 "osm_match_pct":  round(match_pct, 4),
             }
+            if match_pct < 0.70:
+                report.issues.append(
+                    f"Node {node_id} co OSM match thap: {match_pct * 100:.1f}%"
+                )
+
+    if report.by_node:
+        low_match_nodes = sorted(
+            (
+                {
+                    "node_id": node_id,
+                    "osm_match_pct": stats.get("osm_match_pct", 0.0),
+                    "records": stats.get("records", 0),
+                }
+                for node_id, stats in report.by_node.items()
+            ),
+            key=lambda item: item["osm_match_pct"],
+        )
+        report.by_node = {
+            node_id: {
+                **stats,
+                "match_quality": (
+                    "poor" if stats.get("osm_match_pct", 0.0) < 0.70
+                    else "watch" if stats.get("osm_match_pct", 0.0) < 0.85
+                    else "good"
+                ),
+            }
+            for node_id, stats in report.by_node.items()
+        }
+        worst = low_match_nodes[:5]
+        if worst:
+            report.issues.append(
+                "Top node match risks: "
+                + ", ".join(
+                    f"{item['node_id']}={item['osm_match_pct'] * 100:.1f}%"
+                    for item in worst
+                )
+            )
 
     report.print_summary()
     return report.to_dict()

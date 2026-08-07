@@ -20,7 +20,7 @@ Hệ thống hợp nhất toàn bộ quy trình **Thu thập dữ liệu thô (E
    * `N08_DIEN_BIEN_PHU`: Tuyến Điện Biên Phủ (Quận 10)
    * `N09_CONG_HOA`: Tuyến Cộng Hòa (Tân Bình)
    * `N10_TRUONG_CHINH`: Tuyến Trường Chinh (Tân Bình - Tân Phú)
-3. **⚡ Tần suất Real-Time Siêu tốc 5 phút/lần (24/7 Continuous Stream)**:
+3. **⚡ Tần suất Real-Time Siêu tốc 2 phút/lần (24/7 Continuous Stream)**:
    * Loại bỏ hoàn toàn các khung giờ cắt giảm cũ. Dữ liệu được thu thập liên tục từ **`00:00` đến `23:59`**.
 4. **📊 Chỉ số Chất lượng & Sai số Thực nghiệm**:
    * **Độ chính xác dữ liệu (Quality Score)**: **98.4%**
@@ -51,10 +51,10 @@ Hệ thống hợp nhất toàn bộ quy trình **Thu thập dữ liệu thô (E
 
 ## 🚀 3. HƯỚNG DẪN VẬN HÀNH
 
-### 🔹 Cách 1: Chạy Tự Động trên Máy Cá Nhân (Local 5 phút/lần)
+### 🔹 Cách 1: Chạy Tự Động trên Máy Cá Nhân (Local 2 phút/lần)
 Mở Terminal trong thư mục dự án và chạy:
 ```powershell
-# 1. Kích hoạt bộ đếm tự động lấy dữ liệu liên tục 5 phút/lần
+# 1. Kích hoạt bộ đếm tự động lấy dữ liệu liên tục 2 phút/lần
 python auto_run.py
 
 # 2. Khởi chạy Web Dashboard trực tiếp
@@ -83,23 +83,44 @@ DACN-Traffic-ETL/
 │   └── etl_cron.yml          # GitHub Actions 24/7 Automation Workflow
 ├── config/
 │   ├── nodes.yaml            # Cấu hình 22 Node Agents (Quận 10 & Tân Bình)
-│   └── etl.yaml              # Cấu hình tần suất 5 phút/lần (00:00-23:59)
+│   └── etl.yaml              # Cấu hình tần suất 2 phút/lần (00:00-23:59)
 ├── dashboard/                # Mã nguồn Web Dashboard (React + Vite + GIS)
 │   ├── public/               # Dữ liệu JSON thời gian thực
 │   ├── src/                  # Các Tab bản đồ, KPI, Biểu đồ vận tốc
 │   └── dist/                 # Bản build web tĩnh sẵn sàng Go Live
 ├── etl/                      # Thư viện thuật toán hợp nhất dữ liệu (Python)
 ├── outputs/                  # Kết quả lưu trữ dữ liệu Parquet và JSON
-├── auto_run.py               # Lịch trình tự động chạy 5 phút/lần local
+├── auto_run.py               # Lịch trình tự động chạy 2 phút/lần local
 ├── generate_data.py          # Script chạy ETL pipeline chính
 ├── export_json.py            # Script xuất dữ liệu JSON public cho Dashboard
 └── run_raw_measurement.py    # Script thu thập dữ liệu đo thô
 ```
 
-### Xoay v�ng API Key (API Key Rotation)
-H? th?ng l?y m?u tr�n di?n r?ng 22 Node ti�u t?n kho?ng hon 300 requests m?i 5 ph�t. �? kh�ng b? gi?i h?n 2500 calls/ng�y c?a TomTom, h? th?ng h? tr? t�ch h?p nhi?u API Key. 
-M? file .env v� nh?p nhi?u API key c�ch nhau b?ng d?u ph?y:
-\\\
+## 🧭 5. QUY TRÌNH SPEC-DRIVEN VỚI SPEC KIT
+
+Repository này đã có scaffold cục bộ trong thư mục `.specify/` để áp dụng Spec-Driven Development cho các thay đổi không tầm thường.
+
+Quy trình khuyến nghị:
+
+1. Cập nhật nguyên tắc dự án trong `.specify/constitution.md`
+2. Tạo feature mới trong `.specify/specs/<id-ten-tinh-nang>/`
+3. Viết `spec.md` cho **what/why**
+4. Viết `plan.md` cho giải pháp kỹ thuật
+5. Viết `tasks.md` theo thứ tự phụ thuộc
+6. Chỉ triển khai sau khi spec/plan/tasks đã rõ ràng
+
+Có thể cài CLI chính thức của Spec Kit sau:
+
+```powershell
+python -m pip install specify-cli
+specify init --here --force --integration copilot --script ps
+```
+
+Ngoài ra, repo có `CONTEXT.md` để giữ **shared language** cho các thuật ngữ như `raw_measurement`, `node_states`, `osm_matched`, `fused_velocity`, và thang **LOS đảo ngược**.
+
+### Xoay vòng API Key (API Key Rotation)
+Hệ thống lấy mẫu trên diện rộng 22 node tiêu tốn khoảng hơn 300 requests mỗi 2 phút. Để không bị giới hạn quota của TomTom, hệ thống hỗ trợ tích hợp nhiều API key:
+
+```text
 TOMTOM_API_KEYS=key1_xxx,key2_yyy,key3_zzz
-\\\
-H? th?ng s? t? d?ng ph�n b? lu�n phi�n c�c API Key trong m?i l?n qu�t d? san s? t?i.
+```
