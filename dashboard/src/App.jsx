@@ -27,7 +27,7 @@ const TABS = [
   { id: 'performance', label: 'Hiệu năng Hệ thống', icon: '⚙️' },
 ]
 
-const REFRESH_INTERVAL_SECONDS = 120
+const REFRESH_INTERVAL_SECONDS = 300
 
 const LiveClock = memo(function LiveClock() {
   const [time, setTime] = useState(new Date())
@@ -354,7 +354,7 @@ export default function App() {
         </div>
       </header>
 
-      <div className="app-body" style={{ flex: 1, display: 'flex', gap: 14, padding: '12px 16px 16px 16px', overflow: 'hidden' }}>
+      <div className="app-body" style={{ flex: 1, display: 'flex', gap: 14, padding: '12px 16px 16px 16px', minHeight: 0 }}>
         <Sidebar
           filters={filters}
           setFilters={setFilters}
@@ -366,7 +366,7 @@ export default function App() {
           lastRefetchedAt={lastRefetchedAt}
         />
 
-        <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
+        <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0, minHeight: 0 }}>
           <div className="glass-panel tab-strip" style={{ display: 'flex', padding: 5, gap: 5, overflowX: 'auto' }}>
             {TABS.map((tab) => (
               <button

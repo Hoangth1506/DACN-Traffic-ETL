@@ -433,10 +433,10 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
   const hourLabel   = slotLabel
 
   return (
-    <div style={{ display:'grid', gridTemplateColumns:'1fr 300px', gap:12, height:'calc(100vh - 140px)' }}>
+    <div className="map-view-layout">
 
       {/* ── MAP ─────────────────────────────────────────────────────────── */}
-      <div style={{ position:'relative', borderRadius:12, overflow:'hidden', border:'1px solid var(--border)' }}>
+      <div className="map-view-canvas">
         <div ref={mapRef} style={{ width:'100%', height:'100%' }} />
 
         {/* Layer controls */}
@@ -503,7 +503,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
         </div>
 
       {/* ── RIGHT PANEL ─────────────────────────────────────────────────── */}
-      <div style={{ display:'flex', flexDirection:'column', gap:8, overflowY:'auto' }}>
+      <div className="map-view-rail">
 
 
         {/* Per-node status — bo "Dang hien thi N records" card */}
