@@ -1,14 +1,8 @@
 """
-camera_model.py — Layer 1 (Edge): Transform TomTom record → CameraRecord schema.
+camera_model.py — Layer 1 (Edge): transform virtual-segment records into edge records.
 
-Mỗi TomTom sample point (sample_id 0-8) = 1 "camera" trên tuyến đường.
-9 cameras/node × 3 nodes = 27 cameras/session.
-
-CameraRecord schema (theo hướng dẫn Node-Agent-Edge, điều chỉnh cho JSON data):
-  timestamp, node_id, camera_id, road_segment,
-  lat, lon, velocity, free_flow_velocity, density,
-  image_quality (= TomTom confidence), reliability,
-  los, road_closure, frc, osm_matched, segment_length_km
+TomTom sample points are virtual observations on corridors, not physical cameras.
+Legacy field names are retained where downstream consumers still depend on them.
 """
 
 from __future__ import annotations
@@ -30,18 +24,37 @@ FRC_RELIABILITY: dict[str, float] = {
 # Node short name mapping
 NODE_SHORT = {
     "N01_LY_THUONG_KIET": "N01",
-    "N02_CONG_HOA":       "N02",
-    "N03_TRUONG_CHINH":   "N03",
+    "N02_BA_THANG_HAI":   "N02",
+    "N03_CMT8":           "N03",
+    "N04_THANH_THAI":     "N04",
+    "N05_TO_HIEN_THANH":  "N05",
+    "N06_NGUYEN_TRI_PHUONG": "N06",
+    "N07_SU_VAN_HANH":    "N07",
+    "N08_DIEN_BIEN_PHU":  "N08",
+    "N09_CONG_HOA":       "N09",
+    "N10_TRUONG_CHINH":   "N10",
+    "N11_LE_HONG_PHONG":  "N11",
+    "N12_NGO_GIA_TU":     "N12",
+    "N13_VINH_VIEN":      "N13",
+    "N14_HOA_HAO":        "N14",
+    "N15_BA_HAT":         "N15",
+    "N16_NHAT_TAO":       "N16",
+    "N17_TRAN_NHAN_TON":  "N17",
+    "N18_NGUYEN_LAM":     "N18",
+    "N19_DONG_NAI":       "N19",
+    "N20_CUU_LONG":       "N20",
+    "N21_HO_BA_KIEN":     "N21",
+    "N22_BAC_HAI":        "N22",
 }
 
 
 def build_camera_records(unified_df: pd.DataFrame) -> pd.DataFrame:
     """
-    Chuyển unified DataFrame (từ T4) → camera_records DataFrame (Layer 1).
+    Chuyển unified DataFrame (từ T4) → edge-record DataFrame (Layer 1).
 
-    Mỗi row = 1 CameraRecord:
+    Mỗi row = 1 điểm đo ảo:
       - camera_id = "{node_short}_C{sample_id:02d}"
-      - image_quality = confidence (thay thế camera image quality)
+      - image_quality = confidence (điểm chất lượng phép đo)
       - reliability = confidence × frc_weight (ước tính độ tin cậy điểm đo)
 
     Args:
@@ -84,10 +97,10 @@ def build_camera_records(unified_df: pd.DataFrame) -> pd.DataFrame:
     df["los"] = df["current_speed"].apply(_los_from_speed)
     df["is_congested"] = df["los"].isin(["A", "B", "C"])
 
-    # Node short code (N01, N02, N03)
+    # Node short code
     df["node_short"] = df["node_id"].map(NODE_SHORT).fillna(df["node_id"].str[:3])
 
-    # Camera ID: N01_C00, N01_C01, ..., N01_C08
+    # Legacy-compatible point identifier
     df["camera_id"] = df["node_short"] + "_C" + df["sample_id"].fillna(0).astype(int).astype(str).str.zfill(2)
 
     # image_quality = TomTom confidence (thay thế camera image quality metric)
@@ -138,7 +151,7 @@ def build_camera_records(unified_df: pd.DataFrame) -> pd.DataFrame:
     result = df[list(available.keys())].rename(columns=available)
 
     logger.info(
-        "camera_model: %d CameraRecords từ %d sessions × %d nodes",
+        "camera_model: %d edge records từ %d sessions × %d nodes",
         len(result),
         result["session_id"].nunique() if "session_id" in result.columns else 0,
         result["node_id"].nunique(),
