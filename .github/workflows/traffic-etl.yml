@@ -52,9 +52,14 @@ jobs:
         run: git pull --rebase --autostash origin main
 
       - name: Commit and Push Updated Data to GitHub
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "auto: continuous real-time traffic data update [skip ci]"
-          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-          file_pattern: "outputs/*.json outputs/*.parquet outputs/*.csv outputs/raw_measurements dashboard/public/*.json"
-          branch: main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f outputs dashboard/public
+
+          if git diff --cached --quiet; then
+            echo "No output changes to commit"
+          else
+            git commit -m "auto: continuous real-time traffic data update [skip ci]"
+            git push origin main
+          fi
