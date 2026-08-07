@@ -1,69 +1,84 @@
-# Automated 24/7 Traffic Pipeline - Verified Python 3.10 Build
-name: Continuous 24/7 Realtime Traffic ETL & Dashboard Build
+name: Traffic ETL Raw Collection
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
-  workflow_run:
-    workflows: ['Traffic ETL Raw Collection']
-    types:
-      - completed
   workflow_dispatch:
+    inputs:
+      measurement_label:
+        description: "Measurement label (de trong se tu dong dat ten)"
+        required: false
+        type: string
+      measurement_date:
+        description: "Vietnam measurement date, YYYY-MM-DD (de trong lay gio hien tai)"
+        required: false
+        type: string
+      measurement_time:
+        description: "Vietnam measurement time, HH:MM (de trong lay gio hien tai)"
+        required: false
+        type: string
+  schedule:
+    - cron: "*/5 * * * *"
 
-permissions:
-  contents: write
+concurrency:
+  group: traffic-etl-raw-collection
+  cancel-in-progress: true
 
 jobs:
-  run-etl-and-deploy:
+  collect:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: main
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.11"
 
-      - name: Install Python Dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas numpy pyarrow requests pyyaml scipy scikit-learn
+          python -m pip install -r requirements.txt
 
-      - name: Run Real-Time Raw Measurement Collection
+      - name: Collect raw TomTom and OSM data
+        env:
+          TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
+          TOMTOM_API_KEYS: ${{ secrets.TOMTOM_API_KEYS }}
         run: |
-          python run_raw_measurement.py --measurement-label github_cron_live
+          LABEL="${{ inputs.measurement_label }}"
+          if [ -z "$LABEL" ]; then
+            if [ "${{ github.event_name }}" = "schedule" ]; then
+              LABEL="auto_cron"
+            else
+              LABEL="manual_dispatch"
+            fi
+          fi
 
-      - name: Run ETL Data Generation
+          CMD="python run_raw_measurement.py --measurement-label \"$LABEL\""
+          DATE="${{ inputs.measurement_date }}"
+          TIME="${{ inputs.measurement_time }}"
+
+          if [ -n "$DATE" ]; then
+            CMD="$CMD --measurement-date \"$DATE\""
+          fi
+
+          if [ -n "$TIME" ]; then
+            CMD="$CMD --measurement-time \"$TIME\""
+          fi
+
+          echo "Executing: $CMD"
+          eval $CMD
+
+      - name: Commit raw measurement outputs
         run: |
-          python generate_data.py
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin main
+          git add -f outputs/raw_measurements
 
-      - name: Export Public JSON Files
-        run: |
-          python export_json.py
-
-      - name: Setup Node.js & Build Vite Dashboard
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install & Build Dashboard
-        run: |
-          cd dashboard
-          npm install --legacy-peer-deps
-          chmod +x node_modules/.bin/* || true
-          npx vite build
-
-      - name: Pull latest changes
-        run: git pull --rebase --autostash origin main
-
-      - name: Commit and Push Updated Data to GitHub
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "auto: continuous real-time traffic data update [skip ci]"
-          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
-          file_pattern: "dashboard/public/*.json dashboard/dist/*"
-          branch: main
+          if git diff --cached --quiet; then
+            echo "No output changes to commit"
+          else
+            git commit -m "Collect raw traffic measurement: ${{ inputs.measurement_label || 'auto_scheduled' }} [skip ci]"
+            git push origin main
+          fi

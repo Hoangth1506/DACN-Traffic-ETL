@@ -6,8 +6,9 @@ import sys
 def get_seconds_to_next_run():
     now = datetime.now()
     # Tính số phút cần chờ để tới mốc 5 phút tiếp theo (phút % 5 == 0)
-    minutes_to_next = 5 - (now.minute % 5)
-    if minutes_to_next == 5 and now.second == 0:
+    interval_minutes = 5
+    minutes_to_next = interval_minutes - (now.minute % interval_minutes)
+    if minutes_to_next == interval_minutes and now.second == 0:
         return 0
     
     # Tính tổng số giây cần chờ

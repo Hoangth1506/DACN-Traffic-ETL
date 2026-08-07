@@ -1,10 +1,10 @@
-# HƯỚNG DẪN CHI TIẾT ETL HỢP NHẤT DỮ LIỆU GIAO THÔNG 10 NODE AGENTS
+# HƯỚNG DẪN CHI TIẾT ETL HỢP NHẤT DỮ LIỆU GIAO THÔNG 22 NODE AGENTS
 
 Tài liệu này hướng dẫn chi tiết quy trình xử lý dữ liệu của package `etl/` trong dự án **DACN-Traffic-ETL**.
 
 ---
 
-## 📍 1. PHẠM VI MẠNG LƯỚI 10 NODE AGENTS
+## 📍 1. PHẠM VI MẠNG LƯỚI 22 NODE AGENTS
 
 Hệ thống phủ toàn bộ các tuyến đường huyết mạch của **Quận 10** và hành lang liên kết **Tân Bình**:
 
@@ -18,6 +18,18 @@ Hệ thống phủ toàn bộ các tuyến đường huyết mạch của **Qu�
 8. `N08_DIEN_BIEN_PHU`: Điện Biên Phủ (Quận 10)
 9. `N09_CONG_HOA`: Cộng Hòa (Tân Bình)
 10. `N10_TRUONG_CHINH`: Trường Chinh (Tân Bình - Tân Phú)
+11. `N11_LE_HONG_PHONG`: Lê Hồng Phong
+12. `N12_NGO_GIA_TU`: Ngô Gia Tự
+13. `N13_VINH_VIEN`: Vĩnh Viễn
+14. `N14_HOA_HAO`: Hòa Hảo
+15. `N15_BA_HAT`: Bà Hạt
+16. `N16_NHAT_TAO`: Nhật Tảo
+17. `N17_TRAN_NHAN_TON`: Trần Nhân Tôn
+18. `N18_NGUYEN_LAM`: Nguyễn Lâm
+19. `N19_DONG_NAI`: Đồng Nai
+20. `N20_CUU_LONG`: Cửu Long
+21. `N21_HO_BA_KIEN`: Hồ Bá Kiện
+22. `N22_BAC_HAI`: Bắc Hải
 
 ---
 

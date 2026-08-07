@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+from datetime import datetime
 from typing import Any
 
 import numpy as np
@@ -21,8 +22,6 @@ logger = logging.getLogger(__name__)
 
 # Tham số hệ thống
 API_LATENCY_MS   = 140   # ms/camera
-CAMERA_PER_NODE  = 9     # cameras per node
-N_NODES          = 3     # số nodes
 QUALITY_THRESHOLD_NORMAL    = 0.50
 QUALITY_THRESHOLD_DEGRADED  = 0.30
 
@@ -50,6 +49,33 @@ def compute_performance_metrics(
 
     logger.info("performance_eval: 4 nhom chi so da tinh xong")
     return metrics
+
+
+def _infer_topology(cam_df: pd.DataFrame, ns_df: pd.DataFrame) -> tuple[int, int]:
+    """Infer current topology from the available ETL outputs."""
+    node_series = []
+    if "node_id" in cam_df.columns:
+        node_series.append(cam_df["node_id"])
+    if "node_id" in ns_df.columns:
+        node_series.append(ns_df["node_id"])
+
+    if node_series:
+        nodes = pd.concat(node_series, ignore_index=True).dropna().astype(str).unique()
+        n_nodes = len(nodes)
+    else:
+        n_nodes = 0
+
+    if all(c in cam_df.columns for c in ["session_id", "node_id", "camera_id"]):
+        per_pair = (
+            cam_df.groupby(["session_id", "node_id"])["camera_id"]
+            .nunique()
+            .dropna()
+        )
+        cameras_per_node = int(round(float(per_pair.median()))) if not per_pair.empty else 0
+    else:
+        cameras_per_node = 0
+
+    return n_nodes, cameras_per_node
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -147,6 +173,7 @@ def _group2_collection_performance(cam_df: pd.DataFrame, ns_df: pd.DataFrame) ->
       - data_freshness_score: % records trong khung giờ thu thập hợp lệ
     """
     g: dict[str, Any] = {}
+    n_nodes, cameras_per_node = _infer_topology(cam_df, ns_df)
 
     # Sessions per day
     if "date_str" in cam_df.columns and "session_id" in cam_df.columns:
@@ -157,6 +184,41 @@ def _group2_collection_performance(cam_df: pd.DataFrame, ns_df: pd.DataFrame) ->
         g["total_days"]           = int(spd.count())
         g["total_sessions"]       = int(cam_df["session_id"].nunique())
 
+    if "session_id" in cam_df.columns:
+        session_ids = (
+            cam_df["session_id"]
+            .dropna()
+            .astype(str)
+            .drop_duplicates()
+            .sort_values()
+            .tolist()
+        )
+        collected_at: list[datetime] = []
+        for session_id in session_ids:
+            try:
+                collected_at.append(datetime.strptime(session_id[:15], "%Y%m%dT%H%M%S"))
+            except ValueError:
+                continue
+
+        if len(collected_at) >= 2:
+            collected_at = sorted(collected_at)
+            interval_minutes = [
+                (curr - prev).total_seconds() / 60.0
+                for prev, curr in zip(collected_at, collected_at[1:])
+                if curr >= prev
+            ]
+            if interval_minutes:
+                g["collection_interval_avg_min"] = round(float(np.mean(interval_minutes)), 2)
+                g["collection_interval_p95_min"] = round(float(np.percentile(interval_minutes, 95)), 2)
+                g["collection_interval_max_min"] = round(float(np.max(interval_minutes)), 2)
+                g["expected_sessions_per_day_at_5min"] = 288
+                g["schedule_adherence_ratio"] = round(len(collected_at) / max(len(collected_at), 1), 4)
+                within_target = sum(1 for gap in interval_minutes if gap <= 3.0)
+                g["schedule_hit_rate_le_3min"] = round(within_target / len(interval_minutes), 4)
+                g["missed_interval_estimate"] = int(sum(max(0, round(gap / 2.0) - 1) for gap in interval_minutes if gap > 2.0))
+        elif collected_at:
+            g["expected_sessions_per_day_at_5min"] = 288
+
     # Active cameras ratio per session
     if "active_cameras" in ns_df.columns and "total_cameras" in ns_df.columns:
         ns_df["cam_avail"] = ns_df["active_cameras"] / ns_df["total_cameras"].replace(0, 1)
@@ -166,10 +228,10 @@ def _group2_collection_performance(cam_df: pd.DataFrame, ns_df: pd.DataFrame) ->
         )
 
     # Latency estimates
-    avg_active = float(ns_df["active_cameras"].mean()) if "active_cameras" in ns_df.columns else CAMERA_PER_NODE
+    avg_active = float(ns_df["active_cameras"].mean()) if "active_cameras" in ns_df.columns else float(cameras_per_node or 0)
     g["api_latency_per_camera_ms"]   = API_LATENCY_MS
     g["api_latency_per_node_ms"]     = round(avg_active * API_LATENCY_MS, 0)
-    g["api_latency_all_nodes_ms"]    = round(avg_active * API_LATENCY_MS * N_NODES, 0)
+    g["api_latency_all_nodes_ms"]    = round(avg_active * API_LATENCY_MS * n_nodes, 0)
     g["alert_response_estimate_ms"]  = round(avg_active * API_LATENCY_MS + 300, 0)  # +300ms network
 
     # Data freshness (giờ thu thập trong window hợp lệ)
@@ -182,6 +244,11 @@ def _group2_collection_performance(cam_df: pd.DataFrame, ns_df: pd.DataFrame) ->
     if "image_quality" in cam_df.columns:
         g["avg_image_quality"] = round(float(cam_df["image_quality"].mean()), 4)
         g["pct_high_quality"]  = round(float((cam_df["image_quality"] >= QUALITY_THRESHOLD_NORMAL).mean()), 4)
+
+    g["topology"] = {
+        "nodes": n_nodes,
+        "cameras_per_node_median": cameras_per_node,
+    }
 
     return g
 
@@ -202,6 +269,7 @@ def _group3_data_efficiency(cam_df: pd.DataFrame, ns_df: pd.DataFrame) -> dict[s
       - daily_bandwidth estimations
     """
     g: dict[str, Any] = {}
+    n_nodes, cameras_per_node = _infer_topology(cam_df, ns_df)
 
     # Ước tính kích thước record
     if not cam_df.empty:
@@ -222,8 +290,8 @@ def _group3_data_efficiency(cam_df: pd.DataFrame, ns_df: pd.DataFrame) -> dict[s
         ns_size = 400
         g["node_state_size_bytes"] = ns_size
 
-    raw_per_session   = cam_size * CAMERA_PER_NODE * N_NODES
-    fused_per_session = ns_size * N_NODES
+    raw_per_session   = cam_size * cameras_per_node * n_nodes
+    fused_per_session = ns_size * n_nodes
     compression_ratio = raw_per_session / fused_per_session if fused_per_session > 0 else 1.0
 
     g["raw_data_per_session_bytes"]    = raw_per_session
@@ -239,9 +307,9 @@ def _group3_data_efficiency(cam_df: pd.DataFrame, ns_df: pd.DataFrame) -> dict[s
 
     g["daily_raw_bandwidth_kb"]   = round(raw_per_session * sessions_per_day_val / 1024, 1)
     g["daily_fused_bandwidth_kb"] = round(fused_per_session * sessions_per_day_val / 1024, 1)
-    g["cameras_per_node"]          = CAMERA_PER_NODE
-    g["nodes"]                     = N_NODES
-    g["records_per_session"]       = CAMERA_PER_NODE * N_NODES
+    g["cameras_per_node"]          = cameras_per_node
+    g["nodes"]                     = n_nodes
+    g["records_per_session"]       = cameras_per_node * n_nodes
 
     return g
 
@@ -259,6 +327,7 @@ def _group4_robustness(cam_df: pd.DataFrame, ns_df: pd.DataFrame) -> dict[str, A
     Scenario C: Node failure — xóa 1 node → coverage giảm
     """
     g: dict[str, Any] = {}
+    n_nodes, _ = _infer_topology(cam_df, ns_df)
 
     # ── Scenario A: Camera dropout ────────────────────────────────────────────
     if all(c in cam_df.columns for c in ["session_id", "node_id", "camera_id", "velocity", "image_quality", "reliability"]):
@@ -352,10 +421,10 @@ def _group4_robustness(cam_df: pd.DataFrame, ns_df: pd.DataFrame) -> dict[str, A
             }
 
         g["scenario_c_node_failure"] = {
-            "description":       "Gia su 1 trong 3 nodes bi loi",
+            "description":       "Gia su 1 node trong topology hien tai bi loi",
             "full_coverage_pct": 100.0,
             "per_node_failure":  coverage_per_failure,
-            "avg_coverage_when_1_fails": round(((N_NODES - 1) / N_NODES) * 100, 1),
+            "avg_coverage_when_1_fails": round(((n_nodes - 1) / n_nodes) * 100, 1) if n_nodes > 0 else 0.0,
         }
 
     return g
@@ -380,6 +449,9 @@ def print_performance_summary(metrics: dict[str, Any]) -> None:
     g2 = metrics.get("group2_collection_performance", {})
     print("\n[Nhom 2] Hieu nang thu thap:")
     print(f"  Sessions/ngay        : {g2.get('sessions_per_day_avg', 'N/A')}")
+    print(f"  Interval TB (phut)   : {g2.get('collection_interval_avg_min', 'N/A')}")
+    print(f"  Interval p95 (phut)  : {g2.get('collection_interval_p95_min', 'N/A')}")
+    print(f"  Hit rate <=3 phut    : {g2.get('schedule_hit_rate_le_3min', 'N/A')}")
     print(f"  Latency/node (ms)    : {g2.get('api_latency_per_node_ms', 'N/A')}")
     print(f"  Alert response (ms)  : {g2.get('alert_response_estimate_ms', 'N/A')}")
     print(f"  Data freshness       : {g2.get('data_freshness_score', 'N/A')}")
