@@ -63,15 +63,18 @@ npm run dev
 ```
 Trang web sẽ phát trực tiếp tại **`http://localhost:3000`**.
 
-### 🔹 Cách 2: Tự Động Hóa 24/7 trên Đám Mây (GitHub Actions)
-Tệp workflow `.github/workflows/etl_cron.yml` được tích hợp sẵn trên branch `main`:
-1. **Extract**: Thu thập dữ liệu thô từ TomTom API & OSM.
-2. **ETL**: Hợp nhất và tính toán sai số.
-3. **Export**: Xuất JSON public cho Dashboard.
-4. **Build**: Rebuild ứng dụng web Vite (`dashboard/dist/`).
-5. **Push**: Tự động commit và lưu kết quả về GitHub.
+### 🔹 Cách 2: Tự Động Hóa 24/7 trên Đám Mây (GitHub Actions + Vercel)
+Hệ thống cloud hiện được tách thành 2 workflow trên branch `main`:
+1. **`.github/workflows/etl_cron.yml`**: thu thập dữ liệu thô TomTom/OSM mỗi **5 phút** và chỉ commit `outputs/raw_measurements/`.
+2. **`.github/workflows/traffic-etl.yml`**: chạy ETL, export JSON dashboard và rebuild `dashboard/dist/` từ dữ liệu thô mới nhất.
 
-Bạn có thể vào tab **`Actions`** trên GitHub $\rightarrow$ Bấm nút **`Run workflow`** bất cứ lúc nào để máy chủ thu thập dữ liệu mới ngay lập tức!
+Lưu ý vận hành hiện tại:
+
+* Bước **auto-commit artifact ETL** trong `traffic-etl.yml` đang được **tắt tạm thời** để tránh tái diễn lỗi conflict trong `dashboard/public/*.json`.
+* Vì vậy, nếu muốn **publish dashboard data mới lên Vercel**, cần đảm bảo commit `main` đã chứa bộ `dashboard/public/` và `dashboard/dist/` sạch trước khi Vercel redeploy.
+* Vercel đang deploy từ thư mục **`dashboard/dist`** theo `vercel.json`.
+
+Bạn có thể vào tab **`Actions`** trên GitHub $\rightarrow$ bấm **`Run workflow`** để chạy thu thập/ETL thủ công, và vào Vercel để **Redeploy** khi cần đẩy bản dashboard mới nhất lên production.
 
 ---
 
