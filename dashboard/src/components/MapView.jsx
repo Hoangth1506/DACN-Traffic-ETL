@@ -90,6 +90,19 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
   const [showNodes,     setShowNodes]     = useState(true)
   const [mapReady,      setMapReady]      = useState(false)
 
+  useEffect(() => {
+    if (!leafRef.current) return
+
+    const handleResize = () => {
+      window.requestAnimationFrame(() => {
+        leafRef.current?.map.invalidateSize()
+      })
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [mapReady])
+
   // ── 1. Khởi tạo map (chỉ 1 lần) ──────────────────────────────────────────
   useEffect(() => {
     if (leafRef.current || !mapRef.current) return
