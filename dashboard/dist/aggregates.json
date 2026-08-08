@@ -60,7 +60,11 @@
       "max_speed": 32.0,
       "avg_congestion_index": 0.4,
       "pct_congested": 47.47,
+<<<<<<< Updated upstream
       "osm_match_pct": 83.41,
+=======
+      "osm_match_pct": 83.26,
+>>>>>>> Stashed changes
       "los_distribution": {
         "D": 1047,
         "C": 946,
@@ -105,7 +109,11 @@
       "max_speed": 35.0,
       "avg_congestion_index": 0.37,
       "pct_congested": 51.53,
+<<<<<<< Updated upstream
       "osm_match_pct": 90.38,
+=======
+      "osm_match_pct": 90.53,
+>>>>>>> Stashed changes
       "los_distribution": {
         "C": 1021,
         "D": 935,
@@ -173,7 +181,11 @@
       "max_speed": 41.0,
       "avg_congestion_index": 0.38,
       "pct_congested": 52.38,
+<<<<<<< Updated upstream
       "osm_match_pct": 64.31,
+=======
+      "osm_match_pct": 64.01,
+>>>>>>> Stashed changes
       "los_distribution": {
         "C": 954,
         "D": 630,
@@ -197,7 +209,11 @@
       "max_speed": 41.0,
       "avg_congestion_index": 0.37,
       "pct_congested": 41.5,
+<<<<<<< Updated upstream
       "osm_match_pct": 47.62,
+=======
+      "osm_match_pct": 47.52,
+>>>>>>> Stashed changes
       "los_distribution": {
         "D": 907,
         "C": 814,
@@ -220,7 +236,11 @@
       "max_speed": 42.0,
       "avg_congestion_index": 0.33,
       "pct_congested": 33.13,
+<<<<<<< Updated upstream
       "osm_match_pct": 37.04,
+=======
+      "osm_match_pct": 37.64,
+>>>>>>> Stashed changes
       "los_distribution": {
         "D": 972,
         "C": 658,
@@ -330,7 +350,11 @@
       "max_speed": 35.0,
       "avg_congestion_index": 0.34,
       "pct_congested": 43.61,
+<<<<<<< Updated upstream
       "osm_match_pct": 90.38,
+=======
+      "osm_match_pct": 90.23,
+>>>>>>> Stashed changes
       "los_distribution": {
         "D": 1110,
         "C": 865,
@@ -348,7 +372,11 @@
       "max_speed": 41.0,
       "avg_congestion_index": 0.35,
       "pct_congested": 55.19,
+<<<<<<< Updated upstream
       "osm_match_pct": 94.79,
+=======
+      "osm_match_pct": 94.69,
+>>>>>>> Stashed changes
       "los_distribution": {
         "C": 1077,
         "D": 676,
@@ -436,7 +464,11 @@
       "max_speed": 35.0,
       "avg_congestion_index": 0.34,
       "pct_congested": 45.36,
+<<<<<<< Updated upstream
       "osm_match_pct": 89.02,
+=======
+      "osm_match_pct": 89.07,
+>>>>>>> Stashed changes
       "los_distribution": {
         "D": 1063,
         "C": 903,
@@ -641,7 +673,7 @@
         "N13_VINH_VIEN": 20.84,
         "N14_HOA_HAO": 24.52,
         "N15_BA_HAT": 23.4,
-        "N16_NHAT_TAO": 22.08,
+        "N16_NHAT_TAO": 22.09,
         "N17_TRAN_NHAN_TON": 22.07,
         "N18_NGUYEN_LAM": 22.15,
         "N19_DONG_NAI": 21.55,
@@ -24135,9 +24167,15 @@
     },
     "Hẻm 414 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 148,
       "avg_speed": 22.81,
       "std_speed": 7.68,
+=======
+      "records": 150,
+      "avg_speed": 22.72,
+      "std_speed": 7.67,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -25618,13 +25656,41 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 414/23 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 18.71,
+=======
+      "records": 75,
+      "avg_speed": 18.68,
+>>>>>>> Stashed changes
       "std_speed": 2.65,
       "data": [
         {
@@ -26366,14 +26432,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 372 Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 148,
       "avg_speed": 28.29,
       "std_speed": 7.06,
+=======
+      "records": 150,
+      "avg_speed": 28.18,
+      "std_speed": 7.08,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -27854,14 +27939,43 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 462/20/3 Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 17.03,
       "std_speed": 5.69,
+=======
+      "records": 75,
+      "avg_speed": 17.07,
+      "std_speed": 5.66,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -28602,14 +28716,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 414/2 Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 28.96,
       "std_speed": 6.15,
+=======
+      "records": 75,
+      "avg_speed": 28.86,
+      "std_speed": 6.17,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -29350,14 +29483,33 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 462 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 148,
       "avg_speed": 15.32,
       "std_speed": 5.27,
+=======
+      "records": 150,
+      "avg_speed": 15.32,
+      "std_speed": 5.24,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -30838,13 +30990,41 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 338/9 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 18.72,
+=======
+      "records": 75,
+      "avg_speed": 18.69,
+>>>>>>> Stashed changes
       "std_speed": 2.66,
       "data": [
         {
@@ -31586,14 +31766,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 162/20/12 Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 28.28,
       "std_speed": 6.99,
+=======
+      "records": 75,
+      "avg_speed": 28.16,
+      "std_speed": 7.01,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -32334,14 +32533,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 338 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 26.26,
       "std_speed": 9.55,
+=======
+      "records": 75,
+      "avg_speed": 26.1,
+      "std_speed": 9.59,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -33082,14 +33300,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 314 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 74,
       "avg_speed": 27.62,
       "std_speed": 7.85,
+=======
+      "records": 75,
+      "avg_speed": 27.49,
+      "std_speed": 7.87,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -33830,14 +34067,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 528/25 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
+<<<<<<< Updated upstream
       "records": 148,
       "avg_speed": 20.47,
       "std_speed": 1.84,
+=======
+      "records": 150,
+      "avg_speed": 20.47,
+      "std_speed": 1.83,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -35318,6 +35574,29 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+>>>>>>> Stashed changes
         }
       ]
     },
@@ -69265,9 +69544,15 @@
     },
     "Hẻm 269 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 140,
       "avg_speed": 20.65,
       "std_speed": 5.12,
+=======
+      "records": 138,
+      "avg_speed": 20.73,
+      "std_speed": 5.11,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -70631,6 +70916,7 @@
         },
         {
           "session": "VN_auto_cron",
+<<<<<<< Updated upstream
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
@@ -70651,6 +70937,8 @@
         },
         {
           "session": "ub_cron_live",
+=======
+>>>>>>> Stashed changes
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
@@ -70660,7 +70948,11 @@
           "congestion_index": 0.64
         },
         {
+<<<<<<< Updated upstream
           "session": "ub_cron_live",
+=======
+          "session": "VN_auto_cron",
+>>>>>>> Stashed changes
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
@@ -70673,9 +70965,15 @@
     },
     "Hẻm 211/11 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 140,
       "avg_speed": 22.14,
       "std_speed": 4.29,
+=======
+      "records": 138,
+      "avg_speed": 22.19,
+      "std_speed": 4.3,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -72056,6 +72354,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -72076,14 +72375,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 211/4 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 70,
       "avg_speed": 19.3,
       "std_speed": 3.54,
+=======
+      "records": 69,
+      "avg_speed": 19.26,
+      "std_speed": 3.55,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -72774,6 +73081,7 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -72784,14 +73092,22 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 140,
       "avg_speed": 17.58,
       "std_speed": 3.4,
+=======
+      "records": 138,
+      "avg_speed": 17.6,
+      "std_speed": 3.41,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -74172,6 +74488,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -74192,14 +74509,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 211 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 70,
       "avg_speed": 17.24,
       "std_speed": 3.16,
+=======
+      "records": 69,
+      "avg_speed": 17.25,
+      "std_speed": 3.18,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -74890,6 +75215,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -74900,14 +75226,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 297 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 70,
       "avg_speed": 22.43,
       "std_speed": 3.38,
+=======
+      "records": 69,
+      "avg_speed": 22.47,
+      "std_speed": 3.39,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -75588,6 +75922,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "VN_auto_cron",
@@ -75598,9 +75933,11 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         },
         {
-          "session": "ub_cron_live",
+          "session": "VN_auto_cron",
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
@@ -75613,8 +75950,13 @@
     },
     "Hẻm 322B/6 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 140,
       "avg_speed": 18.64,
+=======
+      "records": 138,
+      "avg_speed": 18.65,
+>>>>>>> Stashed changes
       "std_speed": 3.72,
       "data": [
         {
@@ -76996,6 +77338,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -77016,14 +77359,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 254 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 140,
       "avg_speed": 18.28,
       "std_speed": 3.1,
+=======
+      "records": 138,
+      "avg_speed": 18.3,
+      "std_speed": 3.12,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -78404,6 +78755,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -78424,14 +78776,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 268 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 70,
       "avg_speed": 19.36,
       "std_speed": 2.92,
+=======
+      "records": 69,
+      "avg_speed": 19.36,
+      "std_speed": 2.94,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -79122,6 +79482,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -79132,14 +79493,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 322A Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
+<<<<<<< Updated upstream
       "records": 70,
       "avg_speed": 20.08,
       "std_speed": 3.16,
+=======
+      "records": 69,
+      "avg_speed": 20.06,
+      "std_speed": 3.18,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -79830,6 +80199,7 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -79840,6 +80210,8 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
@@ -92217,8 +92589,13 @@
     },
     "Trường Tiểu học Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 24.86,
+=======
+      "records": 80,
+      "avg_speed": 24.99,
+>>>>>>> Stashed changes
       "std_speed": 9.91,
       "data": [
         {
@@ -93020,6 +93397,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -93030,14 +93408,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 405,
       "avg_speed": 22.47,
       "std_speed": 7.03,
+=======
+      "records": 400,
+      "avg_speed": 22.52,
+      "std_speed": 7.05,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -97038,6 +97424,7 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -97088,13 +97475,20 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 162 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 28.18,
+=======
+      "records": 80,
+      "avg_speed": 28.26,
+>>>>>>> Stashed changes
       "std_speed": 6.47,
       "data": [
         {
@@ -97896,6 +98290,7 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -97906,14 +98301,22 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 84 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 16.71,
       "std_speed": 3.01,
+=======
+      "records": 80,
+      "avg_speed": 16.74,
+      "std_speed": 3.02,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -98714,6 +99117,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -98724,14 +99128,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 68 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 17.54,
       "std_speed": 2.46,
+=======
+      "records": 80,
+      "avg_speed": 17.55,
+      "std_speed": 2.47,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -99532,6 +99944,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -99542,14 +99955,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 46/6 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 18.36,
       "std_speed": 2.15,
+=======
+      "records": 80,
+      "avg_speed": 18.36,
+      "std_speed": 2.17,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -100350,6 +100771,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -100360,14 +100782,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 46 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 162,
       "avg_speed": 19.6,
       "std_speed": 2.41,
+=======
+      "records": 160,
+      "avg_speed": 19.58,
+      "std_speed": 2.42,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -101968,6 +102398,7 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -101988,14 +102419,22 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Bãi Cỏ - Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 19.0,
       "std_speed": 5.25,
+=======
+      "records": 80,
+      "avg_speed": 19.05,
+      "std_speed": 5.26,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -102796,6 +103235,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -102806,14 +103246,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 57 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 20.64,
       "std_speed": 3.94,
+=======
+      "records": 80,
+      "avg_speed": 20.68,
+      "std_speed": 3.95,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -103614,6 +104062,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -103624,14 +104073,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 31 Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
+<<<<<<< Updated upstream
       "records": 81,
       "avg_speed": 17.16,
       "std_speed": 3.55,
+=======
+      "records": 80,
+      "avg_speed": 17.12,
+      "std_speed": 3.56,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -104432,6 +104889,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -104442,6 +104900,8 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
@@ -115587,8 +116047,8 @@
     },
     "Hẻm 95 Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 160,
-      "avg_speed": 20.74,
+      "records": 162,
+      "avg_speed": 20.69,
       "std_speed": 4.27,
       "data": [
         {
@@ -117190,13 +117650,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
         }
       ]
     },
     "Cư xá Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 320,
-      "avg_speed": 20.96,
+      "records": 324,
+      "avg_speed": 20.92,
       "std_speed": 4.28,
       "data": [
         {
@@ -120398,13 +120878,53 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
         }
       ]
     },
     "Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 560,
-      "avg_speed": 21.52,
+      "records": 567,
+      "avg_speed": 21.47,
       "std_speed": 4.74,
       "data": [
         {
@@ -126006,14 +126526,84 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
         }
       ]
     },
     "Hẻm 61/4 Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 80,
-      "avg_speed": 21.83,
-      "std_speed": 3.32,
+      "records": 81,
+      "avg_speed": 21.8,
+      "std_speed": 3.31,
       "data": [
         {
           "session": "VN_auto_cron",
@@ -126810,6 +127400,16 @@
           "date": "2026-08-08",
           "hour": 19,
           "time_slot": "evening_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
           "speed": 19.8,
           "free_flow": 40.0,
           "los": "C",
@@ -126819,9 +127419,9 @@
     },
     "Hẻm 61 Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 80,
-      "avg_speed": 22.48,
-      "std_speed": 3.02,
+      "records": 81,
+      "avg_speed": 22.47,
+      "std_speed": 3.0,
       "data": [
         {
           "session": "VN_auto_cron",
@@ -127622,13 +128222,28 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
         }
       ]
     },
     "Cách Mạng Tháng Tám": {
       "node_id": "N03_CMT8",
+<<<<<<< Updated upstream
       "records": 1079,
       "avg_speed": 20.03,
+=======
+      "records": 1092,
+      "avg_speed": 20.01,
+>>>>>>> Stashed changes
       "std_speed": 3.09,
       "data": [
         {
@@ -138420,14 +139035,153 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 377 Đường Cách Mạng Tháng Tám": {
       "node_id": "N03_CMT8",
+<<<<<<< Updated upstream
       "records": 83,
       "avg_speed": 20.96,
       "std_speed": 4.36,
+=======
+      "records": 84,
+      "avg_speed": 20.93,
+      "std_speed": 4.35,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -139258,13 +140012,31 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 357 Đường Cách Mạng Tháng Tám": {
       "node_id": "N03_CMT8",
+<<<<<<< Updated upstream
       "records": 83,
       "avg_speed": 22.16,
+=======
+      "records": 84,
+      "avg_speed": 22.15,
+>>>>>>> Stashed changes
       "std_speed": 1.64,
       "data": [
         {
@@ -140096,13 +140868,31 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 286 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 150,
       "avg_speed": 19.88,
+=======
+      "records": 152,
+      "avg_speed": 19.82,
+>>>>>>> Stashed changes
       "std_speed": 5.06,
       "data": [
         {
@@ -141604,14 +142394,43 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 339 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 225,
       "avg_speed": 19.58,
       "std_speed": 2.77,
+=======
+      "records": 228,
+      "avg_speed": 19.56,
+      "std_speed": 2.76,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -143862,14 +144681,53 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+>>>>>>> Stashed changes
         }
       ]
     },
     "Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 150,
       "avg_speed": 19.2,
       "std_speed": 1.64,
+=======
+      "records": 152,
+      "avg_speed": 19.2,
+      "std_speed": 1.63,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -145370,13 +146228,41 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 343 Đường Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 75,
       "avg_speed": 20.18,
+=======
+      "records": 76,
+      "avg_speed": 20.1,
+>>>>>>> Stashed changes
       "std_speed": 5.76,
       "data": [
         {
@@ -146128,13 +147014,31 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 273 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 225,
       "avg_speed": 18.2,
+=======
+      "records": 228,
+      "avg_speed": 18.18,
+>>>>>>> Stashed changes
       "std_speed": 2.94,
       "data": [
         {
@@ -148382,6 +149286,39 @@
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
+<<<<<<< Updated upstream
+=======
+          "speed": 16.2,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.595
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 14.4,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.64
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+>>>>>>> Stashed changes
           "speed": 16.2,
           "free_flow": 40.0,
           "los": "C",
@@ -148391,9 +149328,15 @@
     },
     "Hẻm 266 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 75,
       "avg_speed": 20.44,
       "std_speed": 1.87,
+=======
+      "records": 76,
+      "avg_speed": 20.45,
+      "std_speed": 1.86,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -149144,14 +150087,33 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 273/1 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 75,
       "avg_speed": 19.57,
       "std_speed": 2.76,
+=======
+      "records": 76,
+      "avg_speed": 19.55,
+      "std_speed": 2.74,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -149902,14 +150864,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 18.0,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.55
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 273/21 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 75,
       "avg_speed": 20.37,
       "std_speed": 2.43,
+=======
+      "records": 76,
+      "avg_speed": 20.36,
+      "std_speed": 2.41,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -150660,14 +151641,33 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 19.8,
+          "free_flow": 40.0,
+          "los": "C",
+          "congestion_index": 0.505
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 243 Tô Hiến Thành": {
       "node_id": "N05_TO_HIEN_THANH",
+<<<<<<< Updated upstream
       "records": 75,
       "avg_speed": 20.42,
       "std_speed": 1.89,
+=======
+      "records": 76,
+      "avg_speed": 20.44,
+      "std_speed": 1.88,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -151418,13 +152418,31 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "session": "ub_cron_live",
+          "date": "2026-08-08",
+          "hour": 20,
+          "time_slot": "off_peak",
+          "speed": 21.6,
+          "free_flow": 40.0,
+          "los": "D",
+          "congestion_index": 0.46
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 295 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 20.16,
+=======
+      "records": 68,
+      "avg_speed": 20.24,
+>>>>>>> Stashed changes
       "std_speed": 5.57,
       "data": [
         {
@@ -152106,6 +153124,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -152116,13 +153135,20 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 255 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 20.77,
+=======
+      "records": 68,
+      "avg_speed": 20.84,
+>>>>>>> Stashed changes
       "std_speed": 4.81,
       "data": [
         {
@@ -152804,6 +153830,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -152814,14 +153841,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 237 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 21.55,
       "std_speed": 4.08,
+=======
+      "records": 68,
+      "avg_speed": 21.6,
+      "std_speed": 4.09,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -153502,6 +154537,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -153512,13 +154548,20 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 341 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 22.49,
+=======
+      "records": 68,
+      "avg_speed": 22.53,
+>>>>>>> Stashed changes
       "std_speed": 3.3,
       "data": [
         {
@@ -154200,6 +155243,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -154210,14 +155254,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 276,
       "avg_speed": 20.88,
       "std_speed": 4.27,
+=======
+      "records": 272,
+      "avg_speed": 20.92,
+      "std_speed": 4.28,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -156938,6 +157990,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -156978,13 +158031,20 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 210 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 138,
       "avg_speed": 21.16,
+=======
+      "records": 136,
+      "avg_speed": 21.22,
+>>>>>>> Stashed changes
       "std_speed": 4.46,
       "data": [
         {
@@ -158346,6 +159406,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -158366,14 +159427,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.55
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 155 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 22.33,
       "std_speed": 3.44,
+=======
+      "records": 68,
+      "avg_speed": 22.37,
+      "std_speed": 3.45,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -159054,6 +160123,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -159064,14 +160134,22 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.505
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 166 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 23.12,
       "std_speed": 2.94,
+=======
+      "records": 68,
+      "avg_speed": 23.14,
+      "std_speed": 2.95,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -159752,6 +160830,7 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -159762,14 +160841,22 @@
           "free_flow": 40.0,
           "los": "D",
           "congestion_index": 0.46
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 457A Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 69,
       "avg_speed": 17.81,
       "std_speed": 4.4,
+=======
+      "records": 68,
+      "avg_speed": 17.86,
+      "std_speed": 4.42,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -160450,6 +161537,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -160460,13 +161548,20 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.64
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
     "Hẻm 412 Đường Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
+<<<<<<< Updated upstream
       "records": 138,
       "avg_speed": 19.25,
+=======
+      "records": 136,
+      "avg_speed": 19.26,
+>>>>>>> Stashed changes
       "std_speed": 3.19,
       "data": [
         {
@@ -161824,6 +162919,7 @@
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
+<<<<<<< Updated upstream
           "speed": 21.6,
           "free_flow": 40.0,
           "los": "D",
@@ -161844,6 +162940,8 @@
           "date": "2026-08-08",
           "hour": 20,
           "time_slot": "off_peak",
+=======
+>>>>>>> Stashed changes
           "speed": 21.6,
           "free_flow": 40.0,
           "los": "D",
@@ -233563,9 +234661,15 @@
     },
     "Hẻm 108/27 Đường Cộng Hòa": {
       "node_id": "N09_CONG_HOA",
+<<<<<<< Updated upstream
       "records": 60,
       "avg_speed": 20.06,
       "std_speed": 4.86,
+=======
+      "records": 59,
+      "avg_speed": 20.12,
+      "std_speed": 4.87,
+>>>>>>> Stashed changes
       "data": [
         {
           "session": "VN_auto_cron",
@@ -234156,6 +235260,7 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+<<<<<<< Updated upstream
         },
         {
           "session": "ub_cron_live",
@@ -234166,6 +235271,8 @@
           "free_flow": 40.0,
           "los": "C",
           "congestion_index": 0.595
+=======
+>>>>>>> Stashed changes
         }
       ]
     },
