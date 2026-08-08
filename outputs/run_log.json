@@ -1,28 +1,14 @@
 {
   "status": "ok",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  "run_start_utc": "2026-08-08T06:07:18.823300+00:00",
-  "run_end_utc": "2026-08-08T06:07:49.905535+00:00",
-  "elapsed_seconds": 31.08,
-=======
-  "run_start_utc": "2026-08-08T06:22:04.807660+00:00",
-  "run_end_utc": "2026-08-08T06:22:36.978167+00:00",
-  "elapsed_seconds": 32.17,
->>>>>>> Stashed changes
-  "sessions_found": 104,
-  "sessions_ok": 104,
-=======
-  "run_start_utc": "2026-08-08T06:40:07.174618+00:00",
-  "run_end_utc": "2026-08-08T06:40:22.710111+00:00",
-  "elapsed_seconds": 15.54,
-  "sessions_found": 106,
-  "sessions_ok": 106,
->>>>>>> Stashed changes
+  "run_start_utc": "2026-08-08T07:26:58.179253+00:00",
+  "run_end_utc": "2026-08-08T07:27:26.433768+00:00",
+  "elapsed_seconds": 28.25,
+  "sessions_found": 109,
+  "sessions_ok": 109,
   "sessions_failed": 0,
-  "total_rows": 34674,
+  "total_rows": 35646,
   "parquet_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/unified_traffic.parquet",
   "quality_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/quality_report.json",
   "index_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/session_index.csv",
-  "quality_overall": 0.9735
+  "quality_overall": 0.9723
 }
