@@ -79,7 +79,7 @@ jobs:
           else
             git commit -m "auto: update dashboard traffic data"
             for attempt in 1 2 3; do
-              git pull --rebase origin main
+              git pull --rebase --autostash origin main
               if git push origin main; then
                 exit 0
               fi
