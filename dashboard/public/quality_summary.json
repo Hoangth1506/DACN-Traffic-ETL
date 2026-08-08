@@ -4,6 +4,7 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
+<<<<<<< Updated upstream
   "fusion_coverage": 0.8491,
   "conflict_rate": 0.0,
   "unmatched_rate": 0.1509,
@@ -14,6 +15,18 @@
     "Node N09_CONG_HOA co OSM match thap: 44.5%",
     "Node N10_TRUONG_CHINH co OSM match thap: 37.9%",
     "Top node match risks: N10_TRUONG_CHINH=38.0%, N09_CONG_HOA=44.5%, N08_DIEN_BIEN_PHU=63.6%, N01_LY_THUONG_KIET=80.6%, N03_CMT8=82.4%"
+=======
+  "fusion_coverage": 0.8484,
+  "conflict_rate": 0.0,
+  "unmatched_rate": 0.1516,
+  "overall_score": 0.9743,
+  "issues": [
+    "Ty le unmatched OSM cao: 15.2%",
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 62.8%",
+    "Node N09_CONG_HOA co OSM match thap: 45.3%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 37.0%",
+    "Top node match risks: N10_TRUONG_CHINH=37.0%, N09_CONG_HOA=45.3%, N08_DIEN_BIEN_PHU=62.8%, N01_LY_THUONG_KIET=80.6%, N03_CMT8=82.4%"
+>>>>>>> Stashed changes
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -43,13 +56,21 @@
     "N05_TO_HIEN_THANH": {
       "records": 1560,
       "completeness": 0.9551,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.9,
+=======
+      "osm_match_pct": 0.8981,
+>>>>>>> Stashed changes
       "match_quality": "good"
     },
     "N06_NGUYEN_TRI_PHUONG": {
       "records": 1560,
       "completeness": 0.9551,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.9282,
+=======
+      "osm_match_pct": 0.9269,
+>>>>>>> Stashed changes
       "match_quality": "good"
     },
     "N07_SU_VAN_HANH": {
@@ -61,25 +82,41 @@
     "N08_DIEN_BIEN_PHU": {
       "records": 1560,
       "completeness": 0.9571,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.6359,
+=======
+      "osm_match_pct": 0.6276,
+>>>>>>> Stashed changes
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
       "records": 1560,
       "completeness": 0.9573,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.4449,
+=======
+      "osm_match_pct": 0.4526,
+>>>>>>> Stashed changes
       "match_quality": "poor"
     },
     "N10_TRUONG_CHINH": {
       "records": 1560,
       "completeness": 0.9573,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.3795,
+=======
+      "osm_match_pct": 0.3699,
+>>>>>>> Stashed changes
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
       "records": 1560,
       "completeness": 0.9583,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.925,
+=======
+      "osm_match_pct": 0.9224,
+>>>>>>> Stashed changes
       "match_quality": "good"
     },
     "N12_NGO_GIA_TU": {
@@ -103,7 +140,11 @@
     "N15_BA_HAT": {
       "records": 1560,
       "completeness": 0.9594,
+<<<<<<< Updated upstream
       "osm_match_pct": 0.9731,
+=======
+      "osm_match_pct": 0.9737,
+>>>>>>> Stashed changes
       "match_quality": "good"
     },
     "N16_NHAT_TAO": {
