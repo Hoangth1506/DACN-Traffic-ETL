@@ -78,8 +78,13 @@
         "std": 3.174
       },
       "N20_CUU_LONG": {
+<<<<<<< Updated upstream
         "mean": 20.865,
         "std": 2.889
+=======
+        "mean": 20.867,
+        "std": 2.887
+>>>>>>> Stashed changes
       },
       "N21_HO_BA_KIEN": {
         "mean": 20.026,
@@ -144,7 +149,11 @@
     },
     "congestion_detection_rate": 0.9585,
     "intra_session_velocity_spread_avg": 1.77,
+<<<<<<< Updated upstream
     "fusion_mae": 1.41,
+=======
+    "fusion_mae": 1.409,
+>>>>>>> Stashed changes
     "fusion_mape": 6.603
   },
   "group2_collection_performance": {
@@ -153,13 +162,21 @@
     "sessions_per_day_max": 25,
     "total_days": 14,
     "total_sessions": 115,
+<<<<<<< Updated upstream
     "collection_interval_avg_min": 168.84,
+=======
+    "collection_interval_avg_min": 168.93,
+>>>>>>> Stashed changes
     "collection_interval_p95_min": 636.39,
     "collection_interval_max_min": 745.92,
     "expected_sessions_per_day_at_5min": 288,
     "schedule_adherence_ratio": 1.0,
     "schedule_hit_rate_le_3min": 0.0088,
+<<<<<<< Updated upstream
     "missed_interval_estimate": 9509,
+=======
+    "missed_interval_estimate": 9514,
+>>>>>>> Stashed changes
     "camera_availability_avg": 1.0,
     "camera_availability_per_node": {
       "N01_LY_THUONG_KIET": 1.0,
@@ -187,10 +204,17 @@
     },
     "api_latency_per_camera_ms": 140,
     "api_latency_per_node_ms": 2081.0,
+<<<<<<< Updated upstream
     "api_latency_all_nodes_ms": 45776.0,
     "alert_response_estimate_ms": 2381.0,
     "data_freshness_score": 0.5829,
     "avg_image_quality": 0.9092,
+=======
+    "api_latency_all_nodes_ms": 45784.0,
+    "alert_response_estimate_ms": 2381.0,
+    "data_freshness_score": 0.5828,
+    "avg_image_quality": 0.9091,
+>>>>>>> Stashed changes
     "pct_high_quality": 1.0,
     "topology": {
       "nodes": 22,
