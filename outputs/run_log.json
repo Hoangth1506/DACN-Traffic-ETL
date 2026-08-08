@@ -1,28 +1,14 @@
 {
   "status": "ok",
-<<<<<<< Updated upstream
-  "run_start_utc": "2026-08-08T12:25:41.417749+00:00",
-  "run_end_utc": "2026-08-08T12:26:14.356064+00:00",
-  "elapsed_seconds": 32.94,
-  "sessions_found": 129,
-  "sessions_ok": 129,
+  "run_start_utc": "2026-08-08T13:54:20.836096+00:00",
+  "run_end_utc": "2026-08-08T13:55:00.594080+00:00",
+  "elapsed_seconds": 39.76,
+  "sessions_found": 133,
+  "sessions_ok": 133,
   "sessions_failed": 0,
-  "total_rows": 42180,
+  "total_rows": 43476,
   "parquet_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/unified_traffic.parquet",
   "quality_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/quality_report.json",
   "index_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/session_index.csv",
-  "quality_overall": 0.9661
-=======
-  "run_start_utc": "2026-08-08T12:49:52.437660+00:00",
-  "run_end_utc": "2026-08-08T12:50:18.846261+00:00",
-  "elapsed_seconds": 26.41,
-  "sessions_found": 130,
-  "sessions_ok": 130,
-  "sessions_failed": 0,
-  "total_rows": 42498,
-  "parquet_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/unified_traffic.parquet",
-  "quality_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/quality_report.json",
-  "index_path": "/home/runner/work/DACN-Traffic-ETL/DACN-Traffic-ETL/outputs/session_index.csv",
-  "quality_overall": 0.9659
->>>>>>> Stashed changes
+  "quality_overall": 0.9651
 }
