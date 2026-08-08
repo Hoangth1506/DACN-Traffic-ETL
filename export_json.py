@@ -69,8 +69,17 @@ def _clean(obj):
     return obj
 
 
+def _retain_recent(df: pd.DataFrame, days: int = 7, date_col: str = "date_str") -> pd.DataFrame:
+    """Return only rows from the last `days` days, based on `date_col`."""
+    if date_col not in df.columns:
+        return df
+    cutoff = pd.Timestamp.utcnow().normalize() - pd.Timedelta(days=days)
+    dates = pd.to_datetime(df[date_col], errors="coerce")
+    return df[dates >= cutoff]
+
+
 def export_traffic_data(df: pd.DataFrame, out_dir: Path) -> None:
-    """Export full records sang traffic_data.json."""
+    """Export full records sang traffic_data.json (last 7 days only)."""
     keep_cols = [
         "session_id", "node_id", "node_name", "sample_id",
         "matched_road_name", "osm_name", "highway",
@@ -86,6 +95,9 @@ def export_traffic_data(df: pd.DataFrame, out_dir: Path) -> None:
     ]
     cols = [c for c in keep_cols if c in df.columns]
     out = df[cols].copy()
+
+    # Retain only the last 7 days to keep file size within GitHub limits
+    out = _retain_recent(out)
 
     # Serialize
     for col in out.select_dtypes(include=["datetime64[ns]", "datetimetz"]).columns:
@@ -234,6 +246,8 @@ def export_camera_records(out_dir: Path) -> None:
             "segment_length_km", "delay_index", "speed_ratio", "extracted_at"]
     cols = [c for c in keep if c in df.columns]
     out = df[cols].copy()
+    # Retain only the last 7 days to keep file size within GitHub limits
+    out = _retain_recent(out)
     out["is_congested"] = out["is_congested"].fillna(False).astype(bool)
     out["osm_matched"]  = out["osm_matched"].fillna(False).astype(bool)
     records = _clean(out.replace({float("nan"): None}).to_dict(orient="records"))
