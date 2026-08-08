@@ -48,15 +48,20 @@ jobs:
         run: |
           python export_json.py
 
+      - name: Build Dashboard Dist
+        run: |
+          cd dashboard
+          npm ci --legacy-peer-deps
+          npm run build
+
       - name: Pull latest changes
         run: git pull --rebase --autostash origin main
 
       - name: Commit and Push Updated Data to GitHub
-        if: ${{ false }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f outputs dashboard/public
+          git add -f outputs dashboard/public dashboard/dist
 
           if git diff --cached --quiet; then
             echo "No output changes to commit"
