@@ -16,6 +16,7 @@ import {
   TimerReset,
   Radio,
   LayoutDashboard,
+  AlertTriangle,
 } from 'lucide-react'
 
 const TABS = [
@@ -96,6 +97,7 @@ export default function App() {
     aggregates,
     quality,
     loading,
+    error,
     filters,
     setFilters,
     resetFilters,
@@ -149,6 +151,27 @@ export default function App() {
           Đang kết nối luồng dữ liệu 22 Node Real-time...
         </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24, background: '#070a12' }}>
+        <div className="glass-panel" style={{ width: 'min(560px, 100%)', padding: 24, textAlign: 'center' }}>
+          <AlertTriangle size={40} color="#f59e0b" style={{ marginBottom: 12 }} />
+          <h1 className="font-display" style={{ fontSize: 20, marginBottom: 8 }}>Không thể tải dữ liệu dashboard</h1>
+          <p style={{ color: '#94a3b8', fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>{error}</p>
+          <button
+            type="button"
+            onClick={handleManualRefresh}
+            className="glass-card-interactive"
+            style={{ padding: '9px 16px', color: '#f8fafc', cursor: 'pointer', border: '1px solid rgba(6,182,212,0.4)' }}
+          >
+            <RefreshCw size={14} style={{ marginRight: 7, verticalAlign: 'middle' }} />
+            Thử tải lại
+          </button>
+        </div>
       </div>
     )
   }

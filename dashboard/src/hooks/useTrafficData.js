@@ -17,6 +17,21 @@ const DEFAULT_FILTERS = {
   maxSpeed: 100,
 }
 
+async function fetchJson(path, fallback) {
+  try {
+    const response = await fetch(path, { cache: 'no-store' })
+    if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`)
+    const text = await response.text()
+    if (text.includes('<<<<<<<') || text.includes('=======') || text.includes('>>>>>>>')) {
+      throw new Error(`${path}: dữ liệu còn conflict marker Git`)
+    }
+    return JSON.parse(text)
+  } catch (error) {
+    if (fallback !== undefined) return fallback
+    throw error
+  }
+}
+
 export function useTrafficData() {
   const [allData, setAllData]               = useState([])
   const [allCameraRecords, setAllCameras]   = useState([])
@@ -25,20 +40,20 @@ export function useTrafficData() {
   const [quality, setQuality]               = useState(null)
   const [perfMetrics, setPerfMetrics]       = useState(null)
   const [loading, setLoading]               = useState(true)
+  const [error, setError]                   = useState(null)
   const [filters, setFilters]               = useState(DEFAULT_FILTERS)
 
   const fetchData = useCallback(() => {
     const t = Date.now()
-    // Fetch from public folder locally
-    const BASE_URL = ''
+    setError(null)
     
     return Promise.all([
-      fetch(`${BASE_URL}/traffic_data.json?t=${t}`).then(r => r.json()),
-      fetch(`${BASE_URL}/aggregates.json?t=${t}`).then(r => r.json()),
-      fetch(`${BASE_URL}/quality_summary.json?t=${t}`).then(r => r.json()),
-      fetch(`${BASE_URL}/camera_records.json?t=${t}`).then(r => r.json()).catch(() => []),
-      fetch(`${BASE_URL}/node_states.json?t=${t}`).then(r => r.json()).catch(() => []),
-      fetch(`${BASE_URL}/performance_metrics.json?t=${t}`).then(r => r.json()).catch(() => null),
+      fetchJson(`/traffic_data.json?t=${t}`),
+      fetchJson(`/aggregates.json?t=${t}`),
+      fetchJson(`/quality_summary.json?t=${t}`),
+      fetchJson(`/camera_records.json?t=${t}`, []),
+      fetchJson(`/node_states.json?t=${t}`, []),
+      fetchJson(`/performance_metrics.json?t=${t}`, null),
     ]).then(([data, agg, qual, cams, ns, perf]) => {
       setAllData(data)
       setAllCameras(cams || [])
@@ -57,6 +72,7 @@ export function useTrafficData() {
       }))
     }).catch(err => {
       console.error('Failed to load data:', err)
+      setError(err instanceof Error ? err.message : String(err))
       setLoading(false)
     })
   }, [])
@@ -137,7 +153,7 @@ export function useTrafficData() {
     allData, filtered,
     cameraRecords, nodeStates, perfMetrics,
     allNodeStates,
-    aggregates, quality, loading,
+    aggregates, quality, loading, error,
     filters, setFilters, resetFilters,
     refetch: fetchData,
   }

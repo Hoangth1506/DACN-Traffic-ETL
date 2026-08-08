@@ -7,7 +7,13 @@ from pathlib import Path
 import pandas as pd
 
 from .config import load_etl_config, load_nodes
-from .extract import extract_osm_edges, extract_tomtom_flow, geocode_nodes, get_api_keys
+from .extract import (
+    extract_osm_edges,
+    extract_tomtom_flow,
+    geocode_nodes,
+    get_api_keys,
+    tomtom_collection_summary,
+)
 from .io import append_jsonl, append_table, ensure_dirs, write_json, write_table
 from .non_iid import distribution_stats, pairwise_non_iid_tests, write_svg_charts
 from .report import build_reports
@@ -38,6 +44,7 @@ def run_pipeline(
     geocoded_nodes = geocode_nodes(nodes, api_keys[0] if api_keys else None)
     slots = initial_collection_slots(etl) if not api_keys else None
     tomtom_records = extract_tomtom_flow(geocoded_nodes, etl, api_keys, dirs["raw"], slots)
+    tomtom_summary = tomtom_collection_summary(tomtom_records)
     osm_records = extract_osm_edges(geocoded_nodes, dirs["raw"])
     write_json(tomtom_records, dirs["raw"] / "tomtom_flow_records.json")
     write_json(geocoded_nodes, dirs["raw"] / "geocoded_nodes.json")
@@ -94,11 +101,11 @@ def run_pipeline(
         "is_official_collection_window": is_official_window,
         "collection_type": collection_type,
         "api_key_source": "TOMTOM_API_KEYS environment variable" if api_keys else "not_set",
-        "tomtom_mode": "live_current_flow" if api_keys else "synthetic_initial_history_fallback",
+        **tomtom_summary,
         "data_readiness_note": (
             "Live TomTom data collected from Traffic Flow API."
-            if api_keys
-            else "Synthetic fallback/backfill data for ETL testing only; not real TomTom traffic observations."
+            if tomtom_summary["tomtom_mode"] == "live_current_flow"
+            else "TomTom collection used fallback data for some or all samples; inspect live/fallback counts."
         ),
         "initial_history_days": etl.initial_history_days,
         "auto_collection_months": etl.auto_collection_months,

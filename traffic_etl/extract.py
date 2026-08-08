@@ -3,9 +3,9 @@ from __future__ import annotations
 import json
 import math
 import os
-import random
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import asdict
@@ -20,6 +20,7 @@ TOMTOM_FLOW_URL = (
     "absolute/22/json"
 )
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+TOMTOM_KEY_REJECTION_CODES = {401, 403, 429}
 
 
 def utc_now_iso() -> str:
@@ -38,11 +39,21 @@ def _get_json(url: str, params: dict[str, Any], timeout: int = 20) -> dict[str, 
         try:
             with urllib.request.urlopen(request, timeout=actual_timeout) as response:
                 return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            # Retrying the same key cannot fix authentication, permission or
+            # quota errors. Let the TomTom caller rotate to another key.
+            if exc.code in TOMTOM_KEY_REJECTION_CODES:
+                raise
+            if attempt == max_retries - 1:
+                print(f"API Error after {max_retries} attempts: HTTP {exc.code}")
+                raise
+            print(f"API Error HTTP {exc.code}, retrying {attempt + 1}/{max_retries}...")
+            time.sleep(2 ** attempt)
         except Exception as e:
             if attempt == max_retries - 1:
                 print(f"API Error after {max_retries} attempts: {e}")
-                raise e
-            print(f"API Error {e}, retrying {attempt+1}/{max_retries}...")
+                raise
+            print(f"API Error {e}, retrying {attempt + 1}/{max_retries}...")
             time.sleep(2 ** attempt)  # Chờ 1s, 2s trước khi thử lại
 
 
@@ -233,6 +244,9 @@ def extract_tomtom_flow(
     raw_dir.mkdir(parents=True, exist_ok=True)
     records: list[dict[str, Any]] = []
     extracted_at = utc_now_iso()
+    active_api_keys = list(dict.fromkeys(api_keys))
+    key_index = 0
+    exhausted_keys_reported = False
     for node in geocoded_nodes:
         for point in node_sample_points(node, etl):
             base = {
@@ -248,30 +262,56 @@ def extract_tomtom_flow(
                 "source_api": "TomTom Traffic Flow Segment Data API",
                 "extracted_at": extracted_at,
             }
-            if not api_keys:
+            if not active_api_keys:
+                if api_keys and not exhausted_keys_reported:
+                    print("All TomTom API keys were rejected; remaining samples use synthetic fallback.")
+                    exhausted_keys_reported = True
                 slots = synthetic_slots or [datetime.now(timezone.utc)]
                 for slot in slots:
+                    source_api = (
+                        "Synthetic fallback after all TomTom keys were rejected"
+                        if api_keys
+                        else "Synthetic fallback for initial history or missing TomTom key"
+                    )
                     records.append(
                         {
                             **base,
                             "source_name": "synthetic_fallback",
-                            "source_api": "Synthetic fallback for initial history or missing TomTom key",
+                            "source_api": source_api,
+                            "extract_error": "NoUsableTomTomApiKey" if api_keys else "",
                             "extracted_at": slot.astimezone(timezone.utc).replace(microsecond=0).isoformat(),
                             **_synthetic_flow(node["node_id"], point["sample_id"], slot),
                         }
                     )
                 continue
             try:
-                current_key = random.choice(api_keys)
                 print(f"Fetching TomTom data for {node['node_id']} {point['sample_id']}...")
-                data = _get_json(
-                    TOMTOM_FLOW_URL,
-                    {
-                        "key": current_key,
-                        "point": f"{point['lat']},{point['lon']}",
-                        "unit": "KMPH",
-                    },
-                )
+                data = None
+                last_key_error: Exception | None = None
+                while active_api_keys and data is None:
+                    key_index %= len(active_api_keys)
+                    current_key = active_api_keys[key_index]
+                    try:
+                        data = _get_json(
+                            TOMTOM_FLOW_URL,
+                            {
+                                "key": current_key,
+                                "point": f"{point['lat']},{point['lon']}",
+                                "unit": "KMPH",
+                            },
+                        )
+                        key_index = (key_index + 1) % len(active_api_keys)
+                    except urllib.error.HTTPError as exc:
+                        if exc.code not in TOMTOM_KEY_REJECTION_CODES:
+                            raise
+                        last_key_error = exc
+                        active_api_keys.pop(key_index)
+                        print(
+                            f"TomTom key rejected with HTTP {exc.code}; "
+                            f"{len(active_api_keys)} key(s) remain for this run."
+                        )
+                if data is None:
+                    raise last_key_error or RuntimeError("No usable TomTom API key remains")
                 raw_path = raw_dir / f"tomtom_flow_{node['node_id']}_{point['sample_id']}.json"
                 raw_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
                 segment = data.get("flowSegmentData", {})
@@ -288,6 +328,24 @@ def extract_tomtom_flow(
                     }
                 )
     return records
+
+
+def tomtom_collection_summary(records: list[dict[str, Any]]) -> dict[str, int | str]:
+    live_count = sum(1 for record in records if record.get("source_name") == "tomtom_flow")
+    fallback_count = sum(1 for record in records if record.get("source_name") == "synthetic_fallback")
+    if live_count and fallback_count:
+        mode = "mixed_live_and_fallback"
+    elif live_count:
+        mode = "live_current_flow"
+    elif fallback_count:
+        mode = "synthetic_fallback"
+    else:
+        mode = "empty"
+    return {
+        "tomtom_mode": mode,
+        "live_sample_count": live_count,
+        "fallback_sample_count": fallback_count,
+    }
 
 
 def _synthetic_flow(node_id: str, sample_id: int, slot: datetime | None = None) -> dict[str, Any]:
@@ -405,5 +463,7 @@ def get_api_keys() -> list[str]:
                     keys_str = value.strip().strip('"').strip("'")
                     break
     if keys_str:
-        return [k.strip() for k in keys_str.split(",") if k.strip()]
+        keys = [key.strip() for key in keys_str.split(",") if key.strip()]
+        keys = [key for key in keys if key != "put_your_tomtom_key_here"]
+        return list(dict.fromkeys(keys))
     return []

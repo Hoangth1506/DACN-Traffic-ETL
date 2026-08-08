@@ -9,7 +9,13 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 
 from .config import load_etl_config, load_nodes
-from .extract import extract_osm_edges, extract_tomtom_flow, geocode_nodes, get_api_keys
+from .extract import (
+    extract_osm_edges,
+    extract_tomtom_flow,
+    geocode_nodes,
+    get_api_keys,
+    tomtom_collection_summary,
+)
 from .io import append_jsonl, append_table, write_json
 from .schedule import parse_window
 
@@ -35,6 +41,7 @@ def run_raw_measurement(
 
     edge_nodes = geocode_nodes(nodes, api_keys[0] if api_keys else None)
     tomtom_records = extract_tomtom_flow(edge_nodes, etl, api_keys, run_dir)
+    tomtom_summary = tomtom_collection_summary(tomtom_records)
     osm_records = extract_osm_edges(edge_nodes, run_dir)
 
     write_json(edge_nodes, run_dir / "edge_nodes.json")
@@ -53,7 +60,8 @@ def run_raw_measurement(
         "collection_type": "manual_raw_measurement",
         "is_official_collection_window": official_window is not None,
         "official_window": official_window or "",
-        "tomtom_mode": "live_current_flow" if api_keys else "synthetic_fallback",
+        **tomtom_summary,
+        "api_key_count": len(api_keys),
         "node_count": len(edge_nodes),
         "sample_count": len(tomtom_records),
         "raw_dir": str(run_dir),
@@ -134,6 +142,11 @@ def main() -> None:
     parser.add_argument("--nodes", default="config/nodes.yaml")
     parser.add_argument("--etl", default="config/etl.yaml")
     parser.add_argument("--base-dir", default="outputs/raw_measurements")
+    parser.add_argument(
+        "--require-live",
+        action="store_true",
+        help="Fail when no live TomTom sample can be collected.",
+    )
     args = parser.parse_args()
     metadata = run_raw_measurement(
         measurement_label=args.measurement_label,
@@ -146,3 +159,7 @@ def main() -> None:
     print(f"measurement_id={metadata['measurement_id']}")
     print(f"raw_dir={metadata['raw_dir']}")
     print(f"tomtom_mode={metadata['tomtom_mode']}")
+    print(f"live_sample_count={metadata['live_sample_count']}")
+    print(f"fallback_sample_count={metadata['fallback_sample_count']}")
+    if args.require_live and metadata["live_sample_count"] == 0:
+        raise SystemExit("No live TomTom samples were collected; dashboard data was not published.")

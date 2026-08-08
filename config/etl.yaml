@@ -1,5 +1,6 @@
 sampling:
-  sample_points_per_node: 15
+  # Three corridor samples per node keeps the live collection within a normal API quota.
+  sample_points_per_node: 3
   sample_radius_m: 600
   recency_window_minutes: 30
 collection:
