@@ -78,8 +78,13 @@
         "std": 3.148
       },
       "N20_CUU_LONG": {
+<<<<<<< Updated upstream
         "mean": 21.031,
         "std": 2.877
+=======
+        "mean": 21.033,
+        "std": 2.875
+>>>>>>> Stashed changes
       },
       "N21_HO_BA_KIEN": {
         "mean": 20.138,
@@ -153,13 +158,21 @@
     "sessions_per_day_max": 19,
     "total_days": 14,
     "total_sessions": 109,
+<<<<<<< Updated upstream
     "collection_interval_avg_min": 177.3,
+=======
+    "collection_interval_avg_min": 177.34,
+>>>>>>> Stashed changes
     "collection_interval_p95_min": 636.87,
     "collection_interval_max_min": 745.92,
     "expected_sessions_per_day_at_5min": 288,
     "schedule_adherence_ratio": 1.0,
     "schedule_hit_rate_le_3min": 0.0,
+<<<<<<< Updated upstream
     "missed_interval_estimate": 9465,
+=======
+    "missed_interval_estimate": 9467,
+>>>>>>> Stashed changes
     "camera_availability_avg": 1.0,
     "camera_availability_per_node": {
       "N01_LY_THUONG_KIET": 1.0,
@@ -187,9 +200,15 @@
     },
     "api_latency_per_camera_ms": 140,
     "api_latency_per_node_ms": 2081.0,
+<<<<<<< Updated upstream
     "api_latency_all_nodes_ms": 45784.0,
     "alert_response_estimate_ms": 2381.0,
     "data_freshness_score": 0.6149,
+=======
+    "api_latency_all_nodes_ms": 45792.0,
+    "alert_response_estimate_ms": 2381.0,
+    "data_freshness_score": 0.6148,
+>>>>>>> Stashed changes
     "avg_image_quality": 0.9227,
     "pct_high_quality": 1.0,
     "topology": {
@@ -452,7 +471,7 @@
             "N22_BAC_HAI"
           ],
           "coverage_pct": 95.5,
-          "speed_impact_pct": 0.01,
+          "speed_impact_pct": 0.02,
           "resilience_score": 0.9544
         },
         "N09_CONG_HOA": {
