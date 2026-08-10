@@ -1,4 +1,4 @@
-name: Traffic ETL Raw Collection
+name: Unified 24/7 Traffic ETL Pipeline
 
 on:
   workflow_dispatch:
@@ -19,26 +19,43 @@ on:
     - cron: "*/5 * * * *"
 
 concurrency:
-  group: traffic-etl-raw-collection
+  group: traffic-etl-pipeline
   cancel-in-progress: true
 
 jobs:
-  collect:
+  collect-etl-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
+
+      - name: Install Node Dependencies
+        run: |
+          cd dashboard
+          npm ci --legacy-peer-deps
 
       - name: Cache OSM Data
         uses: actions/cache@v4
@@ -75,16 +92,48 @@ jobs:
           echo "Executing: $CMD"
           eval $CMD
 
-      - name: Commit raw measurement outputs
+      - name: Run ETL Data Generation
+        run: |
+          python generate_data.py
+
+      - name: Export Public JSON Files
+        run: |
+          python export_json.py
+
+      - name: Validate dashboard JSON artifacts
+        run: |
+          python scripts/validate_dashboard_json.py dashboard/public
+
+      - name: Build Dashboard Dist
+        run: |
+          cd dashboard
+          npm run build
+
+      - name: Validate built dashboard JSON artifacts
+        run: |
+          python scripts/validate_dashboard_json.py dashboard/dist
+
+      - name: Commit and Push All Data to GitHub
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase --autostash origin main
+          
+          # Stage both raw data and dashboard outputs
           git add -f outputs/raw_measurements
+          git add -f dashboard/public dashboard/dist
 
           if git diff --cached --quiet; then
             echo "No output changes to commit"
           else
-            git commit -m "Collect raw traffic measurement: ${{ inputs.measurement_label || 'auto_scheduled' }} [skip ci]"
-            git push origin main
+            git commit -m "auto: unified etl & dashboard update [skip ci]"
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash origin main
+              if git push origin main; then
+                exit 0
+              fi
+              echo "Push attempt ${attempt} failed; retrying..."
+              sleep $((attempt * 3))
+            done
+            echo "Unable to push unified artifacts after 3 attempts"
+            exit 1
           fi
