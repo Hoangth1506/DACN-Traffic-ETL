@@ -1,153 +1,153 @@
 {
-  "total_records": 65640,
-  "completeness_score": 0.9438,
+  "total_records": 65706,
+  "completeness_score": 0.9439,
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.8647,
+  "fusion_coverage": 0.8648,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.1353,
-  "overall_score": 0.9724,
+  "unmatched_rate": 0.1352,
+  "overall_score": 0.9725,
   "issues": [
-    "Field 'centroid_lat' có tỷ lệ null cao: 25.3%",
-    "Field 'centroid_lon' có tỷ lệ null cao: 25.3%",
+    "Field 'centroid_lat' có tỷ lệ null cao: 25.2%",
+    "Field 'centroid_lon' có tỷ lệ null cao: 25.2%",
     "Ty le unmatched OSM cao: 13.5%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 63.1%",
-    "Node N09_CONG_HOA co OSM match thap: 64.6%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 43.0%",
-    "Top node match risks: N10_TRUONG_CHINH=43.0%, N08_DIEN_BIEN_PHU=63.1%, N09_CONG_HOA=64.6%, N03_CMT8=77.9%, N22_BAC_HAI=80.7%"
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 63.2%",
+    "Node N09_CONG_HOA co OSM match thap: 64.7%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 43.2%",
+    "Top node match risks: N10_TRUONG_CHINH=43.2%, N08_DIEN_BIEN_PHU=63.2%, N09_CONG_HOA=64.7%, N03_CMT8=77.9%, N22_BAC_HAI=80.6%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
-      "osm_match_pct": 0.8778,
+      "osm_match_pct": 0.8779,
       "match_quality": "good"
     },
     "N02_BA_THANG_HAI": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
-      "osm_match_pct": 0.9101,
+      "osm_match_pct": 0.9102,
       "match_quality": "good"
     },
     "N03_CMT8": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
-      "osm_match_pct": 0.7792,
+      "osm_match_pct": 0.7791,
       "match_quality": "watch"
     },
     "N04_THANH_THAI": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
-      "osm_match_pct": 0.8701,
+      "osm_match_pct": 0.8703,
       "match_quality": "good"
     },
     "N05_TO_HIEN_THANH": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
       "osm_match_pct": 0.9351,
       "match_quality": "good"
     },
     "N06_NGUYEN_TRI_PHUONG": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
-      "osm_match_pct": 0.9527,
+      "osm_match_pct": 0.9528,
       "match_quality": "good"
     },
     "N07_SU_VAN_HANH": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9423,
-      "osm_match_pct": 0.8565,
+      "osm_match_pct": 0.8563,
       "match_quality": "good"
     },
     "N08_DIEN_BIEN_PHU": {
-      "records": 3003,
-      "completeness": 0.9433,
-      "osm_match_pct": 0.6314,
+      "records": 3006,
+      "completeness": 0.9434,
+      "osm_match_pct": 0.6317,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9434,
-      "osm_match_pct": 0.6464,
+      "osm_match_pct": 0.6467,
       "match_quality": "poor"
     },
     "N10_TRUONG_CHINH": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9434,
-      "osm_match_pct": 0.4299,
+      "osm_match_pct": 0.4321,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
-      "records": 3003,
-      "completeness": 0.9439,
-      "osm_match_pct": 0.953,
+      "records": 3006,
+      "completeness": 0.944,
+      "osm_match_pct": 0.9531,
       "match_quality": "good"
     },
     "N12_NGO_GIA_TU": {
-      "records": 3003,
-      "completeness": 0.9445,
-      "osm_match_pct": 0.9174,
+      "records": 3006,
+      "completeness": 0.9446,
+      "osm_match_pct": 0.9175,
       "match_quality": "good"
     },
     "N13_VINH_VIEN": {
-      "records": 3003,
-      "completeness": 0.9445,
+      "records": 3006,
+      "completeness": 0.9446,
       "osm_match_pct": 1.0,
       "match_quality": "good"
     },
     "N14_HOA_HAO": {
-      "records": 3003,
-      "completeness": 0.9445,
+      "records": 3006,
+      "completeness": 0.9446,
       "osm_match_pct": 0.979,
       "match_quality": "good"
     },
     "N15_BA_HAT": {
-      "records": 3003,
-      "completeness": 0.9445,
+      "records": 3006,
+      "completeness": 0.9446,
       "osm_match_pct": 0.9827,
       "match_quality": "good"
     },
     "N16_NHAT_TAO": {
-      "records": 3003,
-      "completeness": 0.9435,
-      "osm_match_pct": 0.8775,
+      "records": 3006,
+      "completeness": 0.9436,
+      "osm_match_pct": 0.8772,
       "match_quality": "good"
     },
     "N17_TRAN_NHAN_TON": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9434,
       "osm_match_pct": 0.9647,
       "match_quality": "good"
     },
     "N18_NGUYEN_LAM": {
-      "records": 3003,
-      "completeness": 0.9442,
+      "records": 3006,
+      "completeness": 0.9443,
       "osm_match_pct": 0.9431,
       "match_quality": "good"
     },
     "N19_DONG_NAI": {
-      "records": 3003,
-      "completeness": 0.9445,
+      "records": 3006,
+      "completeness": 0.9446,
       "osm_match_pct": 0.9441,
       "match_quality": "good"
     },
     "N20_CUU_LONG": {
-      "records": 2577,
-      "completeness": 0.9534,
-      "osm_match_pct": 0.8522,
+      "records": 2580,
+      "completeness": 0.9535,
+      "osm_match_pct": 0.8519,
       "match_quality": "good"
     },
     "N21_HO_BA_KIEN": {
-      "records": 3003,
-      "completeness": 0.9445,
-      "osm_match_pct": 0.9118,
+      "records": 3006,
+      "completeness": 0.9446,
+      "osm_match_pct": 0.9115,
       "match_quality": "good"
     },
     "N22_BAC_HAI": {
-      "records": 3003,
+      "records": 3006,
       "completeness": 0.9443,
-      "osm_match_pct": 0.8065,
+      "osm_match_pct": 0.8061,
       "match_quality": "watch"
     }
   }
