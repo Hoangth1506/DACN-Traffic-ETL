@@ -27,12 +27,12 @@ def utc_now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def _get_json(url: str, params: dict[str, Any], timeout: int = 20) -> dict[str, Any]:
+def _get_json(url: str, params: dict[str, Any], timeout: int = 8) -> dict[str, Any]:
     full_url = f"{url}?{urllib.parse.urlencode(params)}"
     request = urllib.request.Request(full_url, headers={"User-Agent": "DACN-traffic-etl/1.0"})
     
     is_overpass = "overpass" in url
-    max_retries = 1 if is_overpass else 3
+    max_retries = 1 if is_overpass else 2
     actual_timeout = 10 if is_overpass else timeout
 
     for attempt in range(max_retries):
