@@ -176,8 +176,8 @@ def run_pipeline(
     # Discover sessions
     sessions = discover_sessions(raw_dir)
     if limit:
-        sessions = sessions[:limit]
-        logger.info("Giới hạn xử lý: %d sessions đầu tiên", limit)
+        sessions = sessions[-limit:]
+        logger.info("Giới hạn xử lý: %d sessions mới nhất", limit)
 
     if not sessions:
         logger.error("Không tìm thấy sessions nào — kiểm tra lại raw_dir")

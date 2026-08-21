@@ -94,7 +94,7 @@ jobs:
 
       - name: Run ETL Data Generation
         run: |
-          python generate_data.py
+          python generate_data.py --limit 432
 
       - name: Export Public JSON Files
         run: |
