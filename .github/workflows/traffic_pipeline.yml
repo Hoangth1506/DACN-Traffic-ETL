@@ -77,7 +77,7 @@ jobs:
             fi
           fi
 
-          CMD="python run_raw_measurement.py --require-live --measurement-label \"$LABEL\""
+          CMD="python run_raw_measurement.py --measurement-label \"$LABEL\""
           DATE="${{ inputs.measurement_date }}"
           TIME="${{ inputs.measurement_time }}"
 
