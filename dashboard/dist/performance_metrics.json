@@ -2,107 +2,107 @@
   "group1_fusion_accuracy": {
     "fused_velocity_per_node": {
       "N01_LY_THUONG_KIET": {
-        "mean": 24.249,
-        "std": 5.645
+        "mean": 24.225,
+        "std": 5.637
       },
       "N02_BA_THANG_HAI": {
-        "mean": 30.139,
-        "std": 5.151
+        "mean": 30.097,
+        "std": 5.173
       },
       "N03_CMT8": {
-        "mean": 26.331,
-        "std": 5.14
+        "mean": 26.295,
+        "std": 5.141
       },
       "N04_THANH_THAI": {
-        "mean": 24.916,
-        "std": 4.592
+        "mean": 24.89,
+        "std": 4.597
       },
       "N05_TO_HIEN_THANH": {
-        "mean": 23.705,
+        "mean": 23.68,
         "std": 4.412
       },
       "N06_NGUYEN_TRI_PHUONG": {
-        "mean": 26.033,
-        "std": 5.523
+        "mean": 25.993,
+        "std": 5.517
       },
       "N07_SU_VAN_HANH": {
-        "mean": 22.885,
-        "std": 5.885
+        "mean": 22.856,
+        "std": 5.875
       },
       "N08_DIEN_BIEN_PHU": {
-        "mean": 24.496,
+        "mean": 24.468,
         "std": 5.432
       },
       "N09_CONG_HOA": {
-        "mean": 29.265,
-        "std": 6.014
+        "mean": 29.222,
+        "std": 6.026
       },
       "N10_TRUONG_CHINH": {
-        "mean": 31.185,
-        "std": 5.886
+        "mean": 31.137,
+        "std": 5.907
       },
       "N11_LE_HONG_PHONG": {
-        "mean": 20.768,
-        "std": 3.882
+        "mean": 20.767,
+        "std": 3.883
       },
       "N12_NGO_GIA_TU": {
-        "mean": 28.551,
-        "std": 5.033
+        "mean": 28.508,
+        "std": 5.041
       },
       "N13_VINH_VIEN": {
-        "mean": 24.739,
-        "std": 4.002
+        "mean": 24.715,
+        "std": 4.009
       },
       "N14_HOA_HAO": {
-        "mean": 25.978,
-        "std": 3.268
+        "mean": 25.955,
+        "std": 3.287
       },
       "N15_BA_HAT": {
-        "mean": 24.329,
-        "std": 3.592
+        "mean": 24.312,
+        "std": 3.603
       },
       "N16_NHAT_TAO": {
-        "mean": 26.106,
-        "std": 3.817
+        "mean": 26.076,
+        "std": 3.827
       },
       "N17_TRAN_NHAN_TON": {
-        "mean": 31.699,
-        "std": 4.108
+        "mean": 31.661,
+        "std": 4.155
       },
       "N18_NGUYEN_LAM": {
-        "mean": 24.977,
-        "std": 5.131
+        "mean": 24.943,
+        "std": 5.127
       },
       "N19_DONG_NAI": {
-        "mean": 24.644,
-        "std": 3.796
+        "mean": 24.617,
+        "std": 3.8
       },
       "N20_CUU_LONG": {
-        "mean": 25.407,
-        "std": 3.366
+        "mean": 25.378,
+        "std": 3.374
       },
       "N21_HO_BA_KIEN": {
-        "mean": 23.487,
-        "std": 4.677
+        "mean": 23.458,
+        "std": 4.67
       },
       "N22_BAC_HAI": {
-        "mean": 24.683,
-        "std": 3.736
+        "mean": 24.664,
+        "std": 3.747
       }
     },
-    "overall_velocity_mean": 25.84,
+    "overall_velocity_mean": 25.81,
     "overall_velocity_std": 5.42,
-    "camera_agreement_rate_avg": 0.9741,
+    "camera_agreement_rate_avg": 0.9737,
     "camera_agreement_per_node": {
-      "N01_LY_THUONG_KIET": 0.9969,
+      "N01_LY_THUONG_KIET": 0.9946,
       "N02_BA_THANG_HAI": 0.9792,
-      "N03_CMT8": 0.973,
+      "N03_CMT8": 0.9684,
       "N04_THANH_THAI": 0.9992,
       "N05_TO_HIEN_THANH": 1.0,
       "N06_NGUYEN_TRI_PHUONG": 0.9884,
       "N07_SU_VAN_HANH": 0.9761,
-      "N08_DIEN_BIEN_PHU": 0.9375,
-      "N09_CONG_HOA": 0.9722,
+      "N08_DIEN_BIEN_PHU": 0.9383,
+      "N09_CONG_HOA": 0.9699,
       "N10_TRUONG_CHINH": 0.973,
       "N11_LE_HONG_PHONG": 1.0,
       "N12_NGO_GIA_TU": 0.9282,
@@ -113,53 +113,53 @@
       "N17_TRAN_NHAN_TON": 0.8534,
       "N18_NGUYEN_LAM": 0.9992,
       "N19_DONG_NAI": 0.9985,
-      "N20_CUU_LONG": 0.9352,
+      "N20_CUU_LONG": 0.936,
       "N21_HO_BA_KIEN": 0.99,
       "N22_BAC_HAI": 0.9306
     },
-    "confidence_avg": 0.831,
+    "confidence_avg": 0.8302,
     "confidence_per_node": {
-      "N01_LY_THUONG_KIET": 0.8917,
-      "N02_BA_THANG_HAI": 0.8966,
-      "N03_CMT8": 0.8918,
-      "N04_THANH_THAI": 0.8336,
-      "N05_TO_HIEN_THANH": 0.7917,
-      "N06_NGUYEN_TRI_PHUONG": 0.8101,
-      "N07_SU_VAN_HANH": 0.8378,
-      "N08_DIEN_BIEN_PHU": 0.8765,
-      "N09_CONG_HOA": 0.9,
-      "N10_TRUONG_CHINH": 0.8807,
-      "N11_LE_HONG_PHONG": 0.7987,
-      "N12_NGO_GIA_TU": 0.825,
-      "N13_VINH_VIEN": 0.8146,
-      "N14_HOA_HAO": 0.8172,
-      "N15_BA_HAT": 0.8103,
-      "N16_NHAT_TAO": 0.8569,
-      "N17_TRAN_NHAN_TON": 0.8126,
-      "N18_NGUYEN_LAM": 0.8618,
-      "N19_DONG_NAI": 0.7623,
-      "N20_CUU_LONG": 0.7583,
-      "N21_HO_BA_KIEN": 0.7862,
-      "N22_BAC_HAI": 0.767
+      "N01_LY_THUONG_KIET": 0.8908,
+      "N02_BA_THANG_HAI": 0.8957,
+      "N03_CMT8": 0.8909,
+      "N04_THANH_THAI": 0.8329,
+      "N05_TO_HIEN_THANH": 0.791,
+      "N06_NGUYEN_TRI_PHUONG": 0.8093,
+      "N07_SU_VAN_HANH": 0.8371,
+      "N08_DIEN_BIEN_PHU": 0.8758,
+      "N09_CONG_HOA": 0.8992,
+      "N10_TRUONG_CHINH": 0.8799,
+      "N11_LE_HONG_PHONG": 0.7981,
+      "N12_NGO_GIA_TU": 0.8242,
+      "N13_VINH_VIEN": 0.8139,
+      "N14_HOA_HAO": 0.8165,
+      "N15_BA_HAT": 0.8096,
+      "N16_NHAT_TAO": 0.8561,
+      "N17_TRAN_NHAN_TON": 0.812,
+      "N18_NGUYEN_LAM": 0.8609,
+      "N19_DONG_NAI": 0.7616,
+      "N20_CUU_LONG": 0.7577,
+      "N21_HO_BA_KIEN": 0.7855,
+      "N22_BAC_HAI": 0.7665
     },
     "congestion_detection_rate": 0.9742,
     "intra_session_velocity_spread_avg": 0.91,
     "fusion_mae": 0.658,
-    "fusion_mape": 2.583
+    "fusion_mape": 2.585
   },
   "group2_collection_performance": {
     "sessions_per_day_avg": 28.8,
-    "sessions_per_day_min": 10,
+    "sessions_per_day_min": 11,
     "sessions_per_day_max": 41,
     "total_days": 15,
     "total_sessions": 432,
-    "collection_interval_avg_min": 47.3,
+    "collection_interval_avg_min": 47.28,
     "collection_interval_p95_min": 98.61,
     "collection_interval_max_min": 304.75,
     "expected_sessions_per_day_at_5min": 288,
     "schedule_adherence_ratio": 1.0,
     "schedule_hit_rate_le_3min": 0.0,
-    "missed_interval_estimate": 9761,
+    "missed_interval_estimate": 9756,
     "camera_availability_avg": 1.0,
     "camera_availability_per_node": {
       "N01_LY_THUONG_KIET": 1.0,
@@ -190,7 +190,7 @@
     "api_latency_all_nodes_ms": 9240.0,
     "alert_response_estimate_ms": 720.0,
     "data_freshness_score": 0.3681,
-    "avg_image_quality": 0.9992,
+    "avg_image_quality": 0.9983,
     "pct_high_quality": 1.0,
     "topology": {
       "nodes": 22,
@@ -213,15 +213,15 @@
   "group4_robustness": {
     "scenario_a_camera_dropout": {
       "description": "Xoa 1 camera yeu nhat khoi node, tinh lai fused_velocity",
-      "avg_velocity_delta_pct": 1.39,
+      "avg_velocity_delta_pct": 1.4,
       "max_velocity_delta_pct": 10.13,
-      "resilience_score": 0.9861,
+      "resilience_score": 0.986,
       "n_simulations": 9504
     },
     "scenario_b_quality_degradation": {
       "description": "Giam nguong image_quality tu 0.5 xuong 0.3 (anh mo/nhieu)",
-      "confidence_normal": 0.831,
-      "confidence_degraded": 0.831,
+      "confidence_normal": 0.8302,
+      "confidence_degraded": 0.8302,
       "confidence_drop_pct": 0.0,
       "availability_normal": 1.0,
       "availability_degraded": 1.0,
@@ -536,8 +536,8 @@
             "N22_BAC_HAI"
           ],
           "coverage_pct": 95.5,
-          "speed_impact_pct": 0.94,
-          "resilience_score": 0.9456
+          "speed_impact_pct": 0.93,
+          "resilience_score": 0.9457
         },
         "N12_NGO_GIA_TU": {
           "remaining_nodes": [
@@ -620,7 +620,7 @@
             "N22_BAC_HAI"
           ],
           "coverage_pct": 95.5,
-          "speed_impact_pct": 0.02,
+          "speed_impact_pct": 0.03,
           "resilience_score": 0.9543
         },
         "N15_BA_HAT": {
@@ -705,7 +705,7 @@
           ],
           "coverage_pct": 95.5,
           "speed_impact_pct": 1.08,
-          "resilience_score": 0.9442
+          "resilience_score": 0.9443
         },
         "N18_NGUYEN_LAM": {
           "remaining_nodes": [
