@@ -4,17 +4,17 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.8884,
+  "fusion_coverage": 0.8885,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.1116,
+  "unmatched_rate": 0.1115,
   "overall_score": 0.9888,
   "issues": [
-    "Ty le unmatched OSM cao: 11.2%",
+    "Ty le unmatched OSM cao: 11.1%",
     "Node N03_CMT8 co OSM match thap: 66.7%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.7%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 57.2%",
-    "Node N22_BAC_HAI co OSM match thap: 65.4%",
-    "Top node match risks: N10_TRUONG_CHINH=57.2%, N08_DIEN_BIEN_PHU=60.7%, N22_BAC_HAI=65.4%, N03_CMT8=66.7%, N04_THANH_THAI=74.2%"
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 61.0%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 57.3%",
+    "Node N22_BAC_HAI co OSM match thap: 65.3%",
+    "Top node match risks: N10_TRUONG_CHINH=57.2%, N08_DIEN_BIEN_PHU=61.0%, N22_BAC_HAI=65.3%, N03_CMT8=66.7%, N04_THANH_THAI=74.2%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -56,13 +56,13 @@
     "N07_SU_VAN_HANH": {
       "records": 1296,
       "completeness": 1.0,
-      "osm_match_pct": 0.8573,
+      "osm_match_pct": 0.858,
       "match_quality": "good"
     },
     "N08_DIEN_BIEN_PHU": {
       "records": 1296,
       "completeness": 1.0,
-      "osm_match_pct": 0.6073,
+      "osm_match_pct": 0.6096,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -74,7 +74,7 @@
     "N10_TRUONG_CHINH": {
       "records": 1296,
       "completeness": 1.0,
-      "osm_match_pct": 0.5718,
+      "osm_match_pct": 0.5725,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -140,13 +140,13 @@
     "N21_HO_BA_KIEN": {
       "records": 1296,
       "completeness": 0.9995,
-      "osm_match_pct": 0.9375,
+      "osm_match_pct": 0.9383,
       "match_quality": "good"
     },
     "N22_BAC_HAI": {
       "records": 1296,
       "completeness": 0.999,
-      "osm_match_pct": 0.6543,
+      "osm_match_pct": 0.6528,
       "match_quality": "poor"
     }
   }
