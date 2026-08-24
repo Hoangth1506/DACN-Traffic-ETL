@@ -11,10 +11,10 @@
   "issues": [
     "Ty le unmatched OSM cao: 11.1%",
     "Node N03_CMT8 co OSM match thap: 66.7%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.3%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 58.5%",
-    "Node N22_BAC_HAI co OSM match thap: 66.2%",
-    "Top node match risks: N10_TRUONG_CHINH=58.5%, N08_DIEN_BIEN_PHU=60.3%, N22_BAC_HAI=66.2%, N03_CMT8=66.7%, N04_THANH_THAI=73.7%"
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.4%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 58.6%",
+    "Node N22_BAC_HAI co OSM match thap: 66.0%",
+    "Top node match risks: N10_TRUONG_CHINH=58.6%, N08_DIEN_BIEN_PHU=60.4%, N22_BAC_HAI=66.0%, N03_CMT8=66.7%, N04_THANH_THAI=73.7%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -56,13 +56,13 @@
     "N07_SU_VAN_HANH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8603,
+      "osm_match_pct": 0.8611,
       "match_quality": "good"
     },
     "N08_DIEN_BIEN_PHU": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6026,
+      "osm_match_pct": 0.6042,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -74,7 +74,7 @@
     "N10_TRUONG_CHINH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.5849,
+      "osm_match_pct": 0.5856,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -110,7 +110,7 @@
     "N16_NHAT_TAO": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8488,
+      "osm_match_pct": 0.848,
       "match_quality": "watch"
     },
     "N17_TRAN_NHAN_TON": {
@@ -134,7 +134,7 @@
     "N20_CUU_LONG": {
       "records": 1296,
       "completeness": 0.9964,
-      "osm_match_pct": 0.8256,
+      "osm_match_pct": 0.8248,
       "match_quality": "watch"
     },
     "N21_HO_BA_KIEN": {
@@ -146,7 +146,7 @@
     "N22_BAC_HAI": {
       "records": 1296,
       "completeness": 0.9959,
-      "osm_match_pct": 0.662,
+      "osm_match_pct": 0.6605,
       "match_quality": "poor"
     }
   }
