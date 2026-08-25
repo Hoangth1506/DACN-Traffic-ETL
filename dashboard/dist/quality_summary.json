@@ -4,17 +4,17 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.8913,
+  "fusion_coverage": 0.8915,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.1087,
-  "overall_score": 0.9883,
+  "unmatched_rate": 0.1085,
+  "overall_score": 0.9884,
   "issues": [
-    "Ty le unmatched OSM cao: 10.9%",
+    "Ty le unmatched OSM cao: 10.8%",
     "Node N03_CMT8 co OSM match thap: 66.7%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.6%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 60.9%",
-    "Node N22_BAC_HAI co OSM match thap: 67.6%",
-    "Top node match risks: N08_DIEN_BIEN_PHU=60.6%, N10_TRUONG_CHINH=60.9%, N03_CMT8=66.7%, N22_BAC_HAI=67.6%, N04_THANH_THAI=73.5%"
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.5%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 61.2%",
+    "Node N22_BAC_HAI co OSM match thap: 67.7%",
+    "Top node match risks: N08_DIEN_BIEN_PHU=60.5%, N10_TRUONG_CHINH=61.2%, N03_CMT8=66.7%, N22_BAC_HAI=67.8%, N04_THANH_THAI=73.5%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -62,7 +62,7 @@
     "N08_DIEN_BIEN_PHU": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6057,
+      "osm_match_pct": 0.6049,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -74,7 +74,7 @@
     "N10_TRUONG_CHINH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6088,
+      "osm_match_pct": 0.6119,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -110,7 +110,7 @@
     "N16_NHAT_TAO": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.848,
+      "osm_match_pct": 0.8488,
       "match_quality": "watch"
     },
     "N17_TRAN_NHAN_TON": {
@@ -134,7 +134,7 @@
     "N20_CUU_LONG": {
       "records": 1296,
       "completeness": 0.9964,
-      "osm_match_pct": 0.8272,
+      "osm_match_pct": 0.8264,
       "match_quality": "watch"
     },
     "N21_HO_BA_KIEN": {
@@ -146,7 +146,7 @@
     "N22_BAC_HAI": {
       "records": 1296,
       "completeness": 0.9959,
-      "osm_match_pct": 0.6759,
+      "osm_match_pct": 0.6775,
       "match_quality": "poor"
     }
   }
