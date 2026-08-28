@@ -1,8 +1,12 @@
-import { useState, useEffect, memo, lazy, Suspense } from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useDashboardData } from './api/queries'
-import { useDashboardStore } from './store/dashboardStore'
-import type { DashboardData, TrafficNode } from '@types/index'
+import { useState, useEffect, memo } from 'react'
+import { useTrafficData } from './hooks/useTrafficData'
+import Sidebar from './components/Sidebar'
+import MapView from './components/MapView'
+import KPIPanel from './components/KPIPanel'
+import VelocityPanel from './components/VelocityPanel'
+import SystemMetrics from './components/SystemMetrics'
+import PerformancePanel from './components/PerformancePanel'
+import EvaluationPanel from './components/EvaluationPanel'
 import {
   Clock,
   RefreshCw,
@@ -15,22 +19,7 @@ import {
   AlertTriangle,
 } from 'lucide-react'
 
-// Lazy load heavy components
-const Sidebar = lazy(() => import('./components/Sidebar'))
-const MapView = lazy(() => import('./components/MapView'))
-const KPIPanel = lazy(() => import('./components/KPIPanel'))
-const VelocityPanel = lazy(() => import('./components/VelocityPanel'))
-const SystemMetrics = lazy(() => import('./components/SystemMetrics'))
-const PerformancePanel = lazy(() => import('./components/PerformancePanel'))
-const EvaluationPanel = lazy(() => import('./components/EvaluationPanel'))
-
-interface Tab {
-  id: string
-  label: string
-  icon: string
-}
-
-const TABS: Tab[] = [
+const TABS = [
   { id: 'map', label: 'Bản đồ Giao thông GIS', icon: '🗺️' },
   { id: 'kpi', label: 'Biểu đồ Vận tốc Real-time', icon: '📊' },
   { id: 'velocity', label: 'Phân tích Theo ngày', icon: '📈' },
@@ -39,15 +28,7 @@ const TABS: Tab[] = [
   { id: 'performance', label: 'Hiệu năng Hệ thống', icon: '⚙️' },
 ]
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: 3,
-      staleTime: 10000,
-    },
-  },
-})
+const REFRESH_INTERVAL_SECONDS = 300
 
 const LiveClock = memo(function LiveClock() {
   const [time, setTime] = useState(new Date())
@@ -64,28 +45,21 @@ const LiveClock = memo(function LiveClock() {
   )
 })
 
-interface LiveCountdownBarProps {
-  intervalSeconds: number
-  onExpire: () => void
-}
-
-const LiveCountdownBar = memo(function LiveCountdownBar({ intervalSeconds, onExpire }: LiveCountdownBarProps) {
-  const [countdown, setCountdown] = useState(intervalSeconds)
+const LiveCountdownBar = memo(function LiveCountdownBar({ onExpire }) {
+  const [countdown, setCountdown] = useState(REFRESH_INTERVAL_SECONDS)
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
           onExpire()
-          return intervalSeconds
+          return REFRESH_INTERVAL_SECONDS
         }
         return prev - 1
       })
     }, 1000)
     return () => clearInterval(timer)
-  }, [intervalSeconds, onExpire])
-
-  const progress = ((intervalSeconds - countdown) / intervalSeconds) * 100
+  }, [onExpire])
 
   return (
     <div
@@ -104,32 +78,41 @@ const LiveCountdownBar = memo(function LiveCountdownBar({ intervalSeconds, onExp
         className="progress-bar-fill"
         style={{
           height: '100%',
-          width: `${progress}%`,
+          width: `${((REFRESH_INTERVAL_SECONDS - countdown) / REFRESH_INTERVAL_SECONDS) * 100}%`,
           background: 'linear-gradient(90deg, #06b6d4, #10b981)',
           boxShadow: '0 0 10px #06b6d4',
-          transition: 'width 1s linear',
         }}
       />
     </div>
   )
 })
 
-function DashboardContent() {
+export default function App() {
   const [activeTab, setActiveTab] = useState('map')
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const [lastRefetchedAt, setLastRefetchedAt] = useState(new Date())
 
-  const store = useDashboardStore()
-  const { data, isLoading, error, refetch } = useDashboardData(store.refreshInterval)
-
-  useEffect(() => {
-    if (data) {
-      store.setData(data)
-    }
-  }, [data, store])
+  const {
+    filtered,
+    aggregates,
+    quality,
+    loading,
+    error,
+    filters,
+    setFilters,
+    resetFilters,
+    cameraRecords,
+    nodeStates,
+    perfMetrics,
+    allNodeStates,
+    allData,
+    refetch,
+  } = useTrafficData()
 
   const handleManualRefresh = async () => {
     setIsRefreshing(true)
-    await refetch()
+    if (refetch) await refetch()
+    setLastRefetchedAt(new Date())
     setTimeout(() => setIsRefreshing(false), 600)
   }
 
@@ -141,7 +124,7 @@ function DashboardContent() {
     }
   }
 
-  if (isLoading) {
+  if (loading) {
     return (
       <div
         style={{
@@ -177,22 +160,13 @@ function DashboardContent() {
       <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24, background: '#070a12' }}>
         <div className="glass-panel" style={{ width: 'min(560px, 100%)', padding: 24, textAlign: 'center' }}>
           <AlertTriangle size={40} color="#f59e0b" style={{ marginBottom: 12 }} />
-          <h1 className="font-display" style={{ fontSize: 20, marginBottom: 8 }}>
-            Không thể tải dữ liệu dashboard
-          </h1>
-          <p style={{ color: '#94a3b8', fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>
-            {error.message}
-          </p>
+          <h1 className="font-display" style={{ fontSize: 20, marginBottom: 8 }}>Không thể tải dữ liệu dashboard</h1>
+          <p style={{ color: '#94a3b8', fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>{error}</p>
           <button
             type="button"
             onClick={handleManualRefresh}
             className="glass-card-interactive"
-            style={{
-              padding: '9px 16px',
-              color: '#f8fafc',
-              cursor: 'pointer',
-              border: '1px solid rgba(6,182,212,0.4)',
-            }}
+            style={{ padding: '9px 16px', color: '#f8fafc', cursor: 'pointer', border: '1px solid rgba(6,182,212,0.4)' }}
           >
             <RefreshCw size={14} style={{ marginRight: 7, verticalAlign: 'middle' }} />
             Thử tải lại
@@ -202,10 +176,22 @@ function DashboardContent() {
     )
   }
 
-  if (!data) return null
+  const getLatestDate = (arr) => {
+    if (!arr || !arr.length) return null
+    let max = null
+    for (const r of arr) {
+      if (r.extracted_at) {
+        if (!max || r.extracted_at > max) max = r.extracted_at
+      } else if (r.date_str && r.hour_vn != null) {
+        const d = `${r.date_str}T${String(r.hour_vn).padStart(2, '0')}:00:00`
+        if (!max || d > max) max = d
+      }
+    }
+    return max
+  }
 
-  const activeNodeCount = new Set(data.nodes.map((n) => n.node_id)).size
-  const formattedLatestDate = new Date(data.last_update).toLocaleString('vi-VN', {
+  const latestRecordDate = getLatestDate(cameraRecords) || getLatestDate(allData) || new Date().toISOString()
+  const formattedLatestDate = new Date(latestRecordDate).toLocaleString('vi-VN', {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
@@ -214,12 +200,13 @@ function DashboardContent() {
     year: 'numeric',
   })
 
+  const nodeStateCount = nodeStates?.length || 0
+  const activeNodeCount = new Set((cameraRecords || []).map((record) => record.node_id).filter(Boolean)).size
+  const displayedRecordCount = filtered?.length || 0
+
   return (
-    <div
-      className="app-layout"
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#070a12' }}
-    >
-      <LiveCountdownBar intervalSeconds={store.refreshInterval / 1000} onExpire={handleManualRefresh} />
+    <div className="app-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#070a12' }}>
+      <LiveCountdownBar key={lastRefetchedAt} onExpire={handleManualRefresh} />
 
       <header
         className="glass-panel dashboard-header"
@@ -250,10 +237,7 @@ function DashboardContent() {
             <Activity color="#fff" size={20} />
           </div>
           <div>
-            <div
-              className="font-display gradient-text-cyan"
-              style={{ fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em' }}
-            >
+            <div className="font-display gradient-text-cyan" style={{ fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em' }}>
               Giám Sát Giao Thông TP.HCM — Real-Time 24/7
             </div>
             <div style={{ fontSize: 11, color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -264,10 +248,7 @@ function DashboardContent() {
           </div>
         </div>
 
-        <div
-          className="header-status-group"
-          style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}
-        >
+        <div className="header-status-group" style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
           <div className="glass-card-interactive hero-status-card">
             <div className="hero-status-card__title">
               <LayoutDashboard size={14} />
@@ -279,8 +260,12 @@ function DashboardContent() {
                 <span>node đang hiển thị</span>
               </div>
               <div>
-                <strong>{data.nodes.length}</strong>
+                <strong>{nodeStateCount}</strong>
                 <span>node states</span>
+              </div>
+              <div>
+                <strong>{displayedRecordCount}</strong>
+                <span>bản ghi đang lọc</span>
               </div>
             </div>
           </div>
@@ -298,15 +283,7 @@ function DashboardContent() {
           >
             <Clock size={15} color="#38bdf8" />
             <div>
-              <div
-                style={{
-                  fontSize: 9,
-                  color: '#64748b',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  fontWeight: 700,
-                }}
-              >
+              <div style={{ fontSize: 9, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
                 Giờ Hệ Thống (ICT)
               </div>
               <LiveClock />
@@ -344,7 +321,7 @@ function DashboardContent() {
                 Bản ghi: <span style={{ color: '#38bdf8' }}>{formattedLatestDate}</span>
               </div>
               <div style={{ fontSize: 10, color: '#86efac', marginTop: 2 }}>
-                Tự động đồng bộ mỗi {store.refreshInterval / 1000} giây
+                Tự động đồng bộ mỗi {REFRESH_INTERVAL_SECONDS} giây
               </div>
             </div>
           </div>
@@ -373,7 +350,7 @@ function DashboardContent() {
 
             <div className="glass-card-interactive compact-status-pill">
               <TimerReset size={13} color="#fbbf24" />
-              <span>{store.refreshInterval / 1000}s</span>
+              <span>{REFRESH_INTERVAL_SECONDS}s</span>
             </div>
 
             <div className="glass-card-interactive compact-status-pill">
@@ -401,9 +378,16 @@ function DashboardContent() {
       </header>
 
       <div className="app-body" style={{ flex: 1, display: 'flex', gap: 14, padding: '12px 16px 16px 16px', minHeight: 0 }}>
-        <Suspense fallback={<div>Loading sidebar...</div>}>
-          <Sidebar data={data} />
-        </Suspense>
+        <Sidebar
+          filters={filters}
+          setFilters={setFilters}
+          resetFilters={resetFilters}
+          aggregates={aggregates}
+          totalShown={filtered.length}
+          lastUpdated={formattedLatestDate}
+          filteredData={filtered}
+          lastRefetchedAt={lastRefetchedAt}
+        />
 
         <div className="main-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0, minHeight: 0 }}>
           <div className="glass-panel tab-strip" style={{ display: 'flex', padding: 5, gap: 5, overflowX: 'auto' }}>
@@ -442,14 +426,12 @@ function DashboardContent() {
           </div>
 
           <div className="tab-content dashboard-tab-content" style={{ flex: 1, minHeight: 0 }}>
-            <Suspense fallback={<div style={{ padding: 20, color: '#94a3b8' }}>Loading...</div>}>
-              {activeTab === 'map' && <MapView nodes={data.nodes} selectedNode={store.selectedNode} onNodeSelect={store.setSelectedNode} />}
-              {activeTab === 'kpi' && <KPIPanel data={data} />}
-              {activeTab === 'velocity' && <VelocityPanel data={data} />}
-              {activeTab === 'eval' && <EvaluationPanel data={data} />}
-              {activeTab === 'system' && <SystemMetrics data={data} />}
-              {activeTab === 'performance' && <PerformancePanel data={data} />}
-            </Suspense>
+            {activeTab === 'map' && <MapView data={filtered} nodeStates={nodeStates} cameraRecords={cameraRecords} filters={filters} />}
+            {activeTab === 'kpi' && <KPIPanel data={filtered} aggregates={aggregates} quality={quality} />}
+            {activeTab === 'velocity' && <VelocityPanel data={filtered} aggregates={aggregates} nodeStates={allNodeStates} />}
+            {activeTab === 'eval' && <EvaluationPanel perf={perfMetrics} quality={quality} nodeStates={nodeStates} />}
+            {activeTab === 'system' && <SystemMetrics data={allData} quality={quality} aggregates={aggregates} nodeStates={allNodeStates} />}
+            {activeTab === 'performance' && <PerformancePanel perf={perfMetrics} nodeStates={allNodeStates} />}
           </div>
         </div>
       </div>
@@ -459,13 +441,5 @@ function DashboardContent() {
         @keyframes spin { to { transform: rotate(360deg); } }
       `}</style>
     </div>
-  )
-}
-
-export default function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <DashboardContent />
-    </QueryClientProvider>
   )
 }
