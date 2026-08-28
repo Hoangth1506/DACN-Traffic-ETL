@@ -13,13 +13,21 @@ Logic:
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import math
+from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
 from scipy.spatial import KDTree
+
+try:
+    import diskcache
+    DISKCACHE_AVAILABLE = True
+except ImportError:
+    DISKCACHE_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +35,91 @@ logger = logging.getLogger(__name__)
 _HCMC_LAT_MIN, _HCMC_LAT_MAX = 10.35, 11.10
 _HCMC_LON_MIN, _HCMC_LON_MAX = 106.30, 107.00
 
-# Bộ đệm lưu trữ KDTree và OSM mapping đã tính toán của các nút giao
+# Bộ đệm lưu trữ KDTree và OSM mapping đã tính toán của các nút giao (in-memory fallback)
 _SPATIAL_JOIN_CACHE = {}
+
+# Persistent disk cache cho KDTree (tồn tại qua nhiều ETL runs)
+_CACHE_DIR = Path(".osm_cache/kdtree")
+_disk_cache = None
+
+if DISKCACHE_AVAILABLE:
+    try:
+        _CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        _disk_cache = diskcache.Cache(str(_CACHE_DIR), size_limit=500 * 1024 * 1024)  # 500MB limit
+        logger.info(f"KDTree disk cache enabled at {_CACHE_DIR}")
+    except Exception as e:
+        logger.warning(f"Failed to initialize disk cache: {e}, falling back to in-memory only")
+        _disk_cache = None
+
+
+def _compute_osm_hash(osm_df: pd.DataFrame) -> str:
+    """
+    Compute a stable hash of OSM data để detect changes.
+    OSM data thay đổi rất ít, nên hash này giúp cache validation.
+    """
+    if osm_df.empty:
+        return "empty"
+
+    # Hash based on shape and a sample of coordinates
+    sample_size = min(100, len(osm_df))
+    sample = osm_df.head(sample_size)[["osm_lat", "osm_lon"]].values
+
+    hash_input = f"{len(osm_df)}_{sample.tobytes()}"
+    return hashlib.md5(hash_input.encode()).hexdigest()[:16]
+
+
+def _get_cached_kdtree(node_id: str, osm_hash: str, threshold_m: float):
+    """
+    Load KDTree from persistent disk cache if available.
+
+    Returns:
+        tuple of (tree, osm_valid_reset, threshold_rad) or None if not cached
+    """
+    if not _disk_cache:
+        return None
+
+    cache_key = f"kdtree_{node_id}_{osm_hash}_{int(threshold_m)}"
+
+    try:
+        cached = _disk_cache.get(cache_key)
+        if cached:
+            logger.debug(f"KDTree cache HIT for node {node_id}")
+            return cached["tree"], cached["osm_valid_reset"], cached["threshold_rad"]
+    except Exception as e:
+        logger.warning(f"Error reading from disk cache: {e}")
+
+    return None
+
+
+def _save_kdtree_to_cache(
+    node_id: str,
+    osm_hash: str,
+    threshold_m: float,
+    tree: KDTree,
+    osm_valid_reset: pd.DataFrame,
+    threshold_rad: float
+):
+    """
+    Save KDTree to persistent disk cache with 7-day expiration.
+    """
+    if not _disk_cache:
+        return
+
+    cache_key = f"kdtree_{node_id}_{osm_hash}_{int(threshold_m)}"
+
+    try:
+        _disk_cache.set(
+            cache_key,
+            {
+                "tree": tree,
+                "osm_valid_reset": osm_valid_reset,
+                "threshold_rad": threshold_rad
+            },
+            expire=7 * 24 * 3600  # Cache for 7 days
+        )
+        logger.debug(f"KDTree cache SAVED for node {node_id}")
+    except Exception as e:
+        logger.warning(f"Error writing to disk cache: {e}")
 
 
 def T3_spatial_join(
@@ -82,26 +173,41 @@ def T3_spatial_join(
 
     # Lấy node_id từ tomtom_df để làm cache key
     node_id = result["node_id"].iloc[0] if "node_id" in result.columns and len(result) > 0 else "unknown"
-    cache_key = (node_id, len(osm_df), threshold_m)
+    osm_hash = _compute_osm_hash(osm_df)
 
-    if cache_key in _SPATIAL_JOIN_CACHE:
-        tree, osm_valid_reset, threshold_rad = _SPATIAL_JOIN_CACHE[cache_key]
+    # Try persistent disk cache first
+    cached = _get_cached_kdtree(node_id, osm_hash, threshold_m)
+
+    if cached:
+        tree, osm_valid_reset, threshold_rad = cached
     else:
-        # Lọc OSM records có tọa độ hợp lệ
-        osm_valid = osm_df.dropna(subset=["osm_lat", "osm_lon"]).copy()
-        if osm_valid.empty:
-            logger.warning("T3: Không có OSM record nào có tọa độ hợp lệ")
-            return result
+        # Check in-memory cache (fallback)
+        cache_key = (node_id, len(osm_df), threshold_m)
 
-        # Chuyển lat/lon → radians để dùng với haversine distance
-        osm_coords_rad = np.deg2rad(osm_valid[["osm_lat", "osm_lon"]].values)
+        if cache_key in _SPATIAL_JOIN_CACHE:
+            tree, osm_valid_reset, threshold_rad = _SPATIAL_JOIN_CACHE[cache_key]
+        else:
+            # Cache miss - build KDTree from scratch
+            logger.info(f"Building KDTree for node {node_id} (cache miss)")
 
-        # Build KDTree trên tọa độ radian (dùng Euclidean distance xấp xỉ)
-        tree = KDTree(osm_coords_rad)
-        osm_valid_reset = osm_valid.reset_index(drop=True)
-        R = 6_371_000.0
-        threshold_rad = threshold_m / R
-        _SPATIAL_JOIN_CACHE[cache_key] = (tree, osm_valid_reset, threshold_rad)
+            # Lọc OSM records có tọa độ hợp lệ
+            osm_valid = osm_df.dropna(subset=["osm_lat", "osm_lon"]).copy()
+            if osm_valid.empty:
+                logger.warning("T3: Không có OSM record nào có tọa độ hợp lệ")
+                return result
+
+            # Chuyển lat/lon → radians để dùng với haversine distance
+            osm_coords_rad = np.deg2rad(osm_valid[["osm_lat", "osm_lon"]].values)
+
+            # Build KDTree trên tọa độ radian (dùng Euclidean distance xấp xỉ)
+            tree = KDTree(osm_coords_rad)
+            osm_valid_reset = osm_valid.reset_index(drop=True)
+            R = 6_371_000.0
+            threshold_rad = threshold_m / R
+
+            # Save to both in-memory and disk cache
+            _SPATIAL_JOIN_CACHE[cache_key] = (tree, osm_valid_reset, threshold_rad)
+            _save_kdtree_to_cache(node_id, osm_hash, threshold_m, tree, osm_valid_reset, threshold_rad)
 
     # Lấy tọa độ TomTom (ưu tiên sample point vì đại diện cho vị trí camera/node thực tế, tránh polyline centroid quá xa)
     lat_col = "sample_lat" if "sample_lat" in result.columns else "centroid_lat"

@@ -1,15 +1,19 @@
 # DACN-Dashboard ETL — Python dependencies
 
 # Core data processing
-pandas>=2.0.0
-numpy>=1.24.0
+pandas>=2.2.0
+numpy>=1.26.0
 
 # Spatial processing
-scipy>=1.11.0          # KDTree spatial join
-shapely>=2.0.0         # geometry utilities
+scipy>=1.13.0          # KDTree spatial join
+shapely>=2.0.3         # Geometry utilities
 
 # Parquet I/O
-pyarrow>=14.0.0        # đọc/ghi Parquet
+pyarrow>=15.0.0        # Read/write Parquet with improved performance
 
 # Logging / progress
-tqdm>=4.65.0
+tqdm>=4.66.0
+structlog>=24.1.0      # Structured logging
+
+# Caching
+diskcache>=5.6.3       # Persistent disk cache for KDTree
