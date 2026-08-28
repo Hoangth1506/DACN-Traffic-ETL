@@ -1,7 +1,7 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import type { DashboardData } from '@types/index'
 
-const API_BASE = '/api'
+const API_BASE = ''
 
 async function fetchJSON<T>(path: string): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`)
@@ -18,9 +18,9 @@ export function useDashboardData(
     queryKey: ['dashboard-data'],
     queryFn: async () => {
       const [nodes, performance, quality] = await Promise.all([
-        fetchJSON('/unified_traffic.json'),
+        fetchJSON('/traffic_data.json'),
         fetchJSON('/performance_metrics.json'),
-        fetchJSON('/quality_report.json'),
+        fetchJSON('/quality_summary.json'),
       ])
 
       return {
