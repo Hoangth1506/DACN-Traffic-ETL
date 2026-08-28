@@ -4,19 +4,20 @@ node_agent.py — Layer 2 (Agent): Confidence-weighted fusion từ CameraRecords
 Mỗi NodeAgent xử lý 9 CameraRecords (9 điểm đo dọc tuyến) trong 1 session
 và trả về 1 NodeState đại diện cho trạng thái giao thông của node đó.
 
-Algorithm:
+Algorithm (Enhanced v2.0):
   1. Filter: loại cameras có image_quality < QUALITY_THRESHOLD
-  2. Weight: w_i = image_quality_i × reliability_i
-  3. Fused velocity  = Σ(w_i × v_i) / Σw_i
-  4. Fused density   = Σ(w_i × d_i) / Σw_i
-  5. Confidence      = mean(reliability_i of active cameras)
-  6. Congestion level: from fused LOS
-  7. Latency (ms)    = active_cameras × API_LATENCY_MS
+  2. Adaptive MAD penalty: phạt outliers dựa trên MAD thay vì fixed threshold
+  3. Temporal smoothing: kết hợp state trước đó với α=0.3
+  4. Confidence decay: giảm confidence nếu data cũ (>30 phút)
+  5. Weight: w_i = image_quality_i × reliability_i × outlier_penalty_i
+  6. Fused velocity  = Σ(w_i × v_i) / Σw_i (với temporal smoothing)
+  7. Confidence      = mean(reliability_i × penalty_i) × age_decay
 """
 
 from __future__ import annotations
 
 import logging
+from datetime import datetime, timedelta
 from typing import Any
 
 import numpy as np
@@ -24,11 +25,21 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
+# Previous state cache for temporal smoothing (in-memory)
+_PREVIOUS_STATES: dict[str, dict[str, Any]] = {}
+
 # Ngưỡng chất lượng tối thiểu để camera được tính vào fusion
 QUALITY_THRESHOLD = 0.50
 
 # Ước tính latency mỗi API call (ms) — TomTom API thực tế ~100-200ms
 API_LATENCY_MS = 140
+
+# Temporal smoothing parameter (0 = no smoothing, 1 = full smoothing)
+TEMPORAL_ALPHA = 0.3
+
+# Confidence decay parameters
+MAX_DATA_AGE_MINUTES = 30  # After this, confidence decays to 0.5
+CONFIDENCE_DECAY_RATE = 0.5 / MAX_DATA_AGE_MINUTES
 
 # Mapping LOS → congestion_level
 LOS_TO_CONGESTION: dict[str, str] = {
@@ -102,19 +113,30 @@ def _fuse_node(
         active = cameras.copy()  # fallback: dùng tất cả
         active_count = len(active)
 
-    # ── Tính trọng số có hiệu chỉnh đồng thuận (Consensus Penalty) ────────────────
+    # ── Tính trọng số với Adaptive MAD Penalty ────────────────
     iq = active["image_quality"].fillna(0.5).values
     rl_series = active["reliability"].fillna(0.85) if "reliability" in active.columns else pd.Series([0.85] * len(active))
     rl = rl_series.values
 
-    # Tính vận tốc trung vị để phạt các camera đo lệch pha (Outlier Penalty)
+    # Adaptive outlier penalty based on MAD (Median Absolute Deviation)
     v_vals = pd.to_numeric(active["velocity"], errors="coerce").fillna(25.0).values
     median_v = np.median(v_vals)
     devs = np.abs(v_vals - median_v)
-    
-    # Hệ số phạt: e^(-0.04 * độ lệch vận tốc)
-    penalty = np.exp(-0.04 * devs)
-    
+
+    # MAD = median(|x_i - median(x)|)
+    mad = np.median(devs)
+
+    # Adaptive penalty: scale by MAD instead of fixed 0.04
+    # If MAD is very small (<1), traffic is uniform → less penalty
+    # If MAD is large (>5), traffic is chaotic → stronger penalty
+    if mad < 0.1:
+        mad = 0.1  # Prevent division by zero
+
+    # Adaptive coefficient: k = 1 / (1 + MAD)
+    # MAD=0.5 → k=0.67, MAD=2 → k=0.33, MAD=5 → k=0.17
+    adaptive_k = 1.0 / (1.0 + mad)
+    penalty = np.exp(-adaptive_k * devs)
+
     # Trọng số hợp nhất động
     weights = iq * rl * penalty
     w_sum = weights.sum()
@@ -133,14 +155,50 @@ def _fuse_node(
         w = weights[mask]
         return float(np.dot(w, vals[mask]) / w.sum())
 
-    # ── Fusion calculations ───────────────────────────────────────────────────
-    fused_velocity = wavg("velocity")
+    # ── Fusion calculations với Temporal Smoothing ───────────────────────────
+    raw_velocity = wavg("velocity")
     fused_density  = wavg("density")
     fused_delay    = wavg("delay_index")
     fused_speed_ratio = wavg("speed_ratio")
-    
-    # Độ tự tin tổng hợp của node: trung bình có trọng số phạt (xung đột cao -> confidence giảm)
-    confidence = float(np.mean(rl * penalty)) if active_count > 0 else 0.5
+
+    # Temporal smoothing: blend with previous state
+    prev_state = _PREVIOUS_STATES.get(node_id)
+    if prev_state and raw_velocity is not None and TEMPORAL_ALPHA > 0:
+        prev_velocity = prev_state.get("fused_velocity")
+        if prev_velocity is not None:
+            # EMA: v_new = α × v_prev + (1-α) × v_raw
+            fused_velocity = TEMPORAL_ALPHA * prev_velocity + (1 - TEMPORAL_ALPHA) * raw_velocity
+            logger.debug(
+                f"Temporal smoothing node {node_id}: {raw_velocity:.2f} → {fused_velocity:.2f} "
+                f"(α={TEMPORAL_ALPHA}, prev={prev_velocity:.2f})"
+            )
+        else:
+            fused_velocity = raw_velocity
+    else:
+        fused_velocity = raw_velocity
+
+    # Confidence decay based on data age
+    base_confidence = float(np.mean(rl * penalty)) if active_count > 0 else 0.5
+
+    # Parse timestamp to check age
+    timestamp_val = active["timestamp"].iloc[0] if "timestamp" in active.columns and len(active) > 0 else None
+    data_age_minutes = 0.0
+
+    if timestamp_val:
+        try:
+            ts = pd.to_datetime(timestamp_val)
+            now = datetime.now(ts.tzinfo) if ts.tzinfo else datetime.now()
+            age_delta = now - ts
+            data_age_minutes = age_delta.total_seconds() / 60.0
+        except Exception as e:
+            logger.debug(f"Could not parse timestamp for age calculation: {e}")
+
+    # Apply decay if data is old (linear decay to 0.5 after MAX_DATA_AGE_MINUTES)
+    if data_age_minutes > 0:
+        decay_factor = max(0.0, 1.0 - (data_age_minutes * CONFIDENCE_DECAY_RATE))
+        confidence = base_confidence * decay_factor + 0.5 * (1 - decay_factor)
+    else:
+        confidence = base_confidence
 
     # LOS từ fused velocity
     fused_los = _los_from_speed(fused_velocity)
@@ -174,7 +232,14 @@ def _fuse_node(
     )
     agreement_rate = float((cam_levels == congestion_level).mean()) if len(cam_levels) > 0 else 1.0
 
-    return {
+    # Save current state for next temporal smoothing
+    _PREVIOUS_STATES[node_id] = {
+        "fused_velocity": fused_velocity,
+        "timestamp": timestamp,
+        "session_id": session_id,
+    }
+
+    state = {
         "timestamp":            str(timestamp),
         "session_id":           session_id,
         "node_id":              node_id,
@@ -206,7 +271,15 @@ def _fuse_node(
         "node_lat":             round(node_lat, 7) if node_lat is not None else None,
         "node_lon":             round(node_lon, 7) if node_lon is not None else None,
         "camera_positions":     positions,   # list of [lat, lon]
+
+        # Enhanced fusion metadata
+        "mad_velocity":         round(float(mad), 2),
+        "adaptive_k":           round(adaptive_k, 4),
+        "temporal_smoothed":    prev_state is not None and raw_velocity is not None,
+        "data_age_minutes":     round(data_age_minutes, 2) if data_age_minutes > 0 else 0.0,
     }
+
+    return state
 
 
 def node_states_summary(ns_df: pd.DataFrame) -> dict[str, Any]:

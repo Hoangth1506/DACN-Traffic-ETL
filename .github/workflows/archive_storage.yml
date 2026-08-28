@@ -1,0 +1,99 @@
+name: Archive Old JSON to DuckDB
+
+on:
+  # Run daily at 02:00 UTC (09:00 Vietnam time)
+  schedule:
+    - cron: "0 2 * * *"
+
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      retention_days:
+        description: "Keep files newer than N days (default: 7)"
+        required: false
+        default: "7"
+        type: string
+      dry_run:
+        description: "Dry run (show what would be archived)"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install duckdb pandas
+
+      - name: Archive Old JSON Files
+        id: archive
+        run: |
+          RETENTION="${{ inputs.retention_days }}"
+          DRY_RUN="${{ inputs.dry_run }}"
+
+          if [ -z "$RETENTION" ]; then
+            RETENTION="7"
+          fi
+
+          CMD="python traffic_etl/storage.py --dir outputs --retention-days $RETENTION"
+
+          if [ "$DRY_RUN" = "true" ]; then
+            CMD="$CMD --dry-run"
+            echo "🔍 Running in dry-run mode..."
+          fi
+
+          echo "Executing: $CMD"
+          eval $CMD
+
+      - name: Commit Archive Database
+        if: inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add archive database and remove archived JSON files
+          git add -f .archive/traffic_history.duckdb
+          git add -u outputs/*.json
+
+          if git diff --cached --quiet; then
+            echo "No archival changes"
+          else
+            ARCHIVED_COUNT=$(git diff --cached --name-status | grep -c "^D" || echo "0")
+            DB_SIZE=$(du -h .archive/traffic_history.duckdb | cut -f1)
+
+            git commit -m "auto: archive old JSON to DuckDB ($ARCHIVED_COUNT files → $DB_SIZE) [skip ci]"
+
+            # Push with retry
+            for i in 1 2 3; do
+              if git push origin main; then
+                echo "✓ Archive pushed successfully"
+                exit 0
+              fi
+              echo "⚠ Push attempt $i failed, retrying..."
+              git pull --rebase origin main
+              sleep 3
+            done
+
+            echo "✗ Failed to push archive after 3 attempts"
+            exit 1
+          fi
+
+      - name: Show Archive Statistics
+        run: |
+          python traffic_etl/storage.py --stats

@@ -117,7 +117,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
+          # Configure merge strategy for auto-generated files
+          git config merge.ours.driver "true"
+
           # Stage both raw data and dashboard outputs
           git add -f outputs/raw_measurements
           git add -f dashboard/public dashboard/dist
@@ -126,14 +129,52 @@ jobs:
             echo "No output changes to commit"
           else
             git commit -m "auto: unified etl & dashboard update [skip ci]"
-            for attempt in 1 2 3; do
-              git pull --rebase --autostash origin main
+
+            # Smart retry with exponential backoff and conflict resolution
+            MAX_RETRIES=5
+            for attempt in $(seq 1 $MAX_RETRIES); do
+              echo "Push attempt ${attempt}/${MAX_RETRIES}..."
+
+              # Pull with rebase and auto-resolve conflicts
+              if git pull --rebase --autostash origin main; then
+                echo "✓ Rebase successful"
+              else
+                echo "⚠ Rebase conflicts detected, resolving..."
+
+                # Accept our version for JSON output files (always use latest)
+                git checkout --ours -- outputs/*.json dashboard/public/*.json dashboard/dist/*.json 2>/dev/null || true
+
+                # Accept their version for code files (prefer remote changes)
+                git checkout --theirs -- "*.py" "*.js" "*.jsx" "*.ts" "*.tsx" "*.yml" "*.yaml" 2>/dev/null || true
+
+                # Mark all conflicts as resolved
+                git add -u
+
+                # Continue rebase
+                git rebase --continue || {
+                  echo "⚠ Rebase continuation failed, aborting and retrying..."
+                  git rebase --abort
+                  sleep $((attempt * 3))
+                  continue
+                }
+              fi
+
+              # Try to push
               if git push origin main; then
+                echo "✓ Successfully pushed on attempt ${attempt}"
                 exit 0
               fi
-              echo "Push attempt ${attempt} failed; retrying..."
-              sleep $((attempt * 3))
+
+              echo "✗ Push failed on attempt ${attempt}"
+
+              # Exponential backoff: 3s, 6s, 9s, 12s, 15s
+              if [ $attempt -lt $MAX_RETRIES ]; then
+                SLEEP_TIME=$((attempt * 3))
+                echo "Waiting ${SLEEP_TIME}s before retry..."
+                sleep $SLEEP_TIME
+              fi
             done
-            echo "Unable to push unified artifacts after 3 attempts"
+
+            echo "✗ Unable to push unified artifacts after ${MAX_RETRIES} attempts"
             exit 1
           fi
