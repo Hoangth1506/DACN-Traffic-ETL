@@ -4,17 +4,17 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.8922,
+  "fusion_coverage": 0.8919,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.1078,
+  "unmatched_rate": 0.1081,
   "overall_score": 0.9884,
   "issues": [
     "Ty le unmatched OSM cao: 10.8%",
     "Node N03_CMT8 co OSM match thap: 66.7%",
     "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.9%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 61.0%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 60.5%",
     "Node N22_BAC_HAI co OSM match thap: 68.7%",
-    "Top node match risks: N08_DIEN_BIEN_PHU=60.9%, N10_TRUONG_CHINH=61.0%, N03_CMT8=66.7%, N22_BAC_HAI=68.7%, N04_THANH_THAI=73.2%"
+    "Top node match risks: N10_TRUONG_CHINH=60.5%, N08_DIEN_BIEN_PHU=60.9%, N03_CMT8=66.7%, N22_BAC_HAI=68.7%, N04_THANH_THAI=73.1%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -38,7 +38,7 @@
     "N04_THANH_THAI": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.7315,
+      "osm_match_pct": 0.7307,
       "match_quality": "watch"
     },
     "N05_TO_HIEN_THANH": {
@@ -56,7 +56,7 @@
     "N07_SU_VAN_HANH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8642,
+      "osm_match_pct": 0.865,
       "match_quality": "good"
     },
     "N08_DIEN_BIEN_PHU": {
@@ -74,7 +74,7 @@
     "N10_TRUONG_CHINH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6096,
+      "osm_match_pct": 0.6049,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -110,7 +110,7 @@
     "N16_NHAT_TAO": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8472,
+      "osm_match_pct": 0.8465,
       "match_quality": "watch"
     },
     "N17_TRAN_NHAN_TON": {
@@ -134,7 +134,7 @@
     "N20_CUU_LONG": {
       "records": 1296,
       "completeness": 0.9964,
-      "osm_match_pct": 0.8233,
+      "osm_match_pct": 0.8225,
       "match_quality": "watch"
     },
     "N21_HO_BA_KIEN": {
