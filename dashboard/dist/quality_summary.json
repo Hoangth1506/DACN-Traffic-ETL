@@ -4,16 +4,16 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.8935,
+  "fusion_coverage": 0.8937,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.1065,
+  "unmatched_rate": 0.1063,
   "overall_score": 0.9886,
   "issues": [
     "Ty le unmatched OSM cao: 10.6%",
     "Node N03_CMT8 co OSM match thap: 66.7%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 61.4%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 62.0%",
-    "Top node match risks: N08_DIEN_BIEN_PHU=61.4%, N10_TRUONG_CHINH=62.0%, N03_CMT8=66.7%, N22_BAC_HAI=70.1%, N04_THANH_THAI=72.6%"
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 61.6%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 61.9%",
+    "Top node match risks: N08_DIEN_BIEN_PHU=61.6%, N10_TRUONG_CHINH=61.9%, N03_CMT8=66.7%, N22_BAC_HAI=70.2%, N04_THANH_THAI=72.7%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -37,7 +37,7 @@
     "N04_THANH_THAI": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.7261,
+      "osm_match_pct": 0.7269,
       "match_quality": "watch"
     },
     "N05_TO_HIEN_THANH": {
@@ -55,13 +55,13 @@
     "N07_SU_VAN_HANH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8673,
+      "osm_match_pct": 0.8681,
       "match_quality": "good"
     },
     "N08_DIEN_BIEN_PHU": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6142,
+      "osm_match_pct": 0.6157,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -73,7 +73,7 @@
     "N10_TRUONG_CHINH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6196,
+      "osm_match_pct": 0.6188,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -109,7 +109,7 @@
     "N16_NHAT_TAO": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8519,
+      "osm_match_pct": 0.8526,
       "match_quality": "good"
     },
     "N17_TRAN_NHAN_TON": {
@@ -139,13 +139,13 @@
     "N21_HO_BA_KIEN": {
       "records": 1296,
       "completeness": 0.9964,
-      "osm_match_pct": 0.9475,
+      "osm_match_pct": 0.9468,
       "match_quality": "good"
     },
     "N22_BAC_HAI": {
       "records": 1296,
       "completeness": 0.9959,
-      "osm_match_pct": 0.7006,
+      "osm_match_pct": 0.7022,
       "match_quality": "watch"
     }
   }
