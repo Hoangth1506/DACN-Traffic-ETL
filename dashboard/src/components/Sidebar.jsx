@@ -4,23 +4,6 @@ import { Layers, Calendar, RotateCcw, Search, Sparkles, Clock, AlertTriangle, Ga
 
 const REFRESH_INTERVAL_SECONDS = 300
 
-const LiveCountdownText = memo(function LiveCountdownText() {
-  const [countdown, setCountdown] = useState(REFRESH_INTERVAL_SECONDS)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prev) => (prev <= 1 ? REFRESH_INTERVAL_SECONDS : prev - 1))
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  return (
-    <span style={{ color: '#06b6d4', fontWeight: 800, fontFamily: 'Outfit' }}>
-      {countdown}s
-    </span>
-  )
-})
-
 const Q10_NODES = [
   'N01_LY_THUONG_KIET', 'N02_BA_THANG_HAI', 'N03_CMT8', 'N04_THANH_THAI',
   'N05_TO_HIEN_THANH', 'N06_NGUYEN_TRI_PHUONG', 'N07_SU_VAN_HANH', 'N08_DIEN_BIEN_PHU',
@@ -127,16 +110,11 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
           <span className="sidebar-live-badge">5 PHÚT/LẦN</span>
         </div>
 
-        <div style={{ fontSize: 11, color: '#94a3b8', lineHeight: 1.45, marginBottom: 8 }}>
+        <div style={{ fontSize: 11, color: '#94a3b8', lineHeight: 1.45 }}>
           Bản ghi mới nhất nhận lúc:
           <div style={{ color: '#f8fafc', fontWeight: 700, fontSize: 12, marginTop: 3, fontFamily: 'Outfit' }}>
             {lastUpdated || 'Đang đồng bộ...'}
           </div>
-        </div>
-
-        <div className="sidebar-realtime-footer">
-          <span>Tự động làm mới</span>
-          <LiveCountdownText key={lastRefetchedAt} />
         </div>
       </div>
 

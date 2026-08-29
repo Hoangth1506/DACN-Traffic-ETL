@@ -45,51 +45,8 @@ const LiveClock = memo(function LiveClock() {
   )
 })
 
-const LiveCountdownBar = memo(function LiveCountdownBar({ onExpire }) {
-  const [countdown, setCountdown] = useState(REFRESH_INTERVAL_SECONDS)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          onExpire()
-          return REFRESH_INTERVAL_SECONDS
-        }
-        return prev - 1
-      })
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [onExpire])
-
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 3,
-        zIndex: 9999,
-        background: 'rgba(255,255,255,0.05)',
-        overflow: 'hidden',
-      }}
-    >
-      <div
-        className="progress-bar-fill"
-        style={{
-          height: '100%',
-          width: `${((REFRESH_INTERVAL_SECONDS - countdown) / REFRESH_INTERVAL_SECONDS) * 100}%`,
-          background: 'linear-gradient(90deg, #06b6d4, #10b981)',
-          boxShadow: '0 0 10px #06b6d4',
-        }}
-      />
-    </div>
-  )
-})
-
 export default function App() {
   const [activeTab, setActiveTab] = useState('map')
-  const [isRefreshing, setIsRefreshing] = useState(false)
   const [lastRefetchedAt, setLastRefetchedAt] = useState(new Date())
 
   const {
@@ -109,12 +66,14 @@ export default function App() {
     refetch,
   } = useTrafficData()
 
-  const handleManualRefresh = async () => {
-    setIsRefreshing(true)
-    if (refetch) await refetch()
-    setLastRefetchedAt(new Date())
-    setTimeout(() => setIsRefreshing(false), 600)
-  }
+  // Auto refresh data silently in background every 5 minutes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (refetch) refetch()
+      setLastRefetchedAt(new Date())
+    }, REFRESH_INTERVAL_SECONDS * 1000)
+    return () => clearInterval(timer)
+  }, [refetch])
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -180,8 +139,16 @@ export default function App() {
     if (!arr || !arr.length) return null
     let max = null
     for (const r of arr) {
-      if (r.extracted_at) {
+      if (r.timestamp) {
+        if (!max || r.timestamp > max) max = r.timestamp
+      } else if (r.extracted_at) {
         if (!max || r.extracted_at > max) max = r.extracted_at
+      } else if (r.session_id && r.session_id.includes('_VN_')) {
+        const m = r.session_id.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/)
+        if (m) {
+          const iso = `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}+07:00`
+          if (!max || iso > max) max = iso
+        }
       } else if (r.date_str && r.hour_vn != null) {
         const d = `${r.date_str}T${String(r.hour_vn).padStart(2, '0')}:00:00`
         if (!max || d > max) max = d
@@ -190,7 +157,7 @@ export default function App() {
     return max
   }
 
-  const latestRecordDate = getLatestDate(cameraRecords) || getLatestDate(allData) || new Date().toISOString()
+  const latestRecordDate = getLatestDate(nodeStates) || getLatestDate(cameraRecords) || getLatestDate(allData) || new Date().toISOString()
   const formattedLatestDate = new Date(latestRecordDate).toLocaleString('vi-VN', {
     hour: '2-digit',
     minute: '2-digit',
@@ -206,8 +173,6 @@ export default function App() {
 
   return (
     <div className="app-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#070a12' }}>
-      <LiveCountdownBar key={lastRefetchedAt} onExpire={handleManualRefresh} />
-
       <header
         className="glass-panel dashboard-header"
         style={{
@@ -293,12 +258,12 @@ export default function App() {
           <div
             className="glass-card-interactive"
             style={{
-              padding: '4px 12px',
+              padding: '6px 14px',
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              border: '1px solid rgba(16,185,129,0.3)',
-              background: 'rgba(16,185,129,0.06)',
+              gap: 10,
+              border: '1px solid rgba(16,185,129,0.35)',
+              background: 'rgba(16,185,129,0.08)',
             }}
           >
             <div className="live-dot-pulse" />
@@ -317,42 +282,13 @@ export default function App() {
               >
                 <ShieldCheck size={11} /> Real-Time Live Stream
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: '#f8fafc' }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#f8fafc', marginTop: 1 }}>
                 Bản ghi: <span style={{ color: '#38bdf8' }}>{formattedLatestDate}</span>
-              </div>
-              <div style={{ fontSize: 10, color: '#86efac', marginTop: 2 }}>
-                Tự động đồng bộ mỗi {REFRESH_INTERVAL_SECONDS} giây
               </div>
             </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-            <button
-              onClick={handleManualRefresh}
-              className="glass-card-interactive"
-              style={{
-                padding: '6px 12px',
-                cursor: 'pointer',
-                color: '#f8fafc',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-                fontSize: 12,
-                fontWeight: 600,
-                background: 'rgba(6,182,212,0.15)',
-                border: '1px solid rgba(6,182,212,0.4)',
-              }}
-              title="Làm mới dữ liệu"
-            >
-              <RefreshCw size={13} className={isRefreshing ? 'spin-icon' : ''} color="#06b6d4" />
-              <span>Cập Nhật Ngay</span>
-            </button>
-
-            <div className="glass-card-interactive compact-status-pill">
-              <TimerReset size={13} color="#fbbf24" />
-              <span>{REFRESH_INTERVAL_SECONDS}s</span>
-            </div>
-
             <div className="glass-card-interactive compact-status-pill">
               <Radio size={13} color="#34d399" />
               <span>Live</span>
