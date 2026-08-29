@@ -300,11 +300,19 @@ body {
   width: 100%;
   padding: 8px 10px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #f8fafc;
   font-size: 11px;
   outline: none;
+}
+
+select.sidebar-input option,
+.sidebar-input option,
+select option {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  padding: 8px 10px;
 }
 
 .sidebar-node-group-title {

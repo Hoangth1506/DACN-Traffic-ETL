@@ -198,10 +198,18 @@ export default function Sidebar({ filters, setFilters, resetFilters, aggregates,
               setFilters((f) => ({ ...f, dateRange: d ? [d, d] : [latestDate, latestDate] }))
             }}
             className="sidebar-input"
+            style={{
+              background: '#0f172a',
+              color: '#f8fafc',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              cursor: 'pointer',
+              fontWeight: 600,
+              fontSize: '11px',
+            }}
           >
             {dates.map((d) => (
-              <option key={d} value={d}>
-                {d === latestDate ? `Hôm nay (${d}) — LIVE` : `Ngày ${d}`}
+              <option key={d} value={d} style={{ background: '#0f172a', color: '#f8fafc', padding: '6px 10px' }}>
+                {d === latestDate ? `🔥 Hôm nay (${d}) — LIVE` : `📅 Ngày ${d}`}
               </option>
             ))}
           </select>
