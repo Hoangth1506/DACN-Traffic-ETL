@@ -67,15 +67,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Add archive database and remove archived JSON files
-          git add -f .archive/traffic_history.duckdb
-          git add -u outputs/*.json
+          # Only add the DB if it exists
+          if [ -f .archive/traffic_history.duckdb ]; then
+            git add -f .archive/traffic_history.duckdb
+          else
+            echo "No archive database found at .archive/traffic_history.duckdb"
+          fi
+
+          # Only add JSON deletions if any exist
+          if ls outputs/*.json >/dev/null 2>&1; then
+            git add -u outputs/*.json
+          fi
 
           if git diff --cached --quiet; then
             echo "No archival changes"
           else
             ARCHIVED_COUNT=$(git diff --cached --name-status | grep -c "^D" || echo "0")
-            DB_SIZE=$(du -h .archive/traffic_history.duckdb | cut -f1)
+            DB_SIZE=$(du -h .archive/traffic_history.duckdb 2>/dev/null | cut -f1 || echo "0B")
 
             git commit -m "auto: archive old JSON to DuckDB ($ARCHIVED_COUNT files → $DB_SIZE) [skip ci]"
 
