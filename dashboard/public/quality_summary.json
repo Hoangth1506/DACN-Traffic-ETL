@@ -4,17 +4,17 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.8923,
+  "fusion_coverage": 0.8924,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.1077,
+  "unmatched_rate": 0.1076,
   "overall_score": 0.9884,
   "issues": [
     "Ty le unmatched OSM cao: 10.8%",
     "Node N03_CMT8 co OSM match thap: 66.7%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 61.0%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 61.0%",
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 60.8%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 61.4%",
     "Node N22_BAC_HAI co OSM match thap: 69.3%",
-    "Top node match risks: N08_DIEN_BIEN_PHU=61.0%, N10_TRUONG_CHINH=61.0%, N03_CMT8=66.7%, N22_BAC_HAI=69.3%, N04_THANH_THAI=72.9%"
+    "Top node match risks: N08_DIEN_BIEN_PHU=60.8%, N10_TRUONG_CHINH=61.4%, N03_CMT8=66.7%, N22_BAC_HAI=69.3%, N04_THANH_THAI=72.8%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -38,7 +38,7 @@
     "N04_THANH_THAI": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.7292,
+      "osm_match_pct": 0.7284,
       "match_quality": "watch"
     },
     "N05_TO_HIEN_THANH": {
@@ -62,7 +62,7 @@
     "N08_DIEN_BIEN_PHU": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6096,
+      "osm_match_pct": 0.608,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -74,7 +74,7 @@
     "N10_TRUONG_CHINH": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.6103,
+      "osm_match_pct": 0.6142,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -86,7 +86,7 @@
     "N12_NGO_GIA_TU": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8441,
+      "osm_match_pct": 0.8449,
       "match_quality": "watch"
     },
     "N13_VINH_VIEN": {
@@ -110,7 +110,7 @@
     "N16_NHAT_TAO": {
       "records": 1296,
       "completeness": 0.9969,
-      "osm_match_pct": 0.8472,
+      "osm_match_pct": 0.848,
       "match_quality": "watch"
     },
     "N17_TRAN_NHAN_TON": {
@@ -134,7 +134,7 @@
     "N20_CUU_LONG": {
       "records": 1296,
       "completeness": 0.9964,
-      "osm_match_pct": 0.8179,
+      "osm_match_pct": 0.8171,
       "match_quality": "watch"
     },
     "N21_HO_BA_KIEN": {
