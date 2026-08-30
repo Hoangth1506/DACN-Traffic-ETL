@@ -4,15 +4,15 @@
   "validity_score": 1.0,
   "consistency_score": 1.0,
   "timeliness_score": 1.0,
-  "fusion_coverage": 0.9046,
+  "fusion_coverage": 0.905,
   "conflict_rate": 0.0,
-  "unmatched_rate": 0.0954,
+  "unmatched_rate": 0.095,
   "overall_score": 0.9905,
   "issues": [
     "Node N03_CMT8 co OSM match thap: 66.7%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 66.0%",
-    "Node N10_TRUONG_CHINH co OSM match thap: 65.5%",
-    "Top node match risks: N10_TRUONG_CHINH=65.5%, N08_DIEN_BIEN_PHU=66.0%, N03_CMT8=66.7%, N04_THANH_THAI=71.1%, N22_BAC_HAI=79.6%"
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 66.2%",
+    "Node N10_TRUONG_CHINH co OSM match thap: 66.2%",
+    "Top node match risks: N08_DIEN_BIEN_PHU=66.2%, N10_TRUONG_CHINH=66.2%, N03_CMT8=66.7%, N04_THANH_THAI=71.1%, N20_CUU_LONG=79.6%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -60,7 +60,7 @@
     "N08_DIEN_BIEN_PHU": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.6597,
+      "osm_match_pct": 0.662,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -72,7 +72,7 @@
     "N10_TRUONG_CHINH": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.6551,
+      "osm_match_pct": 0.662,
       "match_quality": "poor"
     },
     "N11_LE_HONG_PHONG": {
@@ -108,7 +108,7 @@
     "N16_NHAT_TAO": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.8819,
+      "osm_match_pct": 0.8843,
       "match_quality": "good"
     },
     "N17_TRAN_NHAN_TON": {
@@ -132,7 +132,7 @@
     "N20_CUU_LONG": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.7986,
+      "osm_match_pct": 0.7963,
       "match_quality": "watch"
     },
     "N21_HO_BA_KIEN": {
