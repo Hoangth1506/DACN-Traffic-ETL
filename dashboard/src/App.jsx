@@ -7,7 +7,6 @@ import VelocityPanel from './components/VelocityPanel'
 import SystemMetrics from './components/SystemMetrics'
 import PerformancePanel from './components/PerformancePanel'
 import EvaluationPanel from './components/EvaluationPanel'
-import TrafficChatbot from './components/TrafficChatbot'
 import {
   Clock,
   RefreshCw,
@@ -19,13 +18,10 @@ import {
   LayoutDashboard,
   AlertTriangle,
   CloudSun,
-  Bot,
-  Sparkles,
 } from 'lucide-react'
 
 const TABS = [
   { id: 'map', label: 'Bản đồ Giao thông GIS', icon: '🗺️' },
-  { id: 'chatbot', label: 'Trợ lý AI Giao Thông', icon: '🤖' },
   { id: 'kpi', label: 'Biểu đồ Vận tốc Real-time', icon: '📊' },
   { id: 'velocity', label: 'Phân tích Theo ngày', icon: '📈' },
   { id: 'system', label: 'Độ tin cậy & Sai số', icon: '🛡️' },
@@ -393,7 +389,6 @@ export default function App() {
 
           <div className="tab-content dashboard-tab-content" style={{ flex: 1, minHeight: 0 }}>
             {activeTab === 'map' && <MapView data={filtered} nodeStates={nodeStates} cameraRecords={cameraRecords} filters={filters} />}
-            {activeTab === 'chatbot' && <TrafficChatbot data={filtered} nodeStates={allNodeStates} perfMetrics={perfMetrics} quality={quality} />}
             {activeTab === 'kpi' && <KPIPanel data={filtered} aggregates={aggregates} quality={quality} />}
             {activeTab === 'velocity' && <VelocityPanel data={filtered} aggregates={aggregates} nodeStates={allNodeStates} />}
             {activeTab === 'eval' && <EvaluationPanel perf={perfMetrics} quality={quality} nodeStates={nodeStates} />}
@@ -402,45 +397,6 @@ export default function App() {
           </div>
         </div>
       </div>
-
-      {/* Floating AI Assistant Button (Tương tác nhanh từ bất kỳ Tab nào) */}
-      {activeTab !== 'chatbot' && (
-        <button
-          type="button"
-          onClick={() => setActiveTab('chatbot')}
-          style={{
-            position: 'fixed',
-            bottom: 22,
-            right: 22,
-            zIndex: 9999,
-            padding: '10px 18px',
-            borderRadius: 30,
-            background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
-            border: '1px solid rgba(255,255,255,0.3)',
-            color: '#ffffff',
-            fontWeight: 800,
-            fontSize: 13,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(6,182,212,0.45)',
-            transition: 'all 0.2s ease',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px) scale(1.04)'
-            e.currentTarget.style.boxShadow = '0 12px 30px rgba(6,182,212,0.6)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)'
-            e.currentTarget.style.boxShadow = '0 8px 24px rgba(6,182,212,0.45)'
-          }}
-        >
-          <Bot size={18} />
-          <span>Hỏi AI Trợ Lý</span>
-          <span style={{ fontSize: 9, background: 'rgba(255,255,255,0.25)', padding: '2px 6px', borderRadius: 10 }}>NEW</span>
-        </button>
-      )}
 
       <style>{`
         .spin-icon { animation: spin 0.8s linear infinite; }
