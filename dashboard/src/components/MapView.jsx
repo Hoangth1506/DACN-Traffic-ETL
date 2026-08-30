@@ -78,9 +78,31 @@ function getDistanceKm(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
+const BASEMAP_CONFIGS = {
+  dark: {
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    labelUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+    attribution: '© Esri, HERE, Garmin, © OpenStreetMap',
+    maxZoom: 18,
+  },
+  osm: {
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19,
+  },
+  satellite: {
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    labelUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+    attribution: '© Esri, Maxar, Earthstar Geographics',
+    maxZoom: 19,
+  },
+}
+
 export default function MapView({ data, nodeStates, cameraRecords, filters }) {
   const mapRef  = useRef(null)
   const leafRef = useRef(null)   // { map, L }
+  const tileLayerRef = useRef(null)
+  const tileLabelRef = useRef(null)
 
   // Layer groups — tái tạo khi data thay đổi
   const layersRef = useRef({ corridors: null, cameras: null, nodes: null })
@@ -88,6 +110,7 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
   const [showCameras,   setShowCameras]   = useState(true)
   const [showCorridors, setShowCorridors] = useState(true)
   const [showNodes,     setShowNodes]     = useState(true)
+  const [baseMapType,   setBaseMapType]   = useState('dark')
   const [mapReady,      setMapReady]      = useState(false)
 
   useEffect(() => {
@@ -113,11 +136,6 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       zoomControl: true,
       preferCanvas: true,
     })
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap © CARTO',
-      maxZoom: 19,
-    }).addTo(map)
 
     // Khởi tạo 3 layer groups
     layersRef.current.corridors = L.layerGroup().addTo(map)
@@ -149,6 +167,36 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       }
     }
   }, [])
+
+  // ── 1b. Cập nhật Basemap Layer khi thay đổi baseMapType ──────────────────
+  useEffect(() => {
+    if (!leafRef.current || !mapReady) return
+    const { map, L } = leafRef.current
+
+    if (tileLayerRef.current) {
+      map.removeLayer(tileLayerRef.current)
+      tileLayerRef.current = null
+    }
+    if (tileLabelRef.current) {
+      map.removeLayer(tileLabelRef.current)
+      tileLabelRef.current = null
+    }
+
+    const cfg = BASEMAP_CONFIGS[baseMapType] || BASEMAP_CONFIGS.dark
+    const layer = L.tileLayer(cfg.url, {
+      attribution: cfg.attribution,
+      maxZoom: cfg.maxZoom || 19,
+    }).addTo(map)
+    layer.bringToBack()
+    tileLayerRef.current = layer
+
+    if (cfg.labelUrl) {
+      const labelLayer = L.tileLayer(cfg.labelUrl, {
+        maxZoom: cfg.maxZoom || 18,
+      }).addTo(map)
+      tileLabelRef.current = labelLayer
+    }
+  }, [baseMapType, mapReady])
 
   // ── 2. Cập nhật corridors + cameras khi data (filtered) hoặc mapReady thay đổi ─────────
   useEffect(() => {
@@ -445,6 +493,21 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
   const filterLabel = selectedDate ? `${selectedDate}` : 'Tất cả'
   const hourLabel   = slotLabel
 
+  const focusAll = () => {
+    if (!leafRef.current) return
+    leafRef.current.map.flyTo([10.782, 106.662], 13.5, { duration: 0.8 })
+  }
+
+  const focusQ10 = () => {
+    if (!leafRef.current) return
+    leafRef.current.map.flyTo([10.770, 106.668], 15, { duration: 0.8 })
+  }
+
+  const focusTB = () => {
+    if (!leafRef.current) return
+    leafRef.current.map.flyTo([10.803, 106.648], 14.5, { duration: 0.8 })
+  }
+
   return (
     <div className="map-view-layout">
 
@@ -452,25 +515,103 @@ export default function MapView({ data, nodeStates, cameraRecords, filters }) {
       <div className="map-view-canvas">
         <div ref={mapRef} style={{ width:'100%', height:'100%' }} />
 
-        {/* Layer controls */}
+        {/* Layer & Basemap controls */}
         <div style={{
           position:'absolute', top:12, left:12, zIndex:1000,
-          background:'rgba(13,20,36,0.92)', border:'1px solid var(--border)',
-          borderRadius:8, padding:'8px 12px', backdropFilter:'blur(8px)',
-          display:'flex', flexDirection:'column', gap:5, fontSize:11,
+          background:'rgba(13,20,36,0.94)', border:'1px solid rgba(56,189,248,0.25)',
+          borderRadius:10, padding:'10px 14px', backdropFilter:'blur(12px)',
+          display:'flex', flexDirection:'column', gap:8, fontSize:11,
+          boxShadow:'0 8px 24px rgba(0,0,0,0.5)', minWidth:190,
         }}>
-          <div style={{ fontWeight:600, color:'var(--text-secondary)', marginBottom:2 }}>Lớp hiển thị</div>
-          {[
-            [showCorridors, setShowCorridors, '━', 'Tuyến đường'],
-            [showCameras,   setShowCameras,   '●', 'Điểm đo (thiết bị ảo)'],
-            [showNodes,     setShowNodes,     '◉', 'Tâm nút giao'],
-          ].map(([active, setter, icon, label]) => (
-            <label key={label} style={{ display:'flex', alignItems:'center', gap:6, cursor:'pointer', userSelect:'none' }}>
-              <input type="checkbox" checked={active} onChange={e=>setter(e.target.checked)}
-                style={{ accentColor:'var(--accent)', width:12, height:12 }} />
-              <span style={{ color: active ? 'var(--text-primary)' : 'var(--text-muted)' }}>{icon} {label}</span>
-            </label>
-          ))}
+          <div style={{ fontSize:10, fontWeight:800, color:'#38bdf8', textTransform:'uppercase', letterSpacing:'0.06em', display:'flex', alignItems:'center', gap:5 }}>
+            <span>🗺️</span> Lớp hiển thị
+          </div>
+
+          <div style={{ display:'flex', flexDirection:'column', gap:5 }}>
+            {[
+              [showCorridors, setShowCorridors, '━', 'Tuyến đường', '#38bdf8'],
+              [showCameras,   setShowCameras,   '●', 'Điểm đo camera', '#10b981'],
+              [showNodes,     setShowNodes,     '◉', 'Tâm 22 nút giao', '#f59e0b'],
+            ].map(([active, setter, icon, label, accent]) => (
+              <label key={label} style={{ display:'flex', alignItems:'center', gap:7, cursor:'pointer', userSelect:'none', fontSize:11 }}>
+                <input
+                  type="checkbox"
+                  checked={active}
+                  onChange={e=>setter(e.target.checked)}
+                  style={{ accentColor: accent, width:13, height:13, cursor:'pointer' }}
+                />
+                <span style={{ color: active ? '#f8fafc' : '#64748b', fontWeight: active ? 600 : 400 }}>
+                  <span style={{ color: accent, marginRight: 2 }}>{icon}</span> {label}
+                </span>
+              </label>
+            ))}
+          </div>
+
+          <div style={{ borderTop:'1px solid rgba(255,255,255,0.08)', paddingTop:6 }}>
+            <div style={{ fontSize:10, fontWeight:700, color:'#94a3b8', marginBottom:5 }}>Bản đồ nền (Không lỗi Key)</div>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:4 }}>
+              <button
+                type="button"
+                onClick={() => setBaseMapType('dark')}
+                style={{
+                  padding:'4px 6px', borderRadius:6, fontSize:10, fontWeight:700, cursor:'pointer',
+                  border: baseMapType === 'dark' ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.08)',
+                  background: baseMapType === 'dark' ? 'rgba(56,189,248,0.2)' : 'rgba(255,255,255,0.03)',
+                  color: baseMapType === 'dark' ? '#38bdf8' : '#94a3b8',
+                }}
+              >🌙 Tối</button>
+              <button
+                type="button"
+                onClick={() => setBaseMapType('osm')}
+                style={{
+                  padding:'4px 6px', borderRadius:6, fontSize:10, fontWeight:700, cursor:'pointer',
+                  border: baseMapType === 'osm' ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.08)',
+                  background: baseMapType === 'osm' ? 'rgba(56,189,248,0.2)' : 'rgba(255,255,255,0.03)',
+                  color: baseMapType === 'osm' ? '#38bdf8' : '#94a3b8',
+                }}
+              >🗺️ Phố</button>
+              <button
+                type="button"
+                onClick={() => setBaseMapType('satellite')}
+                style={{
+                  padding:'4px 6px', borderRadius:6, fontSize:10, fontWeight:700, cursor:'pointer',
+                  border: baseMapType === 'satellite' ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.08)',
+                  background: baseMapType === 'satellite' ? 'rgba(56,189,248,0.2)' : 'rgba(255,255,255,0.03)',
+                  color: baseMapType === 'satellite' ? '#38bdf8' : '#94a3b8',
+                }}
+              >🛰️ Vệ tinh</button>
+            </div>
+          </div>
+
+          <div style={{ borderTop:'1px solid rgba(255,255,255,0.08)', paddingTop:6 }}>
+            <div style={{ fontSize:10, fontWeight:700, color:'#94a3b8', marginBottom:5 }}>Tiêu điểm nhanh</div>
+            <div style={{ display:'flex', gap:4 }}>
+              <button
+                type="button"
+                onClick={focusAll}
+                style={{
+                  flex:1, padding:'4px 4px', borderRadius:6, fontSize:10, fontWeight:600, cursor:'pointer',
+                  border:'1px solid rgba(255,255,255,0.08)', background:'rgba(255,255,255,0.03)', color:'#cbd5e1'
+                }}
+              >🎯 Toàn cảnh</button>
+              <button
+                type="button"
+                onClick={focusQ10}
+                style={{
+                  flex:1, padding:'4px 4px', borderRadius:6, fontSize:10, fontWeight:600, cursor:'pointer',
+                  border:'1px solid rgba(6,182,212,0.3)', background:'rgba(6,182,212,0.1)', color:'#06b6d4'
+                }}
+              >Quận 10</button>
+              <button
+                type="button"
+                onClick={focusTB}
+                style={{
+                  flex:1, padding:'4px 4px', borderRadius:6, fontSize:10, fontWeight:600, cursor:'pointer',
+                  border:'1px solid rgba(245,158,11,0.3)', background:'rgba(245,158,11,0.1)', color:'#f59e0b'
+                }}
+              >Tân Bình</button>
+            </div>
+          </div>
         </div>
 
         {/* LOS Legend */}
