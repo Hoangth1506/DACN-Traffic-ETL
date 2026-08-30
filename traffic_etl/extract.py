@@ -27,13 +27,13 @@ def utc_now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def _get_json(url: str, params: dict[str, Any], timeout: int = 8) -> dict[str, Any]:
+def _get_json(url: str, params: dict[str, Any], timeout: float = 6.0) -> dict[str, Any]:
     full_url = f"{url}?{urllib.parse.urlencode(params)}"
     request = urllib.request.Request(full_url, headers={"User-Agent": "DACN-traffic-etl/1.0"})
     
     is_overpass = "overpass" in url
     max_retries = 1 if is_overpass else 2
-    actual_timeout = 10 if is_overpass else timeout
+    actual_timeout = 8.0 if is_overpass else timeout
 
     for attempt in range(max_retries):
         try:
@@ -41,20 +41,20 @@ def _get_json(url: str, params: dict[str, Any], timeout: int = 8) -> dict[str, A
                 return json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
             # Retrying the same key cannot fix authentication, permission or
-            # quota errors. Let the TomTom caller rotate to another key.
+            # quota errors. Let the TomTom caller rotate to another key immediately.
             if exc.code in TOMTOM_KEY_REJECTION_CODES:
                 raise
             if attempt == max_retries - 1:
                 print(f"API Error after {max_retries} attempts: HTTP {exc.code}")
                 raise
             print(f"API Error HTTP {exc.code}, retrying {attempt + 1}/{max_retries}...")
-            time.sleep(2 ** attempt)
+            time.sleep(0.5)
         except Exception as e:
             if attempt == max_retries - 1:
                 print(f"API Error after {max_retries} attempts: {e}")
                 raise
             print(f"API Error {e}, retrying {attempt + 1}/{max_retries}...")
-            time.sleep(2 ** attempt)  # Chờ 1s, 2s trước khi thử lại
+            time.sleep(0.5)
 
 
 def geocode_nodes(nodes: list[NodeConfig], api_key: str | None) -> list[dict[str, Any]]:
@@ -247,6 +247,10 @@ def extract_tomtom_flow(
     active_api_keys = list(dict.fromkeys(api_keys))
     key_index = 0
     exhausted_keys_reported = False
+    consecutive_network_errors = 0
+    max_consecutive_network_errors = 5
+    network_failure_reported = False
+
     for node in geocoded_nodes:
         for point in node_sample_points(node, etl):
             base = {
@@ -284,8 +288,26 @@ def extract_tomtom_flow(
                         }
                     )
                 continue
+
+            if consecutive_network_errors >= max_consecutive_network_errors:
+                if not network_failure_reported:
+                    print(
+                        f"Network/TomTom endpoint unreachable ({consecutive_network_errors} consecutive timeouts/5xx); "
+                        "degrading gracefully to synthetic fallback for remaining samples to avoid runner timeout."
+                    )
+                    network_failure_reported = True
+                records.append(
+                    {
+                        **base,
+                        "source_name": "synthetic_fallback",
+                        "source_api": "Synthetic fallback after network connectivity failure",
+                        "extract_error": "NetworkUnreachable",
+                        **_synthetic_flow(node["node_id"], point["sample_id"]),
+                    }
+                )
+                continue
+
             try:
-                print(f"Fetching TomTom data for {node['node_id']} {point['sample_id']}...")
                 data = None
                 last_key_error: Exception | None = None
                 while active_api_keys and data is None:
@@ -299,10 +321,13 @@ def extract_tomtom_flow(
                                 "point": f"{point['lat']},{point['lon']}",
                                 "unit": "KMPH",
                             },
+                            timeout=5.0,
                         )
                         key_index = (key_index + 1) % len(active_api_keys)
+                        consecutive_network_errors = 0
                     except urllib.error.HTTPError as exc:
                         if exc.code not in TOMTOM_KEY_REJECTION_CODES:
+                            consecutive_network_errors += 1
                             raise
                         last_key_error = exc
                         active_api_keys.pop(key_index)
@@ -310,13 +335,18 @@ def extract_tomtom_flow(
                             f"TomTom key rejected with HTTP {exc.code}; "
                             f"{len(active_api_keys)} key(s) remain for this run."
                         )
+                    except Exception:
+                        consecutive_network_errors += 1
+                        raise
+
                 if data is None:
                     raise last_key_error or RuntimeError("No usable TomTom API key remains")
+
                 raw_path = raw_dir / f"tomtom_flow_{node['node_id']}_{point['sample_id']}.json"
                 raw_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
                 segment = data.get("flowSegmentData", {})
                 records.append({**base, "raw_path": str(raw_path), "flowSegmentData": segment})
-                time.sleep(0.15)
+                time.sleep(0.08)
             except Exception as exc:
                 records.append(
                     {
@@ -386,20 +416,36 @@ def extract_osm_edges(geocoded_nodes: list[dict[str, Any]], raw_dir: Path) -> li
     cache_dir = Path(".osm_cache")
     cache_dir.mkdir(exist_ok=True)
 
+    consecutive_osm_errors = 0
+    max_consecutive_osm_errors = 3
+    osm_failure_reported = False
+
     for node in geocoded_nodes:
         try:
             cache_file = cache_dir / f"edges_{node['node_id']}.json"
             if cache_file.exists():
                 data = json.loads(cache_file.read_text(encoding="utf-8"))
+            elif consecutive_osm_errors >= max_consecutive_osm_errors:
+                if not osm_failure_reported:
+                    print("Overpass OSM API unreachable/slow; using synthetic OSM topology for remaining nodes.")
+                    osm_failure_reported = True
+                records.extend(_synthetic_osm_edges(node, extracted_at, "OverpassUnreachable"))
+                continue
             else:
                 query = f"""
-                [out:json][timeout:25];
+                [out:json][timeout:15];
                 way(around:{int(node['radius_m'])},{node['lat']},{node['lon']})["highway"];
                 out tags center;
                 """
-                data = _get_json(OVERPASS_URL, {"data": query}, timeout=35)
-                cache_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
-                time.sleep(0.5)
+                try:
+                    data = _get_json(OVERPASS_URL, {"data": query}, timeout=8.0)
+                    cache_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+                    consecutive_osm_errors = 0
+                    time.sleep(0.2)
+                except Exception as exc:
+                    consecutive_osm_errors += 1
+                    records.extend(_synthetic_osm_edges(node, extracted_at, type(exc).__name__))
+                    continue
 
             raw_path = raw_dir / f"osm_edges_{node['node_id']}.json"
             raw_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -422,7 +468,7 @@ def extract_osm_edges(geocoded_nodes: list[dict[str, Any]], raw_dir: Path) -> li
                         "extracted_at": extracted_at,
                     }
                 )
-            time.sleep(0.25)
+            time.sleep(0.1)
         except Exception as exc:
             records.extend(_synthetic_osm_edges(node, extracted_at, type(exc).__name__))
     return records

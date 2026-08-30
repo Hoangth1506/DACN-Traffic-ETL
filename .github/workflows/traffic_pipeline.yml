@@ -25,6 +25,7 @@ concurrency:
 jobs:
   collect-etl-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
 
@@ -43,16 +44,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: "20"
           cache: npm
           cache-dependency-path: dashboard/package-lock.json
 
       - name: Install Python Dependencies
+        timeout-minutes: 2
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
       - name: Install Node Dependencies
+        timeout-minutes: 2
         run: |
           cd dashboard
           npm ci --legacy-peer-deps
@@ -64,6 +67,7 @@ jobs:
           key: osm-cache-${{ hashFiles('config/nodes.yaml') }}
 
       - name: Collect raw TomTom and OSM data
+        timeout-minutes: 3
         env:
           TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
           TOMTOM_API_KEYS: ${{ secrets.TOMTOM_API_KEYS }}
@@ -93,23 +97,28 @@ jobs:
           eval $CMD
 
       - name: Run ETL Data Generation
+        timeout-minutes: 3
         run: |
-          python generate_data.py --limit 432
+          python generate_data.py --limit 144
 
       - name: Export Public JSON Files
+        timeout-minutes: 2
         run: |
           python export_json.py
 
       - name: Validate dashboard JSON artifacts
+        timeout-minutes: 2
         run: |
           python scripts/validate_dashboard_json.py dashboard/public
 
       - name: Build Dashboard Dist
+        timeout-minutes: 3
         run: |
           cd dashboard
           npm run build
 
       - name: Validate built dashboard JSON artifacts
+        timeout-minutes: 2
         run: |
           python scripts/validate_dashboard_json.py dashboard/dist
 
