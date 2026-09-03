@@ -11,9 +11,9 @@
   "issues": [
     "Node N03_CMT8 co OSM match thap: 66.7%",
     "Node N04_THANH_THAI co OSM match thap: 69.9%",
-    "Node N08_DIEN_BIEN_PHU co OSM match thap: 67.1%",
+    "Node N08_DIEN_BIEN_PHU co OSM match thap: 67.6%",
     "Node N10_TRUONG_CHINH co OSM match thap: 63.9%",
-    "Top node match risks: N10_TRUONG_CHINH=63.9%, N03_CMT8=66.7%, N08_DIEN_BIEN_PHU=67.1%, N04_THANH_THAI=69.9%, N22_BAC_HAI=78.2%"
+    "Top node match risks: N10_TRUONG_CHINH=63.9%, N03_CMT8=66.7%, N08_DIEN_BIEN_PHU=67.6%, N04_THANH_THAI=69.9%, N22_BAC_HAI=77.8%"
   ],
   "by_node": {
     "N01_LY_THUONG_KIET": {
@@ -55,13 +55,13 @@
     "N07_SU_VAN_HANH": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.8935,
+      "osm_match_pct": 0.8958,
       "match_quality": "good"
     },
     "N08_DIEN_BIEN_PHU": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.6713,
+      "osm_match_pct": 0.6759,
       "match_quality": "poor"
     },
     "N09_CONG_HOA": {
@@ -85,7 +85,7 @@
     "N12_NGO_GIA_TU": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.8958,
+      "osm_match_pct": 0.8935,
       "match_quality": "good"
     },
     "N13_VINH_VIEN": {
@@ -109,7 +109,7 @@
     "N16_NHAT_TAO": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.8819,
+      "osm_match_pct": 0.8843,
       "match_quality": "good"
     },
     "N17_TRAN_NHAN_TON": {
@@ -133,7 +133,7 @@
     "N20_CUU_LONG": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.7847,
+      "osm_match_pct": 0.7824,
       "match_quality": "watch"
     },
     "N21_HO_BA_KIEN": {
@@ -145,7 +145,7 @@
     "N22_BAC_HAI": {
       "records": 432,
       "completeness": 1.0,
-      "osm_match_pct": 0.7824,
+      "osm_match_pct": 0.7778,
       "match_quality": "watch"
     }
   }
