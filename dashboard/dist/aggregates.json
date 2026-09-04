@@ -8,17 +8,17 @@
         "radius_m": 2500
       },
       "records": 432,
-      "avg_speed": 25.11,
-      "std_speed": 5.43,
+      "avg_speed": 25.13,
+      "std_speed": 5.4,
       "min_speed": 15.0,
       "max_speed": 35.0,
       "avg_congestion_index": 0.21,
-      "pct_congested": 16.67,
+      "pct_congested": 16.2,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 230,
+        "D": 232,
         "E": 80,
-        "C": 72,
+        "C": 70,
         "F": 50
       }
     },
@@ -30,18 +30,18 @@
         "radius_m": 2500
       },
       "records": 432,
-      "avg_speed": 30.01,
-      "std_speed": 7.01,
-      "min_speed": 14.0,
+      "avg_speed": 30.03,
+      "std_speed": 6.98,
+      "min_speed": 16.0,
       "max_speed": 41.0,
       "avg_congestion_index": 0.15,
-      "pct_congested": 3.94,
+      "pct_congested": 3.7,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 174,
+        "D": 175,
         "E": 129,
         "F": 112,
-        "C": 17
+        "C": 16
       }
     },
     "N03_CMT8": {
@@ -53,7 +53,7 @@
       },
       "records": 432,
       "avg_speed": 27.68,
-      "std_speed": 4.49,
+      "std_speed": 4.5,
       "min_speed": 14.0,
       "max_speed": 34.0,
       "avg_congestion_index": 0.16,
@@ -73,8 +73,8 @@
         "radius_m": 2500
       },
       "records": 432,
-      "avg_speed": 26.73,
-      "std_speed": 3.8,
+      "avg_speed": 26.74,
+      "std_speed": 3.78,
       "min_speed": 14.0,
       "max_speed": 31.0,
       "avg_congestion_index": 0.09,
@@ -116,16 +116,16 @@
         "radius_m": 2500
       },
       "records": 432,
-      "avg_speed": 24.69,
-      "std_speed": 6.12,
+      "avg_speed": 24.73,
+      "std_speed": 6.08,
       "min_speed": 12.0,
       "max_speed": 41.0,
       "avg_congestion_index": 0.12,
-      "pct_congested": 22.69,
+      "pct_congested": 22.22,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 293,
-        "C": 94,
+        "D": 295,
+        "C": 92,
         "F": 24,
         "E": 17,
         "B": 4
@@ -139,16 +139,16 @@
         "radius_m": 2500
       },
       "records": 432,
-      "avg_speed": 23.53,
-      "std_speed": 5.55,
+      "avg_speed": 23.55,
+      "std_speed": 5.53,
       "min_speed": 10.0,
       "max_speed": 32.0,
       "avg_congestion_index": 0.23,
-      "pct_congested": 27.55,
-      "osm_match_pct": 89.12,
+      "pct_congested": 27.08,
+      "osm_match_pct": 88.89,
       "los_distribution": {
-        "D": 203,
-        "C": 116,
+        "D": 205,
+        "C": 114,
         "E": 110,
         "B": 3
       }
@@ -161,17 +161,17 @@
         "radius_m": 2500
       },
       "records": 432,
-      "avg_speed": 25.41,
-      "std_speed": 4.98,
-      "min_speed": 14.0,
+      "avg_speed": 25.46,
+      "std_speed": 4.91,
+      "min_speed": 16.0,
       "max_speed": 34.0,
       "avg_congestion_index": 0.18,
-      "pct_congested": 11.34,
+      "pct_congested": 10.65,
       "osm_match_pct": 66.9,
       "los_distribution": {
-        "D": 257,
+        "D": 260,
         "E": 126,
-        "C": 49
+        "C": 46
       }
     },
     "N09_CONG_HOA": {
@@ -182,18 +182,18 @@
         "radius_m": 3000
       },
       "records": 432,
-      "avg_speed": 31.26,
-      "std_speed": 5.48,
+      "avg_speed": 31.29,
+      "std_speed": 5.44,
       "min_speed": 14.0,
       "max_speed": 39.0,
-      "avg_congestion_index": 0.16,
-      "pct_congested": 0.93,
+      "avg_congestion_index": 0.15,
+      "pct_congested": 0.46,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 190,
+        "D": 192,
         "F": 171,
         "E": 67,
-        "C": 4
+        "C": 2
       }
     },
     "N10_TRUONG_CHINH": {
@@ -204,40 +204,39 @@
         "radius_m": 3000
       },
       "records": 432,
-      "avg_speed": 30.59,
-      "std_speed": 5.99,
-      "min_speed": 19.0,
+      "avg_speed": 30.67,
+      "std_speed": 5.93,
+      "min_speed": 20.0,
       "max_speed": 42.0,
       "avg_congestion_index": 0.15,
-      "pct_congested": 0.69,
-      "osm_match_pct": 63.66,
+      "pct_congested": 0.0,
+      "osm_match_pct": 63.19,
       "los_distribution": {
-        "D": 242,
-        "F": 177,
-        "E": 10,
-        "C": 3
+        "D": 244,
+        "F": 178,
+        "E": 10
       }
     },
     "N11_LE_HONG_PHONG": {
       "meta": {},
       "records": 432,
-      "avg_speed": 21.08,
-      "std_speed": 3.79,
+      "avg_speed": 21.01,
+      "std_speed": 3.8,
       "min_speed": 14.0,
       "max_speed": 26.0,
       "avg_congestion_index": 0.18,
-      "pct_congested": 45.83,
+      "pct_congested": 46.53,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 234,
-        "C": 198
+        "D": 231,
+        "C": 201
       }
     },
     "N12_NGO_GIA_TU": {
       "meta": {},
       "records": 432,
-      "avg_speed": 30.83,
-      "std_speed": 7.38,
+      "avg_speed": 30.84,
+      "std_speed": 7.37,
       "min_speed": 13.0,
       "max_speed": 41.0,
       "avg_congestion_index": 0.12,
@@ -253,17 +252,17 @@
     "N13_VINH_VIEN": {
       "meta": {},
       "records": 432,
-      "avg_speed": 26.25,
-      "std_speed": 5.59,
+      "avg_speed": 26.28,
+      "std_speed": 5.56,
       "min_speed": 12.0,
       "max_speed": 35.0,
       "avg_congestion_index": 0.11,
-      "pct_congested": 14.81,
+      "pct_congested": 14.58,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 298,
+        "D": 299,
         "F": 69,
-        "C": 62,
+        "C": 61,
         "B": 2,
         "E": 1
       }
@@ -271,8 +270,8 @@
     "N14_HOA_HAO": {
       "meta": {},
       "records": 432,
-      "avg_speed": 27.81,
-      "std_speed": 2.59,
+      "avg_speed": 27.82,
+      "std_speed": 2.57,
       "min_speed": 20.0,
       "max_speed": 29.0,
       "avg_congestion_index": 0.04,
@@ -285,16 +284,16 @@
     "N15_BA_HAT": {
       "meta": {},
       "records": 432,
-      "avg_speed": 25.42,
-      "std_speed": 4.7,
+      "avg_speed": 25.44,
+      "std_speed": 4.67,
       "min_speed": 12.0,
       "max_speed": 33.0,
       "avg_congestion_index": 0.1,
-      "pct_congested": 15.51,
+      "pct_congested": 15.28,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 344,
-        "C": 66,
+        "D": 345,
+        "C": 65,
         "E": 21,
         "B": 1
       }
@@ -302,8 +301,8 @@
     "N16_NHAT_TAO": {
       "meta": {},
       "records": 432,
-      "avg_speed": 27.32,
-      "std_speed": 4.13,
+      "avg_speed": 27.34,
+      "std_speed": 4.11,
       "min_speed": 14.0,
       "max_speed": 33.0,
       "avg_congestion_index": 0.11,
@@ -318,40 +317,40 @@
     "N17_TRAN_NHAN_TON": {
       "meta": {},
       "records": 432,
-      "avg_speed": 32.17,
-      "std_speed": 8.59,
+      "avg_speed": 32.15,
+      "std_speed": 8.63,
       "min_speed": 14.0,
       "max_speed": 41.0,
       "avg_congestion_index": 0.11,
-      "pct_congested": 15.97,
+      "pct_congested": 16.2,
       "osm_match_pct": 100.0,
       "los_distribution": {
         "F": 224,
-        "D": 77,
-        "C": 69,
+        "D": 76,
+        "C": 70,
         "E": 62
       }
     },
     "N18_NGUYEN_LAM": {
       "meta": {},
       "records": 432,
-      "avg_speed": 26.38,
-      "std_speed": 5.21,
+      "avg_speed": 26.4,
+      "std_speed": 5.2,
       "min_speed": 13.0,
       "max_speed": 33.0,
       "avg_congestion_index": 0.15,
-      "pct_congested": 10.65,
+      "pct_congested": 10.88,
       "osm_match_pct": 100.0,
       "los_distribution": {
-        "D": 250,
+        "D": 249,
         "E": 136,
-        "C": 46
+        "C": 47
       }
     },
     "N19_DONG_NAI": {
       "meta": {},
       "records": 432,
-      "avg_speed": 25.25,
+      "avg_speed": 25.28,
       "std_speed": 4.09,
       "min_speed": 13.0,
       "max_speed": 30.0,
@@ -367,13 +366,13 @@
     "N20_CUU_LONG": {
       "meta": {},
       "records": 432,
-      "avg_speed": 25.92,
+      "avg_speed": 25.91,
       "std_speed": 4.13,
       "min_speed": 11.0,
       "max_speed": 33.0,
       "avg_congestion_index": 0.08,
       "pct_congested": 8.33,
-      "osm_match_pct": 78.7,
+      "osm_match_pct": 78.94,
       "los_distribution": {
         "D": 335,
         "E": 61,
@@ -384,32 +383,32 @@
     "N21_HO_BA_KIEN": {
       "meta": {},
       "records": 432,
-      "avg_speed": 23.77,
-      "std_speed": 4.66,
+      "avg_speed": 23.82,
+      "std_speed": 4.63,
       "min_speed": 13.0,
       "max_speed": 34.0,
       "avg_congestion_index": 0.13,
-      "pct_congested": 21.3,
+      "pct_congested": 20.6,
       "osm_match_pct": 96.06,
       "los_distribution": {
-        "D": 266,
-        "C": 92,
+        "D": 269,
+        "C": 89,
         "E": 74
       }
     },
     "N22_BAC_HAI": {
       "meta": {},
       "records": 432,
-      "avg_speed": 25.0,
-      "std_speed": 4.33,
+      "avg_speed": 24.98,
+      "std_speed": 4.34,
       "min_speed": 13.0,
       "max_speed": 35.0,
       "avg_congestion_index": 0.09,
-      "pct_congested": 11.81,
-      "osm_match_pct": 77.31,
+      "pct_congested": 12.04,
+      "osm_match_pct": 76.85,
       "los_distribution": {
-        "D": 336,
-        "C": 51,
+        "D": 335,
+        "C": 52,
         "E": 23,
         "F": 22
       }
@@ -417,32 +416,32 @@
   },
   "by_date": {
     "2026-08-28": {
-      "records": 198,
-      "avg_speed": 21.16,
-      "pct_congested": 38.89,
+      "records": 132,
+      "avg_speed": 20.96,
+      "pct_congested": 42.42,
       "by_node": {
-        "N01_LY_THUONG_KIET": 18.22,
-        "N02_BA_THANG_HAI": 23.78,
-        "N03_CMT8": 20.67,
-        "N04_THANH_THAI": 21.56,
-        "N05_TO_HIEN_THANH": 19.67,
-        "N06_NGUYEN_TRI_PHUONG": 17.89,
-        "N07_SU_VAN_HANH": 16.78,
-        "N08_DIEN_BIEN_PHU": 18.33,
-        "N09_CONG_HOA": 20.11,
-        "N10_TRUONG_CHINH": 21.33,
-        "N11_LE_HONG_PHONG": 20.0,
-        "N12_NGO_GIA_TU": 24.67,
-        "N13_VINH_VIEN": 20.56,
-        "N14_HOA_HAO": 23.67,
-        "N15_BA_HAT": 20.67,
-        "N16_NHAT_TAO": 22.22,
-        "N17_TRAN_NHAN_TON": 28.33,
-        "N18_NGUYEN_LAM": 21.44,
-        "N19_DONG_NAI": 20.67,
-        "N20_CUU_LONG": 23.0,
-        "N21_HO_BA_KIEN": 19.44,
-        "N22_BAC_HAI": 22.56
+        "N01_LY_THUONG_KIET": 18.33,
+        "N02_BA_THANG_HAI": 24.17,
+        "N03_CMT8": 18.67,
+        "N04_THANH_THAI": 21.67,
+        "N05_TO_HIEN_THANH": 18.33,
+        "N06_NGUYEN_TRI_PHUONG": 18.33,
+        "N07_SU_VAN_HANH": 16.83,
+        "N08_DIEN_BIEN_PHU": 20.5,
+        "N09_CONG_HOA": 19.33,
+        "N10_TRUONG_CHINH": 22.5,
+        "N11_LE_HONG_PHONG": 17.0,
+        "N12_NGO_GIA_TU": 24.0,
+        "N13_VINH_VIEN": 21.0,
+        "N14_HOA_HAO": 25.0,
+        "N15_BA_HAT": 21.5,
+        "N16_NHAT_TAO": 22.83,
+        "N17_TRAN_NHAN_TON": 27.5,
+        "N18_NGUYEN_LAM": 21.67,
+        "N19_DONG_NAI": 19.17,
+        "N20_CUU_LONG": 21.0,
+        "N21_HO_BA_KIEN": 20.33,
+        "N22_BAC_HAI": 21.5
       }
     },
     "2026-08-29": {
@@ -620,32 +619,32 @@
       }
     },
     "2026-09-04": {
-      "records": 198,
-      "avg_speed": 28.97,
-      "pct_congested": 6.06,
+      "records": 264,
+      "avg_speed": 27.63,
+      "pct_congested": 7.2,
       "by_node": {
-        "N01_LY_THUONG_KIET": 29.22,
-        "N02_BA_THANG_HAI": 33.0,
-        "N03_CMT8": 28.11,
-        "N04_THANH_THAI": 28.56,
-        "N05_TO_HIEN_THANH": 27.89,
-        "N06_NGUYEN_TRI_PHUONG": 26.56,
-        "N07_SU_VAN_HANH": 27.78,
-        "N08_DIEN_BIEN_PHU": 28.67,
-        "N09_CONG_HOA": 33.78,
-        "N10_TRUONG_CHINH": 34.11,
-        "N11_LE_HONG_PHONG": 21.67,
-        "N12_NGO_GIA_TU": 33.33,
-        "N13_VINH_VIEN": 28.44,
-        "N14_HOA_HAO": 29.0,
-        "N15_BA_HAT": 26.44,
-        "N16_NHAT_TAO": 28.89,
-        "N17_TRAN_NHAN_TON": 33.67,
-        "N18_NGUYEN_LAM": 25.44,
-        "N19_DONG_NAI": 28.33,
-        "N20_CUU_LONG": 28.11,
-        "N21_HO_BA_KIEN": 28.22,
-        "N22_BAC_HAI": 28.11
+        "N01_LY_THUONG_KIET": 27.33,
+        "N02_BA_THANG_HAI": 31.25,
+        "N03_CMT8": 27.08,
+        "N04_THANH_THAI": 27.17,
+        "N05_TO_HIEN_THANH": 26.5,
+        "N06_NGUYEN_TRI_PHUONG": 25.33,
+        "N07_SU_VAN_HANH": 25.83,
+        "N08_DIEN_BIEN_PHU": 26.5,
+        "N09_CONG_HOA": 31.75,
+        "N10_TRUONG_CHINH": 33.08,
+        "N11_LE_HONG_PHONG": 20.0,
+        "N12_NGO_GIA_TU": 32.0,
+        "N13_VINH_VIEN": 27.33,
+        "N14_HOA_HAO": 27.25,
+        "N15_BA_HAT": 25.58,
+        "N16_NHAT_TAO": 27.5,
+        "N17_TRAN_NHAN_TON": 32.17,
+        "N18_NGUYEN_LAM": 24.75,
+        "N19_DONG_NAI": 28.17,
+        "N20_CUU_LONG": 27.42,
+        "N21_HO_BA_KIEN": 27.25,
+        "N22_BAC_HAI": 26.67
       }
     }
   },
@@ -675,28 +674,28 @@
       "N22_BAC_HAI": 22.1
     },
     "midday_peak": {
-      "N01_LY_THUONG_KIET": 23.41,
-      "N02_BA_THANG_HAI": 28.51,
-      "N03_CMT8": 27.36,
-      "N04_THANH_THAI": 26.49,
+      "N01_LY_THUONG_KIET": 23.69,
+      "N02_BA_THANG_HAI": 28.74,
+      "N03_CMT8": 27.31,
+      "N04_THANH_THAI": 26.62,
       "N05_TO_HIEN_THANH": 24.79,
-      "N06_NGUYEN_TRI_PHUONG": 24.44,
-      "N07_SU_VAN_HANH": 22.49,
-      "N08_DIEN_BIEN_PHU": 24.23,
-      "N09_CONG_HOA": 31.31,
-      "N10_TRUONG_CHINH": 28.21,
-      "N11_LE_HONG_PHONG": 21.85,
-      "N12_NGO_GIA_TU": 31.26,
-      "N13_VINH_VIEN": 26.46,
-      "N14_HOA_HAO": 27.46,
-      "N15_BA_HAT": 25.28,
-      "N16_NHAT_TAO": 27.49,
-      "N17_TRAN_NHAN_TON": 32.72,
-      "N18_NGUYEN_LAM": 28.03,
-      "N19_DONG_NAI": 25.54,
-      "N20_CUU_LONG": 26.13,
-      "N21_HO_BA_KIEN": 22.74,
-      "N22_BAC_HAI": 25.87
+      "N06_NGUYEN_TRI_PHUONG": 24.79,
+      "N07_SU_VAN_HANH": 22.74,
+      "N08_DIEN_BIEN_PHU": 24.69,
+      "N09_CONG_HOA": 31.62,
+      "N10_TRUONG_CHINH": 29.05,
+      "N11_LE_HONG_PHONG": 21.0,
+      "N12_NGO_GIA_TU": 31.41,
+      "N13_VINH_VIEN": 26.79,
+      "N14_HOA_HAO": 27.54,
+      "N15_BA_HAT": 25.59,
+      "N16_NHAT_TAO": 27.67,
+      "N17_TRAN_NHAN_TON": 32.54,
+      "N18_NGUYEN_LAM": 28.15,
+      "N19_DONG_NAI": 25.85,
+      "N20_CUU_LONG": 26.0,
+      "N21_HO_BA_KIEN": 23.26,
+      "N22_BAC_HAI": 25.69
     },
     "morning_peak": {
       "N01_LY_THUONG_KIET": 25.54,
@@ -749,7 +748,6 @@
   },
   "heatmap_speed": {
     "2026-08-28": {
-      "11": 21.6,
       "19": 21.0
     },
     "2026-08-29": {
@@ -819,37 +817,18 @@
     "2026-09-04": {
       "1": 31.4,
       "4": 29.7,
-      "6": 25.8
+      "6": 25.8,
+      "12": 23.6
     }
   },
   "road_profiles": {
     "Lý Thường Kiệt": {
       "node_id": "N01_LY_THUONG_KIET",
       "records": 288,
-      "avg_speed": 23.09,
-      "std_speed": 4.63,
+      "avg_speed": 23.11,
+      "std_speed": 4.61,
       "data": [
         {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 17.0,
-          "free_flow": 31.0,
-          "los": "C",
-          "congestion_index": 0.4516
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 17.0,
-          "free_flow": 31.0,
-          "los": "C",
-          "congestion_index": 0.4516
-        },
-        {
           "session": "ual_dispatch",
           "date": "2026-08-28",
           "hour": 19,
@@ -3708,25 +3687,35 @@
           "free_flow": 30.0,
           "los": "D",
           "congestion_index": 0.2667
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 30.0,
+          "los": "D",
+          "congestion_index": 0.3333
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 30.0,
+          "los": "D",
+          "congestion_index": 0.3333
         }
       ]
     },
     "Hẻm 334 Lý Thường Kiệt": {
       "node_id": "N01_LY_THUONG_KIET",
       "records": 144,
-      "avg_speed": 29.14,
-      "std_speed": 4.59,
+      "avg_speed": 29.17,
+      "std_speed": 4.54,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 20.0,
-          "free_flow": 34.0,
-          "los": "D",
-          "congestion_index": 0.4118
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -5156,25 +5145,25 @@
           "free_flow": 35.0,
           "los": "D",
           "congestion_index": 0.1714
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 35.0,
+          "los": "D",
+          "congestion_index": 0.2857
         }
       ]
     },
     "Hẻm 173 Đường Thành Thái": {
       "node_id": "N04_THANH_THAI",
       "records": 130,
-      "avg_speed": 25.7,
-      "std_speed": 4.59,
+      "avg_speed": 25.71,
+      "std_speed": 4.58,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 22.0,
-          "free_flow": 31.0,
-          "los": "D",
-          "congestion_index": 0.2903
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -6464,25 +6453,25 @@
           "free_flow": 31.0,
           "los": "D",
           "congestion_index": 0.3226
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 23.0,
+          "free_flow": 31.0,
+          "los": "D",
+          "congestion_index": 0.2581
         }
       ]
     },
     "Hẻm 131 Đường Thành Thái": {
       "node_id": "N04_THANH_THAI",
       "records": 130,
-      "avg_speed": 27.81,
-      "std_speed": 2.49,
+      "avg_speed": 27.82,
+      "std_speed": 2.45,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -7772,25 +7761,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 23.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.1786
         }
       ]
     },
     "Hẻm 131/25 Thành Thái": {
       "node_id": "N04_THANH_THAI",
       "records": 130,
-      "avg_speed": 27.81,
-      "std_speed": 2.49,
+      "avg_speed": 27.82,
+      "std_speed": 2.45,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -9080,6 +9069,16 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 23.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.1786
         }
       ]
     },
@@ -9089,26 +9088,6 @@
       "avg_speed": 24.34,
       "std_speed": 4.15,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 27.0,
-          "free_flow": 27.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 20.0,
-          "free_flow": 31.0,
-          "los": "D",
-          "congestion_index": 0.3548
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -11968,6 +11947,26 @@
           "free_flow": 30.0,
           "los": "D",
           "congestion_index": 0.1667
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 27.0,
+          "free_flow": 27.0,
+          "los": "D",
+          "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 30.0,
+          "los": "D",
+          "congestion_index": 0.3333
         }
       ]
     },
@@ -11977,16 +11976,6 @@
       "avg_speed": 24.08,
       "std_speed": 4.32,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 20.0,
-          "free_flow": 31.0,
-          "los": "D",
-          "congestion_index": 0.3548
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -13416,25 +13405,25 @@
           "free_flow": 30.0,
           "los": "D",
           "congestion_index": 0.1667
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 30.0,
+          "los": "D",
+          "congestion_index": 0.3333
         }
       ]
     },
     "Hẻm 377 Nguyễn Tri Phương": {
       "node_id": "N06_NGUYEN_TRI_PHUONG",
       "records": 116,
-      "avg_speed": 20.62,
-      "std_speed": 3.97,
+      "avg_speed": 20.67,
+      "std_speed": 3.93,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 15.0,
-          "free_flow": 25.0,
-          "los": "C",
-          "congestion_index": 0.4
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -14584,35 +14573,25 @@
           "free_flow": 24.0,
           "los": "C",
           "congestion_index": 0.4167
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 21.0,
+          "free_flow": 25.0,
+          "los": "D",
+          "congestion_index": 0.16
         }
       ]
     },
     "Nguyễn Tri Phương": {
       "node_id": "N06_NGUYEN_TRI_PHUONG",
       "records": 232,
-      "avg_speed": 24.19,
-      "std_speed": 4.89,
+      "avg_speed": 24.23,
+      "std_speed": 4.85,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 15.0,
-          "free_flow": 25.0,
-          "los": "C",
-          "congestion_index": 0.4
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -16912,25 +16891,35 @@
           "free_flow": 24.0,
           "los": "C",
           "congestion_index": 0.4167
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 23.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.1786
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 21.0,
+          "free_flow": 25.0,
+          "los": "D",
+          "congestion_index": 0.16
         }
       ]
     },
     "Hẻm 414 Đường Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
       "records": 94,
-      "avg_speed": 25.27,
-      "std_speed": 5.24,
+      "avg_speed": 25.33,
+      "std_speed": 5.14,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 14.0,
-          "free_flow": 32.0,
-          "los": "C",
-          "congestion_index": 0.5625
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -17860,36 +17849,26 @@
           "free_flow": 32.0,
           "los": "D",
           "congestion_index": 0.3125
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 32.0,
+          "los": "D",
+          "congestion_index": 0.375
         }
       ]
     },
     "Hẻm 372 Điện Biên Phủ": {
       "node_id": "N08_DIEN_BIEN_PHU",
       "records": 188,
-      "avg_speed": 25.27,
-      "std_speed": 5.22,
+      "avg_speed": 25.33,
+      "std_speed": 5.12,
       "data": [
         {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 14.0,
-          "free_flow": 32.0,
-          "los": "C",
-          "congestion_index": 0.5625
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 14.0,
-          "free_flow": 32.0,
-          "los": "C",
-          "congestion_index": 0.5625
-        },
-        {
           "session": "ual_dispatch",
           "date": "2026-08-28",
           "hour": 19,
@@ -19748,45 +19727,35 @@
           "free_flow": 32.0,
           "los": "D",
           "congestion_index": 0.3125
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 32.0,
+          "los": "D",
+          "congestion_index": 0.375
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 20.0,
+          "free_flow": 32.0,
+          "los": "D",
+          "congestion_index": 0.375
         }
       ]
     },
     "Cộng Hòa": {
       "node_id": "N09_CONG_HOA",
       "records": 432,
-      "avg_speed": 31.26,
-      "std_speed": 5.48,
+      "avg_speed": 31.29,
+      "std_speed": 5.44,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 19.0,
-          "free_flow": 36.0,
-          "los": "C",
-          "congestion_index": 0.4722
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 19.0,
-          "free_flow": 36.0,
-          "los": "C",
-          "congestion_index": 0.4722
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 27.0,
-          "free_flow": 39.0,
-          "los": "D",
-          "congestion_index": 0.3077
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -24076,45 +24045,45 @@
           "free_flow": 39.0,
           "los": "E",
           "congestion_index": 0.2308
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 36.0,
+          "los": "D",
+          "congestion_index": 0.3056
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 36.0,
+          "los": "D",
+          "congestion_index": 0.3056
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 27.0,
+          "free_flow": 39.0,
+          "los": "D",
+          "congestion_index": 0.3077
         }
       ]
     },
     "Trường Chinh": {
       "node_id": "N10_TRUONG_CHINH",
-      "records": 288,
-      "avg_speed": 28.78,
-      "std_speed": 4.66,
+      "records": 285,
+      "avg_speed": 28.89,
+      "std_speed": 4.57,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 19.0,
-          "free_flow": 34.0,
-          "los": "C",
-          "congestion_index": 0.4412
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 19.0,
-          "free_flow": 34.0,
-          "los": "C",
-          "congestion_index": 0.4412
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 19.0,
-          "free_flow": 34.0,
-          "los": "C",
-          "congestion_index": 0.4412
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -26970,19 +26939,9 @@
     "Hẻm 353/16 Lê Hồng Phong": {
       "node_id": "N11_LE_HONG_PHONG",
       "records": 144,
-      "avg_speed": 21.08,
-      "std_speed": 3.8,
+      "avg_speed": 21.01,
+      "std_speed": 3.81,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 26.0,
-          "free_flow": 26.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -28412,25 +28371,25 @@
           "free_flow": 25.0,
           "los": "D",
           "congestion_index": 0.2
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 15.0,
+          "free_flow": 25.0,
+          "los": "C",
+          "congestion_index": 0.4
         }
       ]
     },
     "Hẻm 369 Lê Hồng Phong": {
       "node_id": "N11_LE_HONG_PHONG",
       "records": 144,
-      "avg_speed": 21.08,
-      "std_speed": 3.8,
+      "avg_speed": 21.01,
+      "std_speed": 3.81,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 26.0,
-          "free_flow": 26.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -29860,25 +29819,25 @@
           "free_flow": 25.0,
           "los": "D",
           "congestion_index": 0.2
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 15.0,
+          "free_flow": 25.0,
+          "los": "C",
+          "congestion_index": 0.4
         }
       ]
     },
     "Hẻm 393/33 Lê Hồng Phong": {
       "node_id": "N11_LE_HONG_PHONG",
       "records": 144,
-      "avg_speed": 21.08,
-      "std_speed": 3.8,
+      "avg_speed": 21.01,
+      "std_speed": 3.81,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 26.0,
-          "free_flow": 26.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -31308,6 +31267,16 @@
           "free_flow": 25.0,
           "los": "D",
           "congestion_index": 0.2
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 15.0,
+          "free_flow": 25.0,
+          "los": "C",
+          "congestion_index": 0.4
         }
       ]
     },
@@ -31315,18 +31284,8 @@
       "node_id": "N13_VINH_VIEN",
       "records": 144,
       "avg_speed": 27.81,
-      "std_speed": 2.61,
+      "std_speed": 2.59,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -32756,25 +32715,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Hẻm 247 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
       "records": 144,
-      "avg_speed": 20.85,
-      "std_speed": 4.01,
+      "avg_speed": 20.92,
+      "std_speed": 3.99,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 15.0,
-          "free_flow": 25.0,
-          "los": "C",
-          "congestion_index": 0.4
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -34204,25 +34163,25 @@
           "free_flow": 24.0,
           "los": "C",
           "congestion_index": 0.4167
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 25.0,
+          "los": "D",
+          "congestion_index": 0.0
         }
       ]
     },
     "Hẻm 233/3 Vĩnh Viễn": {
       "node_id": "N13_VINH_VIEN",
       "records": 144,
-      "avg_speed": 30.1,
-      "std_speed": 4.96,
+      "avg_speed": 30.11,
+      "std_speed": 4.94,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 23.0,
-          "free_flow": 35.0,
-          "los": "D",
-          "congestion_index": 0.3429
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -35652,25 +35611,25 @@
           "free_flow": 35.0,
           "los": "F",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 35.0,
+          "los": "D",
+          "congestion_index": 0.2857
         }
       ]
     },
     "Hẻm 409 Hòa Hảo": {
       "node_id": "N14_HOA_HAO",
       "records": 144,
-      "avg_speed": 27.81,
-      "std_speed": 2.59,
+      "avg_speed": 27.82,
+      "std_speed": 2.58,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -37100,25 +37059,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Hẻm 381 Hòa Hảo": {
       "node_id": "N14_HOA_HAO",
       "records": 144,
-      "avg_speed": 27.81,
-      "std_speed": 2.59,
+      "avg_speed": 27.82,
+      "std_speed": 2.58,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -38548,25 +38507,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Hẻm 457 Hòa Hảo": {
       "node_id": "N14_HOA_HAO",
       "records": 144,
-      "avg_speed": 27.81,
-      "std_speed": 2.59,
+      "avg_speed": 27.82,
+      "std_speed": 2.58,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -39996,25 +39955,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Hẻm 449 Bà Hạt": {
       "node_id": "N15_BA_HAT",
       "records": 88,
-      "avg_speed": 27.73,
-      "std_speed": 2.75,
+      "avg_speed": 27.74,
+      "std_speed": 2.73,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -40884,25 +40843,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Bà Hạt": {
       "node_id": "N15_BA_HAT",
       "records": 88,
-      "avg_speed": 27.73,
-      "std_speed": 2.75,
+      "avg_speed": 27.74,
+      "std_speed": 2.73,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -41772,25 +41731,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Hẻm 383/14 Bà Hạt": {
       "node_id": "N15_BA_HAT",
       "records": 88,
-      "avg_speed": 20.5,
-      "std_speed": 3.96,
+      "avg_speed": 20.61,
+      "std_speed": 3.94,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 15.0,
-          "free_flow": 25.0,
-          "los": "C",
-          "congestion_index": 0.4
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -42660,25 +42619,25 @@
           "free_flow": 24.0,
           "los": "C",
           "congestion_index": 0.4167
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 25.0,
+          "los": "D",
+          "congestion_index": 0.0
         }
       ]
     },
     "Trường Tiểu học Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
       "records": 144,
-      "avg_speed": 37.68,
-      "std_speed": 3.5,
+      "avg_speed": 37.69,
+      "std_speed": 3.48,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 32.0,
-          "free_flow": 41.0,
-          "los": "E",
-          "congestion_index": 0.2195
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -44108,35 +44067,25 @@
           "free_flow": 41.0,
           "los": "F",
           "congestion_index": 0.0976
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 34.0,
+          "free_flow": 41.0,
+          "los": "E",
+          "congestion_index": 0.1707
         }
       ]
     },
     "Trần Nhân Tôn": {
       "node_id": "N17_TRAN_NHAN_TON",
       "records": 288,
-      "avg_speed": 29.41,
-      "std_speed": 9.05,
+      "avg_speed": 29.38,
+      "std_speed": 9.09,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 32.0,
-          "free_flow": 41.0,
-          "los": "E",
-          "congestion_index": 0.2195
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 26.0,
-          "free_flow": 26.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -46996,25 +46945,35 @@
           "free_flow": 25.0,
           "los": "D",
           "congestion_index": 0.2
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 34.0,
+          "free_flow": 41.0,
+          "los": "E",
+          "congestion_index": 0.1707
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 15.0,
+          "free_flow": 25.0,
+          "los": "C",
+          "congestion_index": 0.4
         }
       ]
     },
     "Hẻm 66 Nguyễn Lâm": {
       "node_id": "N18_NGUYEN_LAM",
-      "records": 96,
-      "avg_speed": 28.04,
-      "std_speed": 4.36,
+      "records": 95,
+      "avg_speed": 28.12,
+      "std_speed": 4.32,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 33.0,
-          "los": "D",
-          "congestion_index": 0.3636
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -47969,20 +47928,10 @@
     },
     "Hẻm 112/9 Nguyễn Lâm": {
       "node_id": "N18_NGUYEN_LAM",
-      "records": 96,
-      "avg_speed": 28.04,
-      "std_speed": 4.36,
+      "records": 95,
+      "avg_speed": 28.12,
+      "std_speed": 4.32,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 33.0,
-          "los": "D",
-          "congestion_index": 0.3636
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -48937,20 +48886,10 @@
     },
     "Nguyễn Lâm": {
       "node_id": "N18_NGUYEN_LAM",
-      "records": 96,
-      "avg_speed": 28.04,
-      "std_speed": 4.36,
+      "records": 95,
+      "avg_speed": 28.12,
+      "std_speed": 4.32,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 33.0,
-          "los": "D",
-          "congestion_index": 0.3636
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -49905,40 +49844,10 @@
     },
     "Cửu Long": {
       "node_id": "N20_CUU_LONG",
-      "records": 276,
-      "avg_speed": 25.16,
-      "std_speed": 3.49,
+      "records": 273,
+      "avg_speed": 25.14,
+      "std_speed": 3.5,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 27.0,
-          "free_flow": 27.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 25.0,
-          "free_flow": 25.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 29.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -52673,20 +52582,10 @@
     },
     "Hẻm 95 Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 95,
-      "avg_speed": 23.46,
-      "std_speed": 3.02,
+      "records": 94,
+      "avg_speed": 23.45,
+      "std_speed": 3.04,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 25.0,
-          "free_flow": 25.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -53631,20 +53530,10 @@
     },
     "Cư xá Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 95,
-      "avg_speed": 24.86,
-      "std_speed": 4.23,
+      "records": 94,
+      "avg_speed": 24.89,
+      "std_speed": 4.24,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 22.0,
-          "free_flow": 28.0,
-          "los": "D",
-          "congestion_index": 0.2143
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -54589,20 +54478,10 @@
     },
     "Hẻm 101 Bắc Hải": {
       "node_id": "N22_BAC_HAI",
-      "records": 95,
-      "avg_speed": 25.53,
-      "std_speed": 2.72,
+      "records": 94,
+      "avg_speed": 25.51,
+      "std_speed": 2.73,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 27.0,
-          "free_flow": 27.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -55547,20 +55426,10 @@
     },
     "Hẻm 824 Sư Vạn Hạnh": {
       "node_id": "N07_SU_VAN_HANH",
-      "records": 97,
-      "avg_speed": 23.38,
-      "std_speed": 5.53,
+      "records": 96,
+      "avg_speed": 23.45,
+      "std_speed": 5.52,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 17.0,
-          "free_flow": 31.0,
-          "los": "C",
-          "congestion_index": 0.4516
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -56525,20 +56394,10 @@
     },
     "Sư Vạn Hạnh": {
       "node_id": "N07_SU_VAN_HANH",
-      "records": 97,
-      "avg_speed": 23.38,
-      "std_speed": 5.53,
+      "records": 96,
+      "avg_speed": 23.45,
+      "std_speed": 5.52,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 17.0,
-          "free_flow": 31.0,
-          "los": "C",
-          "congestion_index": 0.4516
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -57503,20 +57362,10 @@
     },
     "Hẻm 541 Sư Vạn Hạnh": {
       "node_id": "N07_SU_VAN_HANH",
-      "records": 97,
-      "avg_speed": 21.55,
+      "records": 96,
+      "avg_speed": 21.6,
       "std_speed": 5.37,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 16.0,
-          "free_flow": 28.0,
-          "los": "C",
-          "congestion_index": 0.4286
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -58482,19 +58331,9 @@
     "Hẻm 389 Ngô Gia Tự": {
       "node_id": "N12_NGO_GIA_TU",
       "records": 97,
-      "avg_speed": 37.9,
-      "std_speed": 3.57,
+      "avg_speed": 37.92,
+      "std_speed": 3.54,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 32.0,
-          "free_flow": 41.0,
-          "los": "E",
-          "congestion_index": 0.2195
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -59454,25 +59293,25 @@
           "free_flow": 41.0,
           "los": "F",
           "congestion_index": 0.0976
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 34.0,
+          "free_flow": 41.0,
+          "los": "E",
+          "congestion_index": 0.1707
         }
       ]
     },
     "Hẻm 480 Ngô Gia Tự": {
       "node_id": "N12_NGO_GIA_TU",
       "records": 97,
-      "avg_speed": 30.38,
-      "std_speed": 5.05,
+      "avg_speed": 30.4,
+      "std_speed": 5.02,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 23.0,
-          "free_flow": 35.0,
-          "los": "D",
-          "congestion_index": 0.3429
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -60432,25 +60271,25 @@
           "free_flow": 35.0,
           "los": "F",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 35.0,
+          "los": "D",
+          "congestion_index": 0.2857
         }
       ]
     },
     "Hẻm 438/9 Đường Ngô Gia Tự": {
       "node_id": "N12_NGO_GIA_TU",
       "records": 97,
-      "avg_speed": 30.38,
-      "std_speed": 5.05,
+      "avg_speed": 30.4,
+      "std_speed": 5.02,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 23.0,
-          "free_flow": 35.0,
-          "los": "D",
-          "congestion_index": 0.3429
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -61410,6 +61249,16 @@
           "free_flow": 35.0,
           "los": "F",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 25.0,
+          "free_flow": 35.0,
+          "los": "D",
+          "congestion_index": 0.2857
         }
       ]
     },
@@ -61419,16 +61268,6 @@
       "avg_speed": 24.81,
       "std_speed": 3.54,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 27.0,
-          "free_flow": 27.0,
-          "los": "D",
-          "congestion_index": 0.0
-        },
         {
           "session": "ual_dispatch",
           "date": "2026-08-28",
@@ -62398,36 +62237,26 @@
           "free_flow": 27.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 27.0,
+          "free_flow": 27.0,
+          "los": "D",
+          "congestion_index": 0.0
         }
       ]
     },
     "Đồng Nai": {
       "node_id": "N19_DONG_NAI",
       "records": 196,
-      "avg_speed": 24.99,
+      "avg_speed": 25.05,
       "std_speed": 3.84,
       "data": [
         {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 22.0,
-          "free_flow": 28.0,
-          "los": "D",
-          "congestion_index": 0.2143
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 22.0,
-          "free_flow": 28.0,
-          "los": "D",
-          "congestion_index": 0.2143
-        },
-        {
           "session": "ual_dispatch",
           "date": "2026-08-28",
           "hour": 19,
@@ -64362,6 +64191,26 @@
           "date": "2026-09-04",
           "hour": 6,
           "time_slot": "morning_peak",
+          "speed": 28.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 28.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
           "speed": 28.0,
           "free_flow": 28.0,
           "los": "D",
@@ -64377,36 +64226,6 @@
       "data": [
         {
           "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 25.0,
-          "free_flow": 34.0,
-          "los": "D",
-          "congestion_index": 0.2647
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 25.0,
-          "free_flow": 34.0,
-          "los": "D",
-          "congestion_index": 0.2647
-        },
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 24.0,
-          "free_flow": 34.0,
-          "los": "D",
-          "congestion_index": 0.2941
-        },
-        {
-          "session": "VN_auto_cron",
           "date": "2026-08-29",
           "hour": 0,
           "time_slot": "off_peak",
@@ -68244,25 +68063,45 @@
           "free_flow": 33.0,
           "los": "D",
           "congestion_index": 0.2727
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 24.0,
+          "free_flow": 34.0,
+          "los": "D",
+          "congestion_index": 0.2941
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 24.0,
+          "free_flow": 34.0,
+          "los": "D",
+          "congestion_index": 0.2941
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 24.0,
+          "free_flow": 34.0,
+          "los": "D",
+          "congestion_index": 0.2941
         }
       ]
     },
     "Hẻm 295 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
       "records": 94,
-      "avg_speed": 27.94,
-      "std_speed": 4.56,
+      "avg_speed": 27.97,
+      "std_speed": 4.53,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 33.0,
-          "los": "D",
-          "congestion_index": 0.3636
-        },
         {
           "session": "VN_auto_cron",
           "date": "2026-08-29",
@@ -69192,25 +69031,25 @@
           "free_flow": 33.0,
           "los": "D",
           "congestion_index": 0.2727
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 24.0,
+          "free_flow": 33.0,
+          "los": "D",
+          "congestion_index": 0.2727
         }
       ]
     },
     "Hẻm 237 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
       "records": 94,
-      "avg_speed": 27.84,
-      "std_speed": 2.62,
+      "avg_speed": 27.85,
+      "std_speed": 2.59,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 29.0,
-          "los": "D",
-          "congestion_index": 0.2759
-        },
         {
           "session": "VN_auto_cron",
           "date": "2026-08-29",
@@ -70140,25 +69979,25 @@
           "free_flow": 29.0,
           "los": "D",
           "congestion_index": 0.0
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 22.0,
+          "free_flow": 28.0,
+          "los": "D",
+          "congestion_index": 0.2143
         }
       ]
     },
     "Hẻm 341 Nhật Tảo": {
       "node_id": "N16_NHAT_TAO",
       "records": 94,
-      "avg_speed": 27.94,
-      "std_speed": 4.56,
+      "avg_speed": 27.97,
+      "std_speed": 4.53,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 21.0,
-          "free_flow": 33.0,
-          "los": "D",
-          "congestion_index": 0.3636
-        },
         {
           "session": "VN_auto_cron",
           "date": "2026-08-29",
@@ -71088,25 +70927,25 @@
           "free_flow": 33.0,
           "los": "D",
           "congestion_index": 0.2727
+        },
+        {
+          "session": "VN_auto_cron",
+          "date": "2026-09-04",
+          "hour": 12,
+          "time_slot": "midday_peak",
+          "speed": 24.0,
+          "free_flow": 33.0,
+          "los": "D",
+          "congestion_index": 0.2727
         }
       ]
     },
     "Hồ Bá Kiện": {
       "node_id": "N21_HO_BA_KIEN",
-      "records": 89,
-      "avg_speed": 23.97,
+      "records": 88,
+      "avg_speed": 24.02,
       "std_speed": 4.45,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 19.0,
-          "free_flow": 30.0,
-          "los": "C",
-          "congestion_index": 0.3667
-        },
         {
           "session": "VN_auto_cron",
           "date": "2026-08-29",
@@ -71991,20 +71830,10 @@
     },
     "Hẻm 106/20 Hồ Bá Kiện": {
       "node_id": "N21_HO_BA_KIEN",
-      "records": 89,
-      "avg_speed": 21.84,
-      "std_speed": 3.13,
+      "records": 88,
+      "avg_speed": 21.89,
+      "std_speed": 3.12,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 18.0,
-          "free_flow": 24.0,
-          "los": "C",
-          "congestion_index": 0.25
-        },
         {
           "session": "VN_auto_cron",
           "date": "2026-08-29",
@@ -72889,20 +72718,10 @@
     },
     "Hẻm 166 Hồ Bá Kiện": {
       "node_id": "N21_HO_BA_KIEN",
-      "records": 89,
-      "avg_speed": 20.61,
-      "std_speed": 3.14,
+      "records": 88,
+      "avg_speed": 20.66,
+      "std_speed": 3.11,
       "data": [
-        {
-          "session": "VN_auto_cron",
-          "date": "2026-08-28",
-          "hour": 11,
-          "time_slot": "midday_peak",
-          "speed": 16.0,
-          "free_flow": 23.0,
-          "los": "C",
-          "congestion_index": 0.3043
-        },
         {
           "session": "VN_auto_cron",
           "date": "2026-08-29",
